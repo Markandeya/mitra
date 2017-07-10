@@ -1,3 +1,8 @@
+/*
+  Mitra Bootstrap Sass Style
+  Author: Vasudev R. Nair (Github: https://github.com/Markandeya)
+  Version: 0.0.1
+*/
 
 // Fonts
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
@@ -7,3 +12,26 @@
 
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+//Custom imports
+
+/* BASE - Base styles, variables, mixins and normalize */
+
+@import "base/_variables";
+@import "base/_mixins";
+@import "base/_normalize";
+@import "base/_base";
+
+/* MODULES - Site components */
+
+@import "modules/_typography";
+@import "modules/_blocks";
+@import "modules/_buttons";
+@import "modules/_sections";
+@import "modules/_components";
+
+/* LAYOUTS - Page layout styles */
+
+@import "layouts/_header";
+@import "layouts/_navigation";
+@import "layouts/_footer";
