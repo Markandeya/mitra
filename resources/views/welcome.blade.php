@@ -9,15 +9,78 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Jumbotron Template for Bootstrap</title>
+    <title>Mitra | Amritahub </title>
 
-    <!-- Bootstrap core CSS -->
+    <!-- Mitra Core CSS -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Miriam+Libre|Source+Sans+Pro" rel="stylesheet">
+
+    <style media="screen">
+      .panel-box {
+        font-weight: bold;
+      }
+
+      .blinking-cursor {
+        font-weight: 100;
+        font-size: 30px;
+        color: #f4645f;;
+        -webkit-animation: 1s blink step-end infinite;
+        -moz-animation: 1s blink step-end infinite;
+        -ms-animation: 1s blink step-end infinite;
+        -o-animation: 1s blink step-end infinite;
+        animation: 1s blink step-end infinite;
+      }
+
+      @keyframes "blink" {
+        from, to {
+          color: transparent;
+        }
+        50% {
+          color: #f4645f;;
+        }
+      }
+
+      @-moz-keyframes blink {
+        from, to {
+          color: transparent;
+        }
+        50% {
+          color: #f4645f;;
+        }
+      }
+
+      @-webkit-keyframes "blink" {
+        from, to {
+          color: transparent;
+        }
+        50% {
+          color: #f4645f;;
+        }
+      }
+
+      @-ms-keyframes "blink" {
+        from, to {
+          color: transparent;
+        }
+        50% {
+          color: #f4645f;;
+        }
+      }
+
+      @-o-keyframes "blink" {
+        from, to {
+          color: transparent;
+        }
+        50% {
+          color: #f4645f;;
+        }
+      }
+    </style>
   </head>
 
   <body>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -26,9 +89,15 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project name</a>
+          <a class="navbar-brand" href="#">Mitra</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            </li>
+          </ul>
           <form class="navbar-form navbar-right">
             <div class="form-group">
               <input type="text" placeholder="Email" class="form-control">
@@ -43,39 +112,95 @@
     </nav>
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
+    <div class="jumbotron" style="background-image:url({{ asset('images/topography.png') }});margin-top:30px;overflow:auto;border-bottom:2px dashed #b7b7b7">
       <div class="container">
-        <h1>Hello, world!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+        <div class="row">
+          <div class="col-md-7 col-sm-6 col-xs-12">
+            <h1 style="font-size:30px;margin-top:20%;margin-bottom:50px">The Alumni platform By and For Amritians  <span class="blinking-cursor" style="color:inherit">|</span></h1>
+            <p class="pull-left" style="font-family: 'Dancing Script', cursive; font-size:35px;color:#00b1b3"><span class="fa fa-quote-left"></span>&nbsp; Nobody is bothered about an institution more than its alumni &nbsp;<span class="fa fa-quote-right"></span></p>
+            <p class="pull-left"> - Narayana Murthy, Co-founder of Infosys</p>
+            {{-- <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p> --}}
+          </div>
+          <div class="col-md-5 col-sm-6 col-xs-12">
+            <div class="panel panel-primary">
+              <div class="panel-heading text-center" style="" here!><h3 style="font-family:'Source Sans Pro',sans-serif">Signup here!</h3></div>
+              <div class="panel-body">
+                <div class="panel-box">
+                  First name
+                  <input type="text" name="" value="" class="form-control" placeholder="John">
+                </div>
+                <div class="panel-box">
+                  Last name
+                  <input type="text" name="" value="" class="form-control" placeholder="Doe">
+                </div>
+                <div class="panel-box">
+                  Email
+                  <input type="email" name="" value="" class="form-control" placeholder="example@example.com">
+                </div>
+                <div class="panel-box">
+                  Password
+                  <input type="password" name="" value="" class="form-control" placeholder="Your password">
+                </div>
+                <div class="panel-box">
+                  <br>
+                  By clicking Join now, you agree to the Amrita User Agreement, Privacy Policy, and Cookie Policy.
+                  <br> <br>
+                </div>
+                <div class="panel-box">
+                  <button type="submit" name="" value="" class="btn btn-block btn-success">Sign up</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
-    <div class="container">
+    <div class="container footer">
       <!-- Example row of columns -->
       <div class="row">
         <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          <h3>Other links</h3>
+          <p><a href="#">Embracing the world</a></p>
+          <p><a href="#">Amma.org</a></p>
+          <p><a href="#">Amritapuri</a></p>
+          <p><a href="#">AMrita SeRVe</a></p>
+          <p><a href="#">Amrita Vidyalayam</a></p>
+          <p><a href="#">IAM-Meditation Technique</a></p>
+          <p><a href="#">Amrita Civil Service Academy</a></p>
+          <p><a href="#">Amrita Multimedia Academy</a></p>
         </div>
         <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          <h3>@ Social Media</h3>
+          <p><span class="fa fa-youtube-play"></span> <a href="#">Youtube Channel</a></p>
+          <p><span class="fa fa-facebook-official"></span> <a href="#">Facebook Page</a></p>
+          <p><span class="fa fa-twitter"></span> <a href="#">Twitter</a></p>
+          <p><span class="fa fa-google-plus-square"></span> <a href="#">Google+</a></p>
+          <p><span class="fa fa-linkedin-square"></span> <a href="#">Linkedin</a></p>
+          <p><span class="fa fa-google"></span> <a href="#">Google Scholar</a></p>
+          <p><span class="fa fa-android"></span> <a href="#">Amrita University Android App</a></p>
+          <p><span class="fa fa-wikipedia-w"></span> <a href="#">Wikipedia</a></p>
        </div>
         <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          <h3>Contact Us</h3>
+          <p>Amrita University, </p>
+          <p>Amrita Vishwa Vidyapeetham</p>
+          <p>Amritanagar, Coimbatore - 641 112</p>
+          <p>Tamilnadu, India</p>
+          <p><span class="fa fa-phone"></span> +91 422 2685000</p>
+          <p><span class="fa fa-phone"></span> Fax: +91-422-2686274</p>
+          <p><span class="fa fa-envelope-o"></span> <a href="https://amrita.edu/contact-us">Contact details &raquo;</a></p>
         </div>
       </div>
 
       <hr>
 
       <footer>
-        <p>&copy; 2016 Company, Inc.</p>
+        <p>Mitra <b>by</b> Amrita &copy; 2017 <span class="pull-right">Made with <i class="fa fa-heart" style="color:lightpink"></i> by <a href="http://github.com/Markandeya">@Markandeya </a><i class="fa fa-github-alt"></i></span></p>
       </footer>
     </div> <!-- /container -->
+    <script type="text/javascript" src="{{ asset('js/app.js')}}">
+    </script>
   </body>
 </html>

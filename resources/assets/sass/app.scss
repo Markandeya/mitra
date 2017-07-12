@@ -7,17 +7,9 @@
 // Fonts
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
 
-// Variables
-@import "variables";
-
-// Bootstrap
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
-
-//Custom imports
 
 /* BASE - Base styles, variables, mixins and normalize */
 
-@import "base/_variables";
 @import "base/_mixins";
 @import "base/_normalize";
 @import "base/_base";
@@ -35,3 +27,12 @@
 @import "layouts/_header";
 @import "layouts/_navigation";
 @import "layouts/_footer";
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+//Font-awesome
+@import "node_modules/font-awesome/scss/font-awesome";
