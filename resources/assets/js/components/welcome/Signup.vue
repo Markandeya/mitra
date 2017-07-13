@@ -1,4 +1,7 @@
 <template>
+  <transition
+  enter-active-class="animated fadeInUp"
+  appear>
   <div class="panel panel-primary">
     <div class="panel-heading text-center" style=""><h3 style="font-family:'Source Sans Pro',sans-serif">Signup here!</h3></div>
     <div class="panel-body">
@@ -28,6 +31,7 @@
       </div>
     </div>
   </div>
+  </transition>
 </template>
 
 <script>

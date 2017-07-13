@@ -81,6 +81,7 @@
   </head>
 
   <body>
+    <div id="app">
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -113,19 +114,13 @@
     </nav>
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron" style="background-image:url({{ asset('images/topography.png') }});margin-top:30px;overflow:auto;border-bottom:2px dashed #b7b7b7">
+    <div class="jumbotron" style="background-image:url({{ asset('images/topography.png') }});margin-top:30px;border-bottom:2px dashed #b7b7b7">
       <div class="container">
         <div class="row">
-          <div class="col-md-7 col-sm-6 col-xs-12">
-            <h1 style="font-size:30px;margin-top:20%;margin-bottom:50px">The Alumni platform By and For Amritians  <span class="blinking-cursor" style="color:inherit">|</span></h1>
-            <p class="pull-left" style="font-family: 'Dancing Script', cursive; font-size:35px;color:#00b1b3"><span class="fa fa-quote-left"></span>&nbsp; Nobody is bothered about an institution more than its alumni &nbsp;<span class="fa fa-quote-right"></span></p>
-            <p class="pull-left"> - Narayana Murthy, Co-founder of Infosys</p>
+            <welcome-quote></welcome-quote>
             {{-- <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p> --}}
-          </div>
           <div class="col-md-5 col-sm-6 col-xs-12">
-            <div id="app">
               <signup></signup>
-            </div>
           </div>
         </div>
 
@@ -175,6 +170,8 @@
         <p>Mitra <b>by</b> Amrita &copy; 2017 <span class="pull-right">Made with <i class="fa fa-heart" style="color:lightpink"></i> by <a href="http://github.com/Markandeya">@Markandeya </a><i class="fa fa-github-alt"></i></span></p>
       </footer>
     </div> <!-- /container -->
+  </div>
+
     <script type="text/javascript" src="{{ asset('js/app.js')}}">
     </script>
   </body>

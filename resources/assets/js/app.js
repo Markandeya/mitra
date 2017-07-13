@@ -15,7 +15,8 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('signup', require('./components/Signup.vue'));
+Vue.component('signup', require('./components/welcome/Signup.vue'));
+Vue.component('welcome-quote', require('./components/welcome/WelcomeQuote.vue'));
 
 window.onload = function () {
   const app = new Vue({
