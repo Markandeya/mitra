@@ -19,6 +19,7 @@
     "vue": "^2.1.10"
   },
   "dependencies": {
+    "animate": "^1.0.0",
     "bootstrap": "^3.3.7",
     "font-awesome": "^4.7.0"
   }

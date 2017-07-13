@@ -7,6 +7,8 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <link rel="icon" href="../../favicon.ico">
 
     <title>Mitra | Amritahub </title>
@@ -79,7 +81,6 @@
   </head>
 
   <body>
-
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -122,34 +123,8 @@
             {{-- <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p> --}}
           </div>
           <div class="col-md-5 col-sm-6 col-xs-12">
-            <div class="panel panel-primary">
-              <div class="panel-heading text-center" style="" here!><h3 style="font-family:'Source Sans Pro',sans-serif">Signup here!</h3></div>
-              <div class="panel-body">
-                <div class="panel-box">
-                  First name
-                  <input type="text" name="" value="" class="form-control" placeholder="John">
-                </div>
-                <div class="panel-box">
-                  Last name
-                  <input type="text" name="" value="" class="form-control" placeholder="Doe">
-                </div>
-                <div class="panel-box">
-                  Email
-                  <input type="email" name="" value="" class="form-control" placeholder="example@example.com">
-                </div>
-                <div class="panel-box">
-                  Password
-                  <input type="password" name="" value="" class="form-control" placeholder="Your password">
-                </div>
-                <div class="panel-box">
-                  <br>
-                  By clicking Join now, you agree to the Amrita User Agreement, Privacy Policy, and Cookie Policy.
-                  <br> <br>
-                </div>
-                <div class="panel-box">
-                  <button type="submit" name="" value="" class="btn btn-block btn-success">Sign up</button>
-                </div>
-              </div>
+            <div id="app">
+              <signup></signup>
             </div>
           </div>
         </div>
