@@ -114,7 +114,7 @@
     </nav>
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron" style="background-image:url({{ asset('images/topography.png') }});margin-top:30px;border-bottom:2px dashed #b7b7b7">
+    <div class="jumbotron welcome-jumbo" style="">
       <div class="container">
         <div class="row">
             <welcome-quote></welcome-quote>
