@@ -101,13 +101,12 @@ class RegisterController extends Controller
         $user = User::where('facebook_id', $socialUser->getId())->first();
 
         if (!$user)
-        {
           $user = User::create([
                     'facebook_id' => $socialUser->getId(),
                     'name' => $socialUser->getName(),
                     'email' => $socialUser->getEmail(),
                   ]);
-        }
+
         auth()->login($user);
 
         return redirect()->to('/home');
