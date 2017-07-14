@@ -2,6 +2,7 @@
 
 namespace Mitra\Http\Controllers\Auth;
 
+use Socialite;
 use Mitra\User;
 use Mitra\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -67,5 +68,48 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+    /**
+     * Redirect the user to the Facebook authentication page.
+     *
+     * @return Response
+     */
+
+    public function redirectToProvider()
+    {
+        return Socialite::driver('facebook')->redirect();
+    }
+
+    /**
+     * Obtain the user information from Facebook.
+     *
+     * @return Response
+     */
+
+    public function handleProviderCallback()
+    {
+        try
+        {
+          $socialUser = Socialite::driver('facebook')->user();
+
+        }
+        catch (Exception $e)
+        {
+          return redirect('/');
+        }
+
+        $user = User::where('facebook_id', $socialUser->getId())->first();
+
+        if (!$user)
+        {
+          $user = User::create([
+                    'facebook_id' => $socialUser->getId(),
+                    'name' => $socialUser->getName(),
+                    'email' => $socialUser->getEmail(),
+                  ]);
+        }
+        auth()->login($user);
+
+        return redirect()->to('/home');
     }
 }

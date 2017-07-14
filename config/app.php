@@ -177,7 +177,7 @@ return [
         Mitra\Providers\EventServiceProvider::class,
         Mitra\Providers\RouteServiceProvider::class,
         /*
-         * Custom Service Providers ...
+         * Installed Service Providers ...
          */
         Laravel\Socialite\SocialiteServiceProvider::class,
 
