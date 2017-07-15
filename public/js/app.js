@@ -1746,6 +1746,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
@@ -31917,6 +31923,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('span', {
     staticClass: "fa fa-facebook"
   }), _vm._v(" Sign in with Facebook\n      ")])]), _vm._v(" "), _c('div', {
+    staticClass: "panel-box"
+  }, [_c('br'), _vm._v(" "), _c('a', {
+    staticClass: "btn btn-block btn-social btn-google",
+    attrs: {
+      "href": "http://localhost:8000/auth/google"
+    }
+  }, [_c('span', {
+    staticClass: "fa fa-google"
+  }), _vm._v(" Sign in with Google\n      ")])]), _vm._v(" "), _c('div', {
     staticClass: "panel-box"
   }, [_c('br'), _vm._v("\n      By clicking Join now, you agree to the Amrita User Agreement, Privacy Policy, and Cookie Policy.\n      "), _c('br'), _vm._v(" "), _c('br')]), _vm._v(" "), _c('div', {
     staticClass: "panel-box"

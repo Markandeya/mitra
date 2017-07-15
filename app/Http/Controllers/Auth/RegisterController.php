@@ -75,7 +75,7 @@ class RegisterController extends Controller
      * @return Response
      */
 
-    public function redirectToProvider()
+    public function redirectToFacebookProvider()
     {
         return Socialite::driver('facebook')->redirect();
     }
@@ -86,7 +86,7 @@ class RegisterController extends Controller
      * @return Response
      */
 
-    public function handleProviderCallback()
+    public function handleFacebookProviderCallback()
     {
         try
         {
@@ -103,6 +103,48 @@ class RegisterController extends Controller
         if (!$user)
           $user = User::create([
                     'facebook_id' => $socialUser->getId(),
+                    'name' => $socialUser->getName(),
+                    'email' => $socialUser->getEmail(),
+                  ]);
+
+        auth()->login($user);
+
+        return redirect()->to('/home');
+    }
+    /**
+     * Redirect the user to the Google authentication page.
+     *
+     * @return Response
+     */
+
+    public function redirectToGoogleProvider()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    /**
+     * Obtain the user information from Google.
+     *
+     * @return Response
+     */
+
+    public function handleGoogleProviderCallback()
+    {
+        try
+        {
+          $socialUser = Socialite::driver('google')->user();
+
+        }
+        catch (Exception $e)
+        {
+          return redirect('/');
+        }
+
+        $user = User::where('google_id', $socialUser->getId())->first();
+
+        if (!$user)
+          $user = User::create([
+                    'google_id' => $socialUser->getId(),
                     'name' => $socialUser->getName(),
                     'email' => $socialUser->getEmail(),
                   ]);

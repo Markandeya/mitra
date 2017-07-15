@@ -29,6 +29,12 @@
       </div>
       <div class="panel-box">
         <br>
+        <a class="btn btn-block btn-social btn-google" href="http://localhost:8000/auth/google">
+            <span class="fa fa-google"></span> Sign in with Google
+        </a>
+      </div>
+      <div class="panel-box">
+        <br>
         By clicking Join now, you agree to the Amrita User Agreement, Privacy Policy, and Cookie Policy.
         <br> <br>
       </div>
