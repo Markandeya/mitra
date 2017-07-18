@@ -1,9 +1,9 @@
 <?php
 
 namespace Mitra\Http\Controllers\Auth;
-
 use Socialite;
 use Mitra\User;
+use Mitra\SocialProvider;
 use Mitra\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -70,87 +70,54 @@ class RegisterController extends Controller
         ]);
     }
     /**
-     * Redirect the user to the Facebook authentication page.
+     * Redirect the user to the socialsite's authentication page.
      *
      * @return Response
      */
 
-    public function redirectToFacebookProvider()
+    public function redirectToProvider($provider)
     {
-        return Socialite::driver('facebook')->redirect();
+        return Socialite::driver($provider)->redirect();
     }
 
     /**
-     * Obtain the user information from Facebook.
+     * Obtain the user information from .
      *
      * @return Response
      */
 
-    public function handleFacebookProviderCallback()
+    public function handleProviderCallback($provider)
     {
         try
         {
-          $socialUser = Socialite::driver('facebook')->user();
+           $socialUser = Socialite::driver($provider)->user();
 
         }
         catch (Exception $e)
         {
-          return redirect('/');
+          return redirect('/#error');
         }
 
-        $user = User::where('facebook_id', $socialUser->getId())->first();
+        $socialProvider = SocialProvider::where('provider_id', $socialUser->getId())->first();
 
-        if (!$user)
-          $user = User::create([
-                    'facebook_id' => $socialUser->getId(),
+        if (!$socialProvider)
+        {
+          $user = User::firstOrCreate([
                     'name' => $socialUser->getName(),
                     'email' => $socialUser->getEmail(),
                   ]);
 
-        auth()->login($user);
-
-        return redirect()->to('/home');
-    }
-    /**
-     * Redirect the user to the Google authentication page.
-     *
-     * @return Response
-     */
-
-    public function redirectToGoogleProvider()
-    {
-        return Socialite::driver('google')->redirect();
-    }
-
-    /**
-     * Obtain the user information from Google.
-     *
-     * @return Response
-     */
-
-    public function handleGoogleProviderCallback()
-    {
-        try
-        {
-          $socialUser = Socialite::driver('google')->user();
-
+          $user->socialProviders()->create([
+            'provider_id' => $socialUser->getId(),
+            'provider' => $provider
+          ]);
         }
-        catch (Exception $e)
-        {
-          return redirect('/');
-        }
-
-        $user = User::where('google_id', $socialUser->getId())->first();
-
-        if (!$user)
-          $user = User::create([
-                    'google_id' => $socialUser->getId(),
-                    'name' => $socialUser->getName(),
-                    'email' => $socialUser->getEmail(),
-                  ]);
+        else
+          $user = $socialProvider->user;
 
         auth()->login($user);
-
+        auth()->user();
+//
         return redirect()->to('/home');
     }
 }

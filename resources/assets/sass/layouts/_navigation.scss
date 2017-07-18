@@ -1,12 +1,12 @@
 $navbar-default-link-active-bg: #fff !default;
 
 .navbar-brand {
-  
+
 }
 
 .navbar-nav {
 
-  li:hover {
+  .tab:hover {
     @include add-border(2px, $mitra-pink, 'bottom');
   }
 }

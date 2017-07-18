@@ -23,6 +23,10 @@
       </div>
       <div class="panel-box">
         <br>
+        <button type="submit" name="" value="" class="btn btn-block btn-success">Sign up</button>
+      </div>
+      <div class="text-center"><u>OR</u></div>
+      <div class="panel-box">
         <a class="btn btn-block btn-social btn-facebook" href="http://localhost:8000/auth/facebook">
             <span class="fa fa-facebook"></span> Sign in with Facebook
         </a>
@@ -36,10 +40,6 @@
       <div class="panel-box">
         <br>
         By clicking Join now, you agree to the Amrita User Agreement, Privacy Policy, and Cookie Policy.
-        <br> <br>
-      </div>
-      <div class="panel-box">
-        <button type="submit" name="" value="" class="btn btn-block btn-success">Sign up</button>
       </div>
     </div>
   </div>
