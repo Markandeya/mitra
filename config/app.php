@@ -180,7 +180,10 @@ return [
          * Installed Service Providers ...
          */
         Laravel\Socialite\SocialiteServiceProvider::class,
-
+        /*
+         * Custom Service Providers
+         */
+         Mitra\Providers\BladeDirectiveProvider::class
     ],
 
     /*

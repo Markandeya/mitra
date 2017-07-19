@@ -1752,15 +1752,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    route: {
+      type: String,
+      required: true
+    },
+    csrf: {
+      type: String,
+      required: true
+    }
+  },
   mounted: function mounted() {
     console.log('Component mounted.');
   },
   data: function data() {
-    return {
-      msg: 'Hello'
-    };
+    return {};
   }
 });
 
@@ -31873,31 +31883,37 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("Signup here!")])]), _vm._v(" "), _c('div', {
     staticClass: "panel-body"
-  }, [_c('div', {
+  }, [_c('form', {
+    staticClass: "form-horizontal",
+    attrs: {
+      "method": "POST",
+      "action": _vm.route
+    }
+  }, [_c('input', {
+    attrs: {
+      "type": "hidden",
+      "name": "_token"
+    },
+    domProps: {
+      "value": _vm.csrf
+    }
+  }), _vm._v(" "), _c('div', {
     staticClass: "panel-box"
-  }, [_vm._v("\n      First name\n      "), _c('input', {
+  }, [_vm._v("\n          Name\n          "), _c('input', {
     staticClass: "form-control",
     attrs: {
+      "id": "name",
       "type": "text",
       "name": "",
       "value": "",
-      "placeholder": "John"
+      "placeholder": "John Doe"
     }
   })]), _vm._v(" "), _c('div', {
     staticClass: "panel-box"
-  }, [_vm._v("\n      Last name\n      "), _c('input', {
+  }, [_vm._v("\n          Email\n          "), _c('input', {
     staticClass: "form-control",
     attrs: {
-      "type": "text",
-      "name": "",
-      "value": "",
-      "placeholder": "Doe"
-    }
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "panel-box"
-  }, [_vm._v("\n      Email\n      "), _c('input', {
-    staticClass: "form-control",
-    attrs: {
+      "id": "email",
       "type": "email",
       "name": "",
       "value": "",
@@ -31905,9 +31921,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })]), _vm._v(" "), _c('div', {
     staticClass: "panel-box"
-  }, [_vm._v("\n      Password\n      "), _c('input', {
+  }, [_vm._v("\n          Password\n          "), _c('input', {
     staticClass: "form-control",
     attrs: {
+      "id": "password",
       "type": "password",
       "name": "",
       "value": "",
@@ -31915,16 +31932,31 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })]), _vm._v(" "), _c('div', {
     staticClass: "panel-box"
+  }, [_vm._v("\n          Confirm Password\n          "), _c('input', {
+    staticClass: "form-control",
+    attrs: {
+      "id": "password-confirm",
+      "type": "password",
+      "name": "",
+      "value": "",
+      "placeholder": "Re-type password"
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "panel-box"
   }, [_c('br'), _vm._v(" "), _c('button', {
     staticClass: "btn btn-block btn-success",
     attrs: {
-      "type": "submit",
-      "name": "",
-      "value": ""
+      "type": "submit"
     }
   }, [_vm._v("Sign up")])]), _vm._v(" "), _c('div', {
-    staticClass: "text-center"
-  }, [_c('u', [_vm._v("OR")])]), _vm._v(" "), _c('div', {
+    staticClass: "text-center",
+    staticStyle: {
+      "margin-top": "2px",
+      "margin-bottom": "2px",
+      "font-size": "20px",
+      "font-weight": "bold"
+    }
+  }, [_vm._v("OR")]), _vm._v(" "), _c('div', {
     staticClass: "panel-box"
   }, [_c('a', {
     staticClass: "btn btn-block btn-social btn-facebook",
@@ -31933,18 +31965,18 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('span', {
     staticClass: "fa fa-facebook"
-  }), _vm._v(" Sign in with Facebook\n      ")])]), _vm._v(" "), _c('div', {
+  }), _vm._v(" Sign in with Facebook\n          ")])]), _vm._v(" "), _c('div', {
     staticClass: "panel-box"
-  }, [_c('br'), _vm._v(" "), _c('a', {
+  }, [_c('a', {
     staticClass: "btn btn-block btn-social btn-google",
     attrs: {
       "href": "http://localhost:8000/auth/google"
     }
   }, [_c('span', {
     staticClass: "fa fa-google"
-  }), _vm._v(" Sign in with Google\n      ")])]), _vm._v(" "), _c('div', {
+  }), _vm._v(" Sign in with Google\n          ")])]), _vm._v(" "), _c('div', {
     staticClass: "panel-box"
-  }, [_c('br'), _vm._v("\n      By clicking Join now, you agree to the Amrita User Agreement, Privacy Policy, and Cookie Policy.\n    ")])])])])
+  }, [_c('br'), _vm._v("\n          By clicking Join now, you agree to the Amrita User Agreement, Privacy Policy, and Cookie Policy.\n        ")])])])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {

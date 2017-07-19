@@ -17,6 +17,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Miriam+Libre|Source+Sans+Pro" rel="stylesheet">
 
+    <script type="text/javascript" src="{{ asset('js/app.js')}}">
+    </script>
     <style media="screen">
       .panel-box {
         font-weight: bold;
@@ -120,7 +122,10 @@
             <welcome-quote></welcome-quote>
             {{-- <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p> --}}
           <div class="col-md-5 col-sm-6 col-xs-12">
-              <signup></signup>
+              <signup
+                  route="{{ route('register') }}"
+                  csrf="{{ csrf_token() }}">
+              </signup>
           </div>
         </div>
 
@@ -172,7 +177,5 @@
     </div> <!-- /container -->
   </div>
 
-    <script type="text/javascript" src="{{ asset('js/app.js')}}">
-    </script>
   </body>
 </html>

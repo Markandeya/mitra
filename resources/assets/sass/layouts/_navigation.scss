@@ -8,6 +8,7 @@ $navbar-default-link-active-bg: #fff !default;
 
   .tab:hover {
     @include add-border(2px, $mitra-pink, 'bottom');
+    cursor: pointer !important;
   }
 }
 .active {

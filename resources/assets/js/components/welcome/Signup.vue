@@ -5,42 +5,44 @@
   <div class="panel panel-primary">
     <div class="panel-heading text-center" style=""><h3 style="font-family:'Source Sans Pro',sans-serif">Signup here!</h3></div>
     <div class="panel-body">
-      <div class="panel-box">
-        First name
-        <input type="text" name="" value="" class="form-control" placeholder="John">
-      </div>
-      <div class="panel-box">
-        Last name
-        <input type="text" name="" value="" class="form-control" placeholder="Doe">
-      </div>
-      <div class="panel-box">
-        Email
-        <input type="email" name="" value="" class="form-control" placeholder="example@example.com">
-      </div>
-      <div class="panel-box">
-        Password
-        <input type="password" name="" value="" class="form-control" placeholder="Your password">
-      </div>
-      <div class="panel-box">
-        <br>
-        <button type="submit" name="" value="" class="btn btn-block btn-success">Sign up</button>
-      </div>
-      <div class="text-center"><u>OR</u></div>
-      <div class="panel-box">
-        <a class="btn btn-block btn-social btn-facebook" href="http://localhost:8000/auth/facebook">
-            <span class="fa fa-facebook"></span> Sign in with Facebook
-        </a>
-      </div>
-      <div class="panel-box">
-        <br>
-        <a class="btn btn-block btn-social btn-google" href="http://localhost:8000/auth/google">
-            <span class="fa fa-google"></span> Sign in with Google
-        </a>
-      </div>
-      <div class="panel-box">
-        <br>
-        By clicking Join now, you agree to the Amrita User Agreement, Privacy Policy, and Cookie Policy.
-      </div>
+        <form class="form-horizontal" method="POST" :action="route">
+          <input type="hidden" name="_token" :value="csrf">
+          <div class="panel-box">
+            Name
+            <input id="name" type="text" name="" value="" class="form-control" placeholder="John Doe" >
+          </div>
+          <div class="panel-box">
+            Email
+            <input id="email" type="email" name="" value="" class="form-control" placeholder="example@example.com">
+          </div>
+          <div class="panel-box">
+            Password
+            <input id="password" type="password" name="" value="" class="form-control" placeholder="Your password">
+          </div>
+          <div class="panel-box">
+            Confirm Password
+            <input id="password-confirm" type="password" name="" value="" class="form-control" placeholder="Re-type password">
+          </div>
+          <div class="panel-box">
+            <br>
+            <button type="submit" class="btn btn-block btn-success">Sign up</button>
+          </div>
+          <div class="text-center" style="margin-top:2px;margin-bottom:2px;font-size:20px;font-weight:bold">OR</div>
+          <div class="panel-box">
+            <a class="btn btn-block btn-social btn-facebook" href="http://localhost:8000/auth/facebook">
+                <span class="fa fa-facebook"></span> Sign in with Facebook
+            </a>
+          </div>
+          <div class="panel-box">
+            <a class="btn btn-block btn-social btn-google" href="http://localhost:8000/auth/google">
+                <span class="fa fa-google"></span> Sign in with Google
+            </a>
+          </div>
+          <div class="panel-box">
+            <br>
+            By clicking Join now, you agree to the Amrita User Agreement, Privacy Policy, and Cookie Policy.
+          </div>
+        </form>
     </div>
   </div>
   </transition>
@@ -48,12 +50,21 @@
 
 <script>
     export default {
+        props: {
+          route: {
+            type: String,
+            required: true
+          },
+          csrf: {
+            type: String,
+            required: true
+          }
+        },
         mounted() {
             console.log('Component mounted.')
         },
         data() {
           return {
-            msg: 'Hello'
           };
         }
     }
