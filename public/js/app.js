@@ -1754,6 +1754,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -1764,10 +1776,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     csrf: {
       type: String,
       required: true
+    },
+    errorname: {
+      type: String,
+      default: ''
+    },
+    erroremail: {
+      type: String,
+      default: ''
+    },
+    errorpasswd: {
+      type: String,
+      default: ''
     }
   },
   mounted: function mounted() {
     console.log('Component mounted.');
+    console.log();
   },
   data: function data() {
     return {};
@@ -31904,40 +31929,88 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "id": "name",
       "type": "text",
-      "name": "",
+      "name": "name",
       "value": "",
       "placeholder": "John Doe"
     }
-  })]), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), (_vm.errorname != '') ? _c('div', {
+    staticClass: "alert alert-danger alert-dismissible",
+    attrs: {
+      "role": "alert"
+    }
+  }, [_c('button', {
+    staticClass: "close",
+    attrs: {
+      "type": "button",
+      "data-dismiss": "alert",
+      "aria-label": "Close"
+    }
+  }, [_c('span', {
+    attrs: {
+      "aria-hidden": "true"
+    }
+  }, [_vm._v("×")])]), _vm._v(" "), _c('strong', [_vm._v(_vm._s(_vm.errorname))])]) : _vm._e()]), _vm._v(" "), _c('div', {
     staticClass: "panel-box"
   }, [_vm._v("\n          Email\n          "), _c('input', {
     staticClass: "form-control",
     attrs: {
       "id": "email",
       "type": "email",
-      "name": "",
+      "name": "email",
       "value": "",
       "placeholder": "example@example.com"
     }
-  })]), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), (_vm.erroremail != '') ? _c('div', {
+    staticClass: "alert alert-danger alert-dismissible",
+    attrs: {
+      "role": "alert"
+    }
+  }, [_c('button', {
+    staticClass: "close",
+    attrs: {
+      "type": "button",
+      "data-dismiss": "alert",
+      "aria-label": "Close"
+    }
+  }, [_c('span', {
+    attrs: {
+      "aria-hidden": "true"
+    }
+  }, [_vm._v("×")])]), _vm._v(" "), _c('strong', [_vm._v(_vm._s(_vm.erroremail))])]) : _vm._e()]), _vm._v(" "), _c('div', {
     staticClass: "panel-box"
   }, [_vm._v("\n          Password\n          "), _c('input', {
     staticClass: "form-control",
     attrs: {
       "id": "password",
       "type": "password",
-      "name": "",
+      "name": "password",
       "value": "",
       "placeholder": "Your password"
     }
-  })]), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), (_vm.errorpasswd != '') ? _c('div', {
+    staticClass: "alert alert-danger alert-dismissible",
+    attrs: {
+      "role": "alert"
+    }
+  }, [_c('button', {
+    staticClass: "close",
+    attrs: {
+      "type": "button",
+      "data-dismiss": "alert",
+      "aria-label": "Close"
+    }
+  }, [_c('span', {
+    attrs: {
+      "aria-hidden": "true"
+    }
+  }, [_vm._v("×")])]), _vm._v(" "), _c('strong', [_vm._v(_vm._s(_vm.errorpasswd))])]) : _vm._e()]), _vm._v(" "), _c('div', {
     staticClass: "panel-box"
   }, [_vm._v("\n          Confirm Password\n          "), _c('input', {
     staticClass: "form-control",
     attrs: {
       "id": "password-confirm",
       "type": "password",
-      "name": "",
+      "name": "password_confirmation",
       "value": "",
       "placeholder": "Re-type password"
     }

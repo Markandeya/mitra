@@ -9,19 +9,31 @@
           <input type="hidden" name="_token" :value="csrf">
           <div class="panel-box">
             Name
-            <input id="name" type="text" name="" value="" class="form-control" placeholder="John Doe" >
+            <input id="name" type="text" name="name" value="" class="form-control" placeholder="John Doe" required>
+            <div class="alert alert-danger alert-dismissible" role="alert" v-if="errorname!=''">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <strong>{{ errorname }}</strong>
+            </div>
           </div>
           <div class="panel-box">
             Email
-            <input id="email" type="email" name="" value="" class="form-control" placeholder="example@example.com">
+            <input id="email" type="email" name="email" value="" class="form-control" placeholder="example@example.com" required>
+            <div class="alert alert-danger alert-dismissible" role="alert" v-if="erroremail!=''">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <strong>{{ erroremail }}</strong>
+            </div>
           </div>
           <div class="panel-box">
             Password
-            <input id="password" type="password" name="" value="" class="form-control" placeholder="Your password">
+            <input id="password" type="password" name="password" value="" class="form-control" placeholder="Your password" required>
+            <div class="alert alert-danger alert-dismissible" role="alert" v-if="errorpasswd!=''">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <strong>{{ errorpasswd }}</strong>
+            </div>
           </div>
           <div class="panel-box">
             Confirm Password
-            <input id="password-confirm" type="password" name="" value="" class="form-control" placeholder="Re-type password">
+            <input id="password-confirm" type="password" name="password_confirmation" value="" class="form-control" placeholder="Re-type password" required>
           </div>
           <div class="panel-box">
             <br>
@@ -58,10 +70,23 @@
           csrf: {
             type: String,
             required: true
-          }
+          },
+          errorname: {
+            type: String,
+            default: ''
+          },
+          erroremail: {
+            type: String,
+            default: ''
+          },
+          errorpasswd: {
+            type: String,
+            default: ''
+          },
         },
         mounted() {
-            console.log('Component mounted.')
+            console.log('Component mounted.');
+            console.log()
         },
         data() {
           return {

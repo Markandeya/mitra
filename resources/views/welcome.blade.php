@@ -124,7 +124,10 @@
           <div class="col-md-5 col-sm-6 col-xs-12">
               <signup
                   route="{{ route('register') }}"
-                  csrf="{{ csrf_token() }}">
+                  csrf="{{ csrf_token() }}"
+                  errorName="{{ $errors->first('name') }}"
+                  errorEmail="{{ $errors->first('email') }}"
+                  errorPasswd="{{ $errors->first('password') }}">
               </signup>
           </div>
         </div>
