@@ -11,7 +11,7 @@
 
     <link rel="icon" href="../../favicon.ico">
 
-    <title>{{ config('app.name') }}</title>
+    <title>Service Unavailable</title>
 
     <!-- Mitra Core CSS -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -25,16 +25,17 @@
       width: 100vw;
       justify-content: center;
       align-items: center;
+      display: flex;
     }
       h2 {
-        margin: 0 auto;
+
       }
     </style>
   </head>
 
   <body>
   <div id="app">
-    <h2 style="font-family: 'Dancing Script', cursive; font-size:35px;color:#00b1b3"><span class="fa fa-quote-left"></span>The service is currently unavailable. <span class="fa fa-quote-right"></span></h2>
+    <h2 style="font-size:50px;color:#00b1b3"><span class="fa fa-quote-left"></span>The service is currently unavailable. <span class="fa fa-quote-right"></span></h2>
   </div>
   </body>
 </html>
