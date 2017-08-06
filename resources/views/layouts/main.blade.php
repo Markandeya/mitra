@@ -42,12 +42,13 @@
             <li class="tab"><a href="#contact">Contact</a></li>
             </li>
           </ul>
-          <form class="navbar-form navbar-right">
+          <form class="navbar-form navbar-right" method="POST" action="{{route('login')}}">
+            {{ csrf_field() }}
             <div class="form-group">
-              <input type="text" placeholder="Email" class="form-control">
+              <input type="text" placeholder="Email" name="email" class="form-control">
             </div>
             <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control">
+              <input type="password" name="password" placeholder="Password" class="form-control">
             </div>
             <button type="submit" class="btn btn-success">Sign in</button>
           </form>
