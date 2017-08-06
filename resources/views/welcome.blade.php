@@ -79,7 +79,6 @@
             </signup>
         </div>
       </div>
-
     </div>
   </div>
 @endsection

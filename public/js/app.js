@@ -1776,6 +1776,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 function dates() {
   var start = 1994;
@@ -1790,12 +1799,14 @@ function dates() {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  mounted: function mounted() {
-    console.log('Component mounted.');
+  props: {
+    route: {
+      type: String,
+      required: true
+    }
   },
   data: function data() {
     return {
-      test: 'tets',
       dates: dates(),
       ldates: '',
       disable: true,
@@ -4411,7 +4422,7 @@ if (typeof jQuery === 'undefined') {
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(35)();
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 /***/ }),
 /* 35 */
@@ -32131,14 +32142,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "panel panel-primary"
   }, [_c('div', {
     staticClass: "panel-heading"
-  }, [_c('b', [_vm._v("Join network")])]), _vm._v(" "), _c('div', {
+  }, [_c('b', [_vm._v("Join network")])]), _vm._v(" "), _c('form', {
+    staticClass: "form-horizontal",
+    attrs: {
+      "action": "http://localhost/",
+      "method": "post"
+    }
+  }, [_c('div', {
     staticClass: "panel-body"
   }, [_c('div', {
     staticClass: "panel-box"
-  }, [_vm._v("\n            Campus\n            "), _c('select', {
+  }, [_vm._v("\n              Campus\n              "), _c('select', {
     staticClass: "form-control",
     attrs: {
-      "name": ""
+      "name": "",
+      "required": "required"
     }
   }, [_c('option', {
     attrs: {
@@ -32158,10 +32176,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("Kochi")])]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('div', {
     staticClass: "panel-box"
-  }, [_vm._v("\n            Course\n            "), _c('select', {
+  }, [_vm._v("\n              Course\n              "), _c('select', {
     staticClass: "form-control",
     attrs: {
-      "name": ""
+      "name": "",
+      "required": "required"
     }
   }, [_c('option', {
     attrs: {
@@ -32171,16 +32190,57 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "value": "mech"
     }
-  }, [_vm._v("Mechanical")]), _vm._v(" "), _c('option', {
+  }, [_vm._v("MCA")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "mech"
+    }
+  }, [_vm._v("MECH")]), _vm._v(" "), _c('option', {
     attrs: {
       "value": "eee"
     }
-  }, [_vm._v("Electrical and Electronics")])]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('div', {
+  }, [_vm._v("EEE")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "ece"
+    }
+  }, [_vm._v("ECE")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "cse"
+    }
+  }, [_vm._v("CSE")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "eng"
+    }
+  }, [_vm._v("Int MA Eng")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "phy"
+    }
+  }, [_vm._v("Int. Phy")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "chem"
+    }
+  }, [_vm._v("Int. Chem")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "mtech"
+    }
+  }, [_vm._v("MTECH")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "bcom"
+    }
+  }, [_vm._v("Bcom")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "bba"
+    }
+  }, [_vm._v("BBA")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "mba"
+    }
+  }, [_vm._v("MBA")])]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('div', {
     staticClass: "panel-box"
-  }, [_vm._v("\n            Branch\n            "), _c('select', {
+  }, [_vm._v("\n              Branch\n              "), _c('select', {
     staticClass: "form-control",
     attrs: {
-      "name": ""
+      "name": "",
+      "required": "required"
     }
   }, [_c('option', {
     attrs: {
@@ -32196,19 +32256,23 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("Mechanical")]), _vm._v(" "), _c('option', {
     attrs: {
-      "value": "mech"
+      "value": "eee"
     }
   }, [_vm._v("EEE")]), _vm._v(" "), _c('option', {
     attrs: {
-      "value": "mech"
+      "value": "ece"
     }
-  }, [_vm._v("ECE")])]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('div', {
+  }, [_vm._v("ECE")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "com"
+    }
+  }, [_vm._v("Commerce")])]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('div', {
     staticClass: "panel-box"
   }, [_c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-6"
-  }, [_vm._v("\n                Joining Year\n                "), _c('select', {
+  }, [_vm._v("\n                  Joining Year\n                  "), _c('select', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -32243,7 +32307,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_vm._v(_vm._s(year))])
   })], 2)]), _vm._v(" "), _c('div', {
     staticClass: "col-md-6"
-  }, [_vm._v("\n                Leaving Year\n                "), _c('select', {
+  }, [_vm._v("\n                  Leaving Year\n                  "), _c('select', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -32253,7 +32317,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "form-control",
     attrs: {
       "name": "",
-      "disabled": _vm.disable
+      "disabled": _vm.disable,
+      "required": "required"
     },
     on: {
       "change": function($event) {
@@ -32274,14 +32339,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_vm._v(_vm._s(year))])
   }))])])]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
     staticClass: "panel-box"
-  }, [_vm._v("\n            The details provided will be verified by "), _c('b', [_vm._v("Mitra ADMINISTRATOR")])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("\n              The details provided will be verified by "), _c('b', [_vm._v("Mitra ADMINISTRATOR")])]), _vm._v(" "), _c('div', {
     staticClass: "panel-box"
   }, [_c('br'), _vm._v(" "), _c('button', {
     staticClass: "btn btn-block btn-primary",
     attrs: {
       "type": "submit"
     }
-  }, [_vm._v("Submit")])])])])])
+  }, [_vm._v("Submit")])])])])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
