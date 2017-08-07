@@ -4,11 +4,11 @@
   appear>
     <div class="panel panel-primary">
         <div class="panel-heading"><b>Join network</b></div>
-        <form class="form-horizontal" action="http://localhost/" method="post">
+        <form class="form-horizontal" :action="route" method="post">
           <div class="panel-body">
               <div class="panel-box">
                 Campus
-                <select class="form-control" name="" required="required">
+                <select class="form-control" name="campus" required="required">
                   <option value="amritapuri">Amritapuri</option>
                   <option value="ettimadai">Ettimadai</option>
                   <option value="banglore">Banglore</option>
@@ -18,7 +18,7 @@
               </div>
               <div class="panel-box">
                 Course
-                <select class="form-control" name="" required="required">
+                <select class="form-control" name="course" required="required">
                   <option value="bca">BCA</option>
                   <option value="mech">MCA</option>
                   <option value="mech">MECH</option>
@@ -37,7 +37,7 @@
               </div>
               <div class="panel-box">
                 Branch
-                <select class="form-control" name="" required="required">
+                <select class="form-control" name="branch" required="required">
                   <option value="csa">CSA</option>
                   <option value="cse">CSE</option>
                   <option value="mech">Mechanical</option>
@@ -51,22 +51,23 @@
                 <div class="row">
                   <div class="col-md-6">
                     Joining Year
-                    <select class="form-control" @change="updateLeaving" v-model="join" required="required">
+                    <select class="form-control" name="joinYear" @change="updateLeaving" v-model="join" required="required">
                       <option value="Select an option" selected>Select an option</option>
                       <option v-for="year in dates" :value="year">{{ year }}</option>
                     </select>
                   </div>
                   <div class="col-md-6">
                     Graduation Year
-                    <select class="form-control" name="" v-model="leavingDate" :disabled="disable" required="required">
+                    <select class="form-control" name="leftYear" v-model="leavingDate" :disabled="disable" required="required">
                       <option v-for="year in ldates" :value="year">{{ year }}</option>
                     </select>
                   </div>
                 </div>
               </div>
               <hr>
-              <div class="panel-box">
-                The details provided will be verified by <b>Mitra ADMINISTRATOR</b>
+              <div class="alert alert-warning alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                The details provided will be verified by <b>Mitra ADMINISTRATOR</b> and can't be changed.
               </div>
               <div class="panel-box">
                 <br>

@@ -1785,6 +1785,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 function dates() {
   var start = 1994;
@@ -4422,7 +4423,7 @@ if (typeof jQuery === 'undefined') {
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(35)();
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 /***/ }),
 /* 35 */
@@ -32145,7 +32146,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('b', [_vm._v("Join network")])]), _vm._v(" "), _c('form', {
     staticClass: "form-horizontal",
     attrs: {
-      "action": "http://localhost/",
+      "action": _vm.route,
       "method": "post"
     }
   }, [_c('div', {
@@ -32155,7 +32156,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("\n              Campus\n              "), _c('select', {
     staticClass: "form-control",
     attrs: {
-      "name": "",
+      "name": "campus",
       "required": "required"
     }
   }, [_c('option', {
@@ -32179,7 +32180,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("\n              Course\n              "), _c('select', {
     staticClass: "form-control",
     attrs: {
-      "name": "",
+      "name": "course",
       "required": "required"
     }
   }, [_c('option', {
@@ -32239,7 +32240,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("\n              Branch\n              "), _c('select', {
     staticClass: "form-control",
     attrs: {
-      "name": "",
+      "name": "branch",
       "required": "required"
     }
   }, [_c('option', {
@@ -32281,6 +32282,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     staticClass: "form-control",
     attrs: {
+      "name": "joinYear",
       "required": "required"
     },
     on: {
@@ -32307,7 +32309,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_vm._v(_vm._s(year))])
   })], 2)]), _vm._v(" "), _c('div', {
     staticClass: "col-md-6"
-  }, [_vm._v("\n                  Leaving Year\n                  "), _c('select', {
+  }, [_vm._v("\n                  Graduation Year\n                  "), _c('select', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -32316,7 +32318,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     staticClass: "form-control",
     attrs: {
-      "name": "",
+      "name": "leftYear",
       "disabled": _vm.disable,
       "required": "required"
     },
@@ -32338,8 +32340,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }, [_vm._v(_vm._s(year))])
   }))])])]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
-    staticClass: "panel-box"
-  }, [_vm._v("\n              The details provided will be verified by "), _c('b', [_vm._v("Mitra ADMINISTRATOR")])]), _vm._v(" "), _c('div', {
+    staticClass: "alert alert-warning alert-dismissable"
+  }, [_c('button', {
+    staticClass: "close",
+    attrs: {
+      "type": "button",
+      "data-dismiss": "alert",
+      "aria-label": "Close"
+    }
+  }, [_c('span', {
+    attrs: {
+      "aria-hidden": "true"
+    }
+  }, [_vm._v("×")])]), _vm._v("\n              The details provided will be verified by "), _c('b', [_vm._v("Mitra ADMINISTRATOR")]), _vm._v(" and can't be changed.\n            ")]), _vm._v(" "), _c('div', {
     staticClass: "panel-box"
   }, [_c('br'), _vm._v(" "), _c('button', {
     staticClass: "btn btn-block btn-primary",
