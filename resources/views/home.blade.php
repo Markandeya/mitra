@@ -3,7 +3,7 @@
 @section('styles')
   <style media="screen">
     body {
-      background-image: url("{{asset('images/cloudy-day.png')}}");
+      background-image: url("{{asset('images/photography.png')}}");
     }
   </style>
 @endsection
@@ -12,7 +12,11 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <join-network route="{{ route('register') }}"></join-network>
+            @if(Auth::user()->activated == 0)
+              @include('partials._joinnetwork')
+            @else
+              Account activated!
+            @endif
         </div>
     </div>
 </div>

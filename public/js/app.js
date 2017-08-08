@@ -1782,10 +1782,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 function dates() {
   var start = 1994;
@@ -1804,6 +1800,18 @@ function dates() {
     route: {
       type: String,
       required: true
+    },
+    csrf: {
+      type: String,
+      required: true
+    },
+    errorjoin: {
+      type: String,
+      default: ''
+    },
+    errorleft: {
+      type: String,
+      default: ''
     }
   },
   data: function data() {
@@ -4423,7 +4431,7 @@ if (typeof jQuery === 'undefined') {
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(35)();
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 /***/ }),
 /* 35 */
@@ -32149,7 +32157,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "action": _vm.route,
       "method": "post"
     }
-  }, [_c('div', {
+  }, [_c('input', {
+    attrs: {
+      "type": "hidden",
+      "name": "_token"
+    },
+    domProps: {
+      "value": _vm.csrf
+    }
+  }), _vm._v(" "), _c('div', {
     staticClass: "panel-body"
   }, [_c('div', {
     staticClass: "panel-box"
@@ -32161,19 +32177,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('option', {
     attrs: {
-      "value": "amritapuri"
+      "value": "1"
     }
   }, [_vm._v("Amritapuri")]), _vm._v(" "), _c('option', {
     attrs: {
-      "value": "ettimadai"
+      "value": "2"
     }
   }, [_vm._v("Ettimadai")]), _vm._v(" "), _c('option', {
     attrs: {
-      "value": "banglore"
+      "value": "3"
     }
   }, [_vm._v("Banglore")]), _vm._v(" "), _c('option', {
     attrs: {
-      "value": "kochi"
+      "value": "4"
     }
   }, [_vm._v("Kochi")])]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('div', {
     staticClass: "panel-box"
@@ -32185,57 +32201,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('option', {
     attrs: {
-      "value": "bca"
+      "value": "1"
     }
   }, [_vm._v("BCA")]), _vm._v(" "), _c('option', {
     attrs: {
-      "value": "mech"
+      "value": "2"
     }
   }, [_vm._v("MCA")]), _vm._v(" "), _c('option', {
     attrs: {
-      "value": "mech"
+      "value": "3"
     }
   }, [_vm._v("MECH")]), _vm._v(" "), _c('option', {
     attrs: {
-      "value": "eee"
+      "value": "4"
     }
-  }, [_vm._v("EEE")]), _vm._v(" "), _c('option', {
-    attrs: {
-      "value": "ece"
-    }
-  }, [_vm._v("ECE")]), _vm._v(" "), _c('option', {
-    attrs: {
-      "value": "cse"
-    }
-  }, [_vm._v("CSE")]), _vm._v(" "), _c('option', {
-    attrs: {
-      "value": "eng"
-    }
-  }, [_vm._v("Int MA Eng")]), _vm._v(" "), _c('option', {
-    attrs: {
-      "value": "phy"
-    }
-  }, [_vm._v("Int. Phy")]), _vm._v(" "), _c('option', {
-    attrs: {
-      "value": "chem"
-    }
-  }, [_vm._v("Int. Chem")]), _vm._v(" "), _c('option', {
-    attrs: {
-      "value": "mtech"
-    }
-  }, [_vm._v("MTECH")]), _vm._v(" "), _c('option', {
-    attrs: {
-      "value": "bcom"
-    }
-  }, [_vm._v("Bcom")]), _vm._v(" "), _c('option', {
-    attrs: {
-      "value": "bba"
-    }
-  }, [_vm._v("BBA")]), _vm._v(" "), _c('option', {
-    attrs: {
-      "value": "mba"
-    }
-  }, [_vm._v("MBA")])]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('div', {
+  }, [_vm._v("EEE")])]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('div', {
     staticClass: "panel-box"
   }, [_vm._v("\n              Branch\n              "), _c('select', {
     staticClass: "form-control",
@@ -32245,29 +32225,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('option', {
     attrs: {
-      "value": "csa"
+      "value": "1"
     }
   }, [_vm._v("CSA")]), _vm._v(" "), _c('option', {
     attrs: {
-      "value": "cse"
-    }
-  }, [_vm._v("CSE")]), _vm._v(" "), _c('option', {
-    attrs: {
-      "value": "mech"
+      "value": "2"
     }
   }, [_vm._v("Mechanical")]), _vm._v(" "), _c('option', {
     attrs: {
-      "value": "eee"
+      "value": "3"
     }
-  }, [_vm._v("EEE")]), _vm._v(" "), _c('option', {
-    attrs: {
-      "value": "ece"
-    }
-  }, [_vm._v("ECE")]), _vm._v(" "), _c('option', {
-    attrs: {
-      "value": "com"
-    }
-  }, [_vm._v("Commerce")])]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('div', {
+  }, [_vm._v("EEE")])]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('div', {
     staticClass: "panel-box"
   }, [_c('div', {
     staticClass: "row"
@@ -32282,7 +32250,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     staticClass: "form-control",
     attrs: {
-      "name": "joinYear",
+      "name": "joinyear",
       "required": "required"
     },
     on: {
@@ -32307,7 +32275,23 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "value": year
       }
     }, [_vm._v(_vm._s(year))])
-  })], 2)]), _vm._v(" "), _c('div', {
+  })], 2), _vm._v(" "), (_vm.errorjoin != '') ? _c('div', {
+    staticClass: "alert alert-danger alert-dismissible",
+    attrs: {
+      "role": "alert"
+    }
+  }, [_c('button', {
+    staticClass: "close",
+    attrs: {
+      "type": "button",
+      "data-dismiss": "alert",
+      "aria-label": "Close"
+    }
+  }, [_c('span', {
+    attrs: {
+      "aria-hidden": "true"
+    }
+  }, [_vm._v("×")])]), _vm._v(" "), _c('strong', [_vm._v(_vm._s(_vm.errorjoin))])]) : _vm._e()]), _vm._v(" "), _c('div', {
     staticClass: "col-md-6"
   }, [_vm._v("\n                  Graduation Year\n                  "), _c('select', {
     directives: [{
@@ -32318,7 +32302,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     staticClass: "form-control",
     attrs: {
-      "name": "leftYear",
+      "name": "leftyear",
       "disabled": _vm.disable,
       "required": "required"
     },
@@ -32339,8 +32323,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "value": year
       }
     }, [_vm._v(_vm._s(year))])
-  }))])])]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
-    staticClass: "alert alert-warning alert-dismissable"
+  })), _vm._v(" "), (_vm.errorleft != '') ? _c('div', {
+    staticClass: "alert alert-danger alert-dismissible",
+    attrs: {
+      "role": "alert"
+    }
   }, [_c('button', {
     staticClass: "close",
     attrs: {
@@ -32352,7 +32339,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "aria-hidden": "true"
     }
-  }, [_vm._v("×")])]), _vm._v("\n              The details provided will be verified by "), _c('b', [_vm._v("Mitra ADMINISTRATOR")]), _vm._v(" and can't be changed.\n            ")]), _vm._v(" "), _c('div', {
+  }, [_vm._v("×")])]), _vm._v(" "), _c('strong', [_vm._v(_vm._s(_vm.errorleft))])]) : _vm._e()])])]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
+    staticClass: "alert alert-warning"
+  }, [_vm._v("\n              The details provided will be verified by "), _c('b', [_vm._v("Mitra ADMINISTRATOR")]), _vm._v(" and can't be changed.\n            ")]), _vm._v(" "), _c('div', {
     staticClass: "panel-box"
   }, [_c('br'), _vm._v(" "), _c('button', {
     staticClass: "btn btn-block btn-primary",

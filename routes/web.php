@@ -30,4 +30,6 @@ Route::get('auth/{provider}', 'Auth\RegisterController@redirectToProvider');
 Route::get('auth/{provider}/callback', 'Auth\RegisterController@handleProviderCallback');
 
 //Route for sending join-request to admin
+Route::post('/authrequest', 'AuthenticateController@createRequest')->name('authrequest');
+
 //Route::post('/join-request', '')

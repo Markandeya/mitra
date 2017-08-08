@@ -5,45 +5,34 @@
     <div class="panel panel-primary">
         <div class="panel-heading"><b>Join network</b></div>
         <form class="form-horizontal" :action="route" method="post">
+          <input type="hidden" name="_token" :value="csrf">
           <div class="panel-body">
               <div class="panel-box">
                 Campus
                 <select class="form-control" name="campus" required="required">
-                  <option value="amritapuri">Amritapuri</option>
-                  <option value="ettimadai">Ettimadai</option>
-                  <option value="banglore">Banglore</option>
-                  <option value="kochi">Kochi</option>
+                  <option value="1">Amritapuri</option>
+                  <option value="2">Ettimadai</option>
+                  <option value="3">Banglore</option>
+                  <option value="4">Kochi</option>
                 </select>
                 <br>
               </div>
               <div class="panel-box">
                 Course
                 <select class="form-control" name="course" required="required">
-                  <option value="bca">BCA</option>
-                  <option value="mech">MCA</option>
-                  <option value="mech">MECH</option>
-                  <option value="eee">EEE</option>
-                  <option value="ece">ECE</option>
-                  <option value="cse">CSE</option>
-                  <option value="eng">Int MA Eng</option>
-                  <option value="phy">Int. Phy</option>
-                  <option value="chem">Int. Chem</option>
-                  <option value="mtech">MTECH</option>
-                  <option value="bcom">Bcom</option>
-                  <option value="bba">BBA</option>
-                  <option value="mba">MBA</option>
+                  <option value="1">BCA</option>
+                  <option value="2">MCA</option>
+                  <option value="3">MECH</option>
+                  <option value="4">EEE</option>
                 </select>
                 <br>
               </div>
               <div class="panel-box">
                 Branch
                 <select class="form-control" name="branch" required="required">
-                  <option value="csa">CSA</option>
-                  <option value="cse">CSE</option>
-                  <option value="mech">Mechanical</option>
-                  <option value="eee">EEE</option>
-                  <option value="ece">ECE</option>
-                  <option value="com">Commerce</option>
+                  <option value="1">CSA</option>
+                  <option value="2">Mechanical</option>
+                  <option value="3">EEE</option>
                 </select>
                 <br>
               </div>
@@ -51,22 +40,29 @@
                 <div class="row">
                   <div class="col-md-6">
                     Joining Year
-                    <select class="form-control" name="joinYear" @change="updateLeaving" v-model="join" required="required">
+                    <select class="form-control" name="joinyear" @change="updateLeaving" v-model="join" required="required">
                       <option value="Select an option" selected>Select an option</option>
                       <option v-for="year in dates" :value="year">{{ year }}</option>
                     </select>
+                    <div class="alert alert-danger alert-dismissible" role="alert" v-if="errorjoin!=''">
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <strong>{{ errorjoin }}</strong>
+                    </div>
                   </div>
                   <div class="col-md-6">
                     Graduation Year
-                    <select class="form-control" name="leftYear" v-model="leavingDate" :disabled="disable" required="required">
+                    <select class="form-control" name="leftyear" v-model="leavingDate" :disabled="disable" required="required">
                       <option v-for="year in ldates" :value="year">{{ year }}</option>
                     </select>
+                    <div class="alert alert-danger alert-dismissible" role="alert" v-if="errorleft!=''">
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <strong>{{ errorleft }}</strong>
+                    </div>
                   </div>
                 </div>
               </div>
               <hr>
-              <div class="alert alert-warning alert-dismissable">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <div class="alert alert-warning">
                 The details provided will be verified by <b>Mitra ADMINISTRATOR</b> and can't be changed.
               </div>
               <div class="panel-box">
@@ -98,6 +94,18 @@ export default {
     route: {
       type: String,
       required: true
+    },
+    csrf: {
+      type: String,
+      required: true
+    },
+    errorjoin: {
+      type: String,
+      default: ''
+    },
+    errorleft: {
+      type: String,
+      default: ''
     }
   },
   data() {
