@@ -9,4 +9,8 @@ $mitra-green: #20A74F;
 
 //Typography
 
-$mitra-heading-font-family: 'Miriam Libre','Source Sans Pro';
+$mitra-heading-font-family: 'Raleway','Source Sans Pro';
+
+body {
+  overflow-x: hidden !important;
+}

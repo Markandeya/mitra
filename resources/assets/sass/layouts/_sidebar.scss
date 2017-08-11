@@ -1,0 +1,21 @@
+.sidebar {
+  background-color: #fff;
+  z-index:1000;
+  min-height:100vh !important;
+  padding-top:10px;
+  margin-bottom: -99px;
+  padding-bottom: 99px;
+
+  @include add-border(0.25px, $mitra-blue, 'left');
+}
+.sidebar.affix-top {
+  position: static;
+  margin-top:30px;
+  width:228px;
+}
+
+.sidebar.affix {
+  position: fixed;
+  top:70px;
+  width:228px;
+}

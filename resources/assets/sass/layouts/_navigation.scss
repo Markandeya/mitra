@@ -4,13 +4,45 @@ $navbar-default-link-active-bg: #fff !default;
 
 }
 
-.navbar-nav {
+.navbar-main {
 
   .tab:hover {
     @include add-border(2px, $mitra-pink, 'bottom');
     cursor: pointer !important;
   }
+  .active {
+    @include add-border(2px, $mitra-pink, 'bottom');
+  }
 }
-.active {
-  @include add-border(2px, $mitra-pink, 'bottom');
+
+
+.dropdown-menu {
+  min-width: 350px !important;
+}
+
+.navimg {
+  max-width: 200px;
+  max-height: 200px;
+  width: 2em;
+}
+.navhdrop {
+  color:#b6b9bb;
+  --border-bottom:1px solid #b6b9bb;
+  text-align:center;
+  padding-bottom:2px;
+  margin-bottom:4px
+}
+
+.navbdrop {
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.navfdrop {
+  display: flex;
+  justify-content: space-evenly;
+  a {
+    color: $mitra-blue !important;
+  }
 }

@@ -16,6 +16,7 @@
 </head>
 <body>
     <div id="app">
+        @if(Auth::user()->activated == 0)
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
@@ -71,7 +72,7 @@
                 </div>
             </div>
         </nav>
-      {{-- @else
+      @else
         <nav class="navbar navbar-default navbar-fixed-top">
           <div class="container">
             <div class="navbar-header">
@@ -84,19 +85,55 @@
               <a class="navbar-brand" href="#"><i class="fa fa-navicon"></i></a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
-              <ul class="nav navbar-nav">
+              <ul class="nav navbar-nav navbar-main">
                 <li class="active tab"><a href="#">Home</a></li>
-                <li class="tab"><a href="#about">Amritians</a></li>
-                <li class="tab"><a href="#contact">Contact</a></li>
-                </li>
+                <li class="tab"><a href="#amritians">Amritians</a></li>
               </ul>
+              <form class="navbar-form navbar-left hidden-xs" action="">
+                      <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search for...">
+                        <span class="input-group-btn search">
+                          <button class="btn btn-default" type="button">Go!</button>
+                        </span>
+                      </div>
+              </form>
               <!-- Right Side Of Navbar -->
-              <ul class="nav navbar-nav navbar-right">
+              <ul class="nav navbar-nav navbar-right navbar-main">
                   <!-- Authentication Links -->
                   @if (Auth::guest())
                       <li><a href="{{ route('login') }}">Login</a></li>
                       <li><a href="{{ route('register') }}">Register</a></li>
                   @else
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <span class="fa fa-user-plus"></span>
+                      </a>
+                      <ul class="dropdown-menu" role="menu">
+                        <li class="navhdrop">Follow requests</li>
+                        <li class="navbdrop"><img src="{{ asset('images/navbar/user2.png')}}" class="navimg">&nbsp;&nbsp;No pending follow requests. </li>
+                        <li class="navfdrop"><a href="#">Find friends</a></li>
+                      </ul>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <span class="fa fa-envelope-o"></span>
+                      </a>
+                      <ul class="dropdown-menu" role="menu">
+                        <li class="navhdrop">Messages</li>
+                        <li class="navbdrop"><img src="{{ asset('images/navbar/message.svg')}}" class="navimg">&nbsp;&nbsp; You have not received any messages yet.</li>
+                        <li class="navfdrop"><a href="#">Inbox</a><a href="#">+New</a></li>
+                      </ul>
+                    </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                          <span class="fa fa-bell-o"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li class="navhdrop">Notifications</li>
+                          <li class="navbdrop"><img src="{{ asset('images/navbar/clock.png')}}" class="navimg">&nbsp;&nbsp;All caught up with latest updates!</li>
+                          <li class="navfdrop"><a href="#">See all</a></li>
+                        </ul>
+                      </li>
                       <li class="dropdown">
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                               {{ Auth::user()->name }} <span class="caret"></span>
@@ -104,12 +141,12 @@
 
                           <ul class="dropdown-menu" role="menu">
                               <li><a href="#">My Profile</a></li>
-                              <li><a href="#">Settings <i class="fa fa-gear"></i></a></li>
+                              <li><a href="#">Settings&nbsp; <i class="fa fa-cogs"></i></a></li>
                               <li>
                                   <a href="{{ route('logout') }}"
                                       onclick="event.preventDefault();
                                                document.getElementById('logout-form').submit();">
-                                      Logout  <i class="fa fa-sign-out"></i>
+                                      Logout &nbsp;&nbsp;  <i class="fa fa-sign-out"></i>
                                   </a>
 
                                   <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -123,7 +160,8 @@
             </div><!--/.navbar-collapse -->
           </div>
         </nav>
-      @endif --}}
+      @endif
+        @include('partials._messages')
         @yield('content')
     </div>
 

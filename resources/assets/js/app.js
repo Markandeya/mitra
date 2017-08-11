@@ -18,6 +18,8 @@ window.Vue = require('vue');
 Vue.component('signup', require('./components/welcome/Signup.vue'));
 Vue.component('welcome-quote', require('./components/welcome/WelcomeQuote.vue'));
 Vue.component('join-network', require('./components/welcome/JoinNetwork.vue'));
+Vue.component('create-post', require('./components/core/CreatePost.vue'));
+
 
 window.onload = function () {
   const app = new Vue({

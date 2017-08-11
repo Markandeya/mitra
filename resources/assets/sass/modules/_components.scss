@@ -4,3 +4,19 @@
   margin-top:30px;
   border-bottom:2px dashed #b7b7b7
 }
+
+.box-shadow-content {
+  font-family: "Source Sans Pro";
+  background: #fff;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.1);
+  border-radius: 3px;
+  max-width: 400px;
+  padding: 20px;
+}
+
+.box-textarea {
+  border: none;
+  outline: none;
+  overflow: auto;
+  resize: none;
+}
