@@ -53,7 +53,7 @@
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
-                                <ul class="dropdown-menu" role="menu">
+                                <ul class="dropdown-menu dropdown-nav" role="menu">
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
@@ -108,7 +108,7 @@
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                         <span class="fa fa-user-plus"></span>
                       </a>
-                      <ul class="dropdown-menu" role="menu">
+                      <ul class="dropdown-menu dropdown-nav" role="menu">
                         <li class="navhdrop">Follow requests</li>
                         <li class="navbdrop"><img src="{{ asset('images/navbar/user2.png')}}" class="navimg">&nbsp;&nbsp;No pending follow requests. </li>
                         <li class="navfdrop"><a href="#">Find friends</a></li>
@@ -118,7 +118,7 @@
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                         <span class="fa fa-envelope-o"></span>
                       </a>
-                      <ul class="dropdown-menu" role="menu">
+                      <ul class="dropdown-menu dropdown-nav" role="menu">
                         <li class="navhdrop">Messages</li>
                         <li class="navbdrop"><img src="{{ asset('images/navbar/message.svg')}}" class="navimg">&nbsp;&nbsp; You have not received any messages yet.</li>
                         <li class="navfdrop"><a href="#">Inbox</a><a href="#">+New</a></li>
@@ -128,7 +128,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                           <span class="fa fa-bell-o"></span>
                         </a>
-                        <ul class="dropdown-menu" role="menu">
+                        <ul class="dropdown-menu dropdown-nav" role="menu">
                           <li class="navhdrop">Notifications</li>
                           <li class="navbdrop"><img src="{{ asset('images/navbar/clock.png')}}" class="navimg">&nbsp;&nbsp;All caught up with latest updates!</li>
                           <li class="navfdrop"><a href="#">See all</a></li>
@@ -136,17 +136,18 @@
                       </li>
                       <li class="dropdown">
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                              {{ Auth::user()->name }} <span class="caret"></span>
+                              {{-- {{ Auth::user()->name }} <span class="caret"></span> --}}
+                              <img src=" https://graph.facebook.com/1840513862943806/picture?type=small" alt="" class="img-circle" height="30px"> <span class="caret"></span>
                           </a>
 
                           <ul class="dropdown-menu" role="menu">
-                              <li><a href="#">My Profile</a></li>
-                              <li><a href="#">Settings&nbsp; <i class="fa fa-cogs"></i></a></li>
+                              <li><a href="#">My Profile <i class="fa fa-user"></i></a></li>
+                              <li><a href="#">Settings&nbsp;&nbsp;&nbsp; <i class="fa fa-cogs"></i></a></li>
                               <li>
                                   <a href="{{ route('logout') }}"
                                       onclick="event.preventDefault();
                                                document.getElementById('logout-form').submit();">
-                                      Logout &nbsp;&nbsp;  <i class="fa fa-sign-out"></i>
+                                      Logout &nbsp;&nbsp;&nbsp;&nbsp;  <i class="fa fa-sign-out"></i>
                                   </a>
 
                                   <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -167,6 +168,11 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+       $('.selectpicker').selectpicker();
+      });
+    </script>
     @yield('scripts')
 </body>
 </html>
