@@ -38,7 +38,9 @@ class AddJoinDetailsFieldsToUsersTable extends Migration
     public function down()
     {
       Schema::table('users', function (Blueprint $table) {
-          $table->dropForeign(['branch_id', 'course_id', 'campus_id']);
+          $table->dropForeign('users_branch_id_foreign');
+          $table->dropForeign('users_course_id_foreign');
+          $table->dropForeign('users_campus_id_foreign');
           $table->dropColumn('branch_id');
           $table->dropColumn('course_id');
           $table->dropColumn('campus_id');
