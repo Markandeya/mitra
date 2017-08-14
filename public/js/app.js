@@ -34058,7 +34058,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "form-group"
   }, [_c('select', {
-    staticClass: "selectpicker form-control",
+    staticClass: " form-control",
     attrs: {
       "title": ""
     }

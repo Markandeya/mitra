@@ -3,6 +3,7 @@
 namespace Mitra\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Mitra\User as User;
 
 class AdminController extends Controller
 {
@@ -23,6 +24,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.home');
+        $unactivatedUsers = User::where('activated', '=', 0)->orderBy('updated_at', 'desc')->get();
+
+        return view('admin.home')->with('users', $unactivatedUsers);
     }
 }

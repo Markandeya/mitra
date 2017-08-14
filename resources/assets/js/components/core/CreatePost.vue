@@ -11,7 +11,7 @@
             <div class="row">
               <div class="col-xs-6">
                 <div class="form-group">
-                  <select class="selectpicker form-control" title="">
+                  <select class=" form-control" title="">
                     <option selected>Public</option>
                     <option>Friends</option>
                   </select>

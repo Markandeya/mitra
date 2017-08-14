@@ -31,4 +31,19 @@ class User extends Authenticatable
     {
         return $this->hasMany('Mitra\SocialProvider');
     }
+
+    public function branch()
+    {
+      return $this->belongsTo('Mitra\Branch');
+    }
+
+    public function campus()
+    {
+      return $this->belongsTo('Mitra\Campus');
+    }
+
+    public function course()
+    {
+      return $this->belongsTo('Mitra\Course');
+    }
 }
