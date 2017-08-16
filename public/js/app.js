@@ -2108,7 +2108,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 function dates() {
   var start = 1994;
@@ -2139,6 +2138,37 @@ function dates() {
     errorleft: {
       type: String,
       default: ''
+    },
+    campusid: {
+      type: String,
+      default: 1
+    },
+    courseid: {
+      type: String,
+      default: 1
+    },
+    branchid: {
+      type: String,
+      default: 1
+    },
+    joiningyear: {
+      type: String,
+      default: 0
+    },
+    graduationyear: {
+      type: String,
+      default: ''
+    }
+  },
+  mounted: function mounted() {
+    this.join = JSON.parse(this.joiningyear);
+    console.log('join is: ' + this.join);
+
+    if (this.join != 0) {
+
+      this.disable = false;
+      console.log('disable' + this.disable);
+      this.updateLeaving();
     }
   },
   data: function data() {
@@ -2146,27 +2176,36 @@ function dates() {
       dates: dates(),
       ldates: '',
       disable: true,
-      join: 'Select an option',
-      leavingDate: ''
+      leavingDate: '',
+      join: 0
     };
   },
 
   methods: {
     updateLeaving: function updateLeaving() {
       console.log(this.join);
-      if (typeof this.join === 'string' || this.join instanceof String) {
-        console.log("Its a string");
+      // if (typeof this.join === 'string' || this.join instanceof String) {
+      //   console.log("Its a string" + this.join);
+      //   this.ldates = '';
+      //   this.disable = true;
+      // }
+      if (this.join == 0) {
+        console.log("Zero" + this.join);
         this.ldates = '';
         this.disable = true;
       } else {
+        console.log('options');
         var options = [];
         var end = new Date().getFullYear() + 6;
+        console.log(this.join + ";" + end);
         var i = 0;
-        for (var year = this.join + 1; year <= end; year++) {
+        console.log(parseInt(this.join) + 1);
+        for (var year = parseInt(this.join) + 1; year <= end; year++) {
           options.push(year);
-          console.log(options[i++]);
+          //console.log(options[i++]);
         }
         this.ldates = options;
+        console.log('array: ' + options);
         this.disable = false;
       }
     }
@@ -6322,7 +6361,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(8)();
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 /***/ }),
 /* 40 */
@@ -34125,18 +34164,30 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('option', {
     attrs: {
       "value": "1"
+    },
+    domProps: {
+      "selected": _vm.campusid == 1
     }
   }, [_vm._v("Amritapuri")]), _vm._v(" "), _c('option', {
     attrs: {
       "value": "2"
+    },
+    domProps: {
+      "selected": _vm.campusid == 2
     }
   }, [_vm._v("Ettimadai")]), _vm._v(" "), _c('option', {
     attrs: {
       "value": "3"
+    },
+    domProps: {
+      "selected": _vm.campusid == 3
     }
   }, [_vm._v("Banglore")]), _vm._v(" "), _c('option', {
     attrs: {
       "value": "4"
+    },
+    domProps: {
+      "selected": _vm.campusid == 4
     }
   }, [_vm._v("Kochi")])]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('div', {
     staticClass: "panel-box"
@@ -34149,18 +34200,30 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('option', {
     attrs: {
       "value": "1"
+    },
+    domProps: {
+      "selected": _vm.courseid == 1
     }
   }, [_vm._v("BCA")]), _vm._v(" "), _c('option', {
     attrs: {
       "value": "2"
+    },
+    domProps: {
+      "selected": _vm.courseid == 2
     }
   }, [_vm._v("MCA")]), _vm._v(" "), _c('option', {
     attrs: {
       "value": "3"
+    },
+    domProps: {
+      "selected": _vm.courseid == 3
     }
   }, [_vm._v("MECH")]), _vm._v(" "), _c('option', {
     attrs: {
       "value": "4"
+    },
+    domProps: {
+      "selected": _vm.courseid == 4
     }
   }, [_vm._v("EEE")])]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('div', {
     staticClass: "panel-box"
@@ -34173,14 +34236,23 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('option', {
     attrs: {
       "value": "1"
+    },
+    domProps: {
+      "selected": _vm.branchid == 1
     }
   }, [_vm._v("CSA")]), _vm._v(" "), _c('option', {
     attrs: {
       "value": "2"
+    },
+    domProps: {
+      "selected": _vm.branchid == 2
     }
   }, [_vm._v("Mechanical")]), _vm._v(" "), _c('option', {
     attrs: {
       "value": "3"
+    },
+    domProps: {
+      "selected": _vm.branchid == 3
     }
   }, [_vm._v("EEE")])]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('div', {
     staticClass: "panel-box"
@@ -34211,18 +34283,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.join = $event.target.multiple ? $$selectedVal : $$selectedVal[0]
       }, _vm.updateLeaving]
     }
-  }, [_c('option', {
-    attrs: {
-      "value": "Select an option",
-      "selected": ""
-    }
-  }, [_vm._v("Select an option")]), _vm._v(" "), _vm._l((_vm.dates), function(year) {
+  }, _vm._l((_vm.dates), function(year) {
     return _c('option', {
       domProps: {
         "value": year
       }
     }, [_vm._v(_vm._s(year))])
-  })], 2), _vm._v(" "), (_vm.errorjoin != '') ? _c('div', {
+  })), _vm._v(" "), (_vm.errorjoin != '') ? _c('div', {
     staticClass: "alert alert-danger alert-dismissible",
     attrs: {
       "role": "alert"
@@ -34244,8 +34311,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: (_vm.leavingDate),
-      expression: "leavingDate"
+      value: (_vm.graduationyear),
+      expression: "graduationyear"
     }],
     staticClass: "form-control",
     attrs: {
@@ -34261,7 +34328,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           var val = "_value" in o ? o._value : o.value;
           return val
         });
-        _vm.leavingDate = $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+        _vm.graduationyear = $event.target.multiple ? $$selectedVal : $$selectedVal[0]
       }
     }
   }, _vm._l((_vm.ldates), function(year) {

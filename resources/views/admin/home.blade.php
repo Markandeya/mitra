@@ -11,7 +11,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-10 col-md-offset-1">
           <div class="panel panel-default">
             <!-- Default panel contents -->
             <div class="panel-heading">Account activation requests</div>
@@ -39,13 +39,16 @@
                     <td>{{ $user->campus->name}}</td>
                     <td>{{ $user->joining_year }} - {{ $user->graduation_year }}</td>
                     <td>
-                      <button type="button" class="btn btn-sm btn-success">Activate</button>
-                      <button type="button" class="btn btn-sm btn-danger pull-right">Reject</button>
+                      <a class="btn btn-sm btn-success" href="#">Activate</a>
+                      <a class="btn btn-sm btn-danger pull-right" href="#">Reject</a>
                     </td>
                   </tr>
                 @endforeach
               </tbody>
             </table>
+          </div>
+          <div class="text-center">
+            {{ $users->links() }}
           </div>
         </div>
     </div>

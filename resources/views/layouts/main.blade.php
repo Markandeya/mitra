@@ -55,7 +55,6 @@
         </div><!--/.navbar-collapse -->
       </div>
     </nav>
-    @include('partials._messages')
     @yield('content')
 
     <div class="container footer">

@@ -24,8 +24,13 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $unactivatedUsers = User::where('activated', '=', 0)->orderBy('updated_at', 'desc')->get();
+        $unactivatedUsers = User::where('activated', '=', 0)->orderBy('updated_at', 'desc')->paginate(4);
 
         return view('admin.home')->with('users', $unactivatedUsers);
+    }
+
+    public function activate()
+    {
+      
     }
 }
