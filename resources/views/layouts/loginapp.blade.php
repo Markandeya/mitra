@@ -169,8 +169,9 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script type="text/javascript">
-      $(document).ready(function() {
-       $('.selectpicker').selectpicker();
+      $(window).on('load', function() {
+       var a =$('#test').selectpicker();
+       console.log(a);
       });
     </script>
     @yield('scripts')

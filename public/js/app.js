@@ -2012,8 +2012,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2023,7 +2021,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     };
   },
 
-  methods: {}
+  methods: {},
+  mounted: function mounted() {
+    console.log('CreatePost loaded');
+    $('#test').selectpicker();
+  }
 });
 
 /***/ }),
@@ -6354,7 +6356,7 @@ if (typeof jQuery === 'undefined') {
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(8)();
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 /***/ }),
 /* 39 */
@@ -34066,25 +34068,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" Post")]), _vm._v(" "), _c('div', {
     staticClass: "box-input"
   }, [_c('textarea', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.post),
-      expression: "post"
-    }],
     staticClass: "box-textarea",
     attrs: {
       "name": "name",
       "placeholder": "Share an update"
-    },
-    domProps: {
-      "value": (_vm.post)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.post = $event.target.value
-      }
     }
   }), _vm._v(" "), _c('div', {
     staticClass: "row"
@@ -34094,18 +34081,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-xs-6"
-  }, [_c('div', {
-    staticClass: "form-group"
   }, [_c('select', {
-    staticClass: " form-control",
+    staticClass: "selectpicker form-control",
     attrs: {
-      "title": ""
+      "id": "test"
     }
   }, [_c('option', {
     attrs: {
       "selected": ""
     }
-  }, [_vm._v("Public")]), _vm._v(" "), _c('option', [_vm._v("Friends")])])])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("Public")]), _vm._v(" "), _c('option', [_vm._v("Friends")])])]), _vm._v(" "), _c('div', {
     staticClass: "col-xs-5"
   }, [_c('button', {
     staticClass: "btn btn-primary btn-md",

@@ -39,7 +39,7 @@
                     <td>{{ $user->campus->name}}</td>
                     <td>{{ $user->joining_year }} - {{ $user->graduation_year }}</td>
                     <td>
-                      <a class="btn btn-sm btn-success" href="#">Activate</a>
+                      <a class="btn btn-sm btn-success" href="{{ route('admin.activate', $user->id) }}">Activate</a>
                       <a class="btn btn-sm btn-danger pull-right" href="#">Reject</a>
                     </td>
                   </tr>

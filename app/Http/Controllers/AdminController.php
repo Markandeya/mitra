@@ -29,8 +29,17 @@ class AdminController extends Controller
         return view('admin.home')->with('users', $unactivatedUsers);
     }
 
-    public function activate()
+    public function activate(Request $request)
     {
-      
+      $user = User::where('id', '=', $request->id);
+
+      return 'Code to activate user';
+    }
+
+    public function reject(Request $request)
+    {
+      $user = User::where('id', '=', $request->id);
+
+      return 'Code to reject user';
     }
 }
