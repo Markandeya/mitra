@@ -2172,6 +2172,9 @@ function dates() {
       console.log('disable' + this.disable);
       this.updateLeaving();
     }
+
+    console.log('CreatePost loaded');
+    $('.selectpicker').selectpicker();
   },
   data: function data() {
     return {
@@ -6363,7 +6366,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(8)();
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 /***/ }),
 /* 40 */
@@ -34091,7 +34094,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "selected": ""
     }
   }, [_vm._v("Public")]), _vm._v(" "), _c('option', [_vm._v("Friends")])])]), _vm._v(" "), _c('div', {
-    staticClass: "col-xs-5"
+    staticClass: "col-xs-6"
   }, [_c('button', {
     staticClass: "btn btn-primary btn-md",
     attrs: {
@@ -34141,7 +34144,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "panel-box"
   }, [_vm._v("\n              Campus\n              "), _c('select', {
-    staticClass: "form-control",
+    staticClass: "selectpicker form-control",
     attrs: {
       "name": "campus",
       "required": "required"
@@ -34177,7 +34180,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("Kochi")])]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('div', {
     staticClass: "panel-box"
   }, [_vm._v("\n              Course\n              "), _c('select', {
-    staticClass: "form-control",
+    staticClass: "selectpicker form-control",
     attrs: {
       "name": "course",
       "required": "required"
@@ -34213,7 +34216,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("EEE")])]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('div', {
     staticClass: "panel-box"
   }, [_vm._v("\n              Branch\n              "), _c('select', {
-    staticClass: "form-control",
+    staticClass: "selectpicker form-control",
     attrs: {
       "name": "branch",
       "required": "required"
@@ -34252,7 +34255,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.join),
       expression: "join"
     }],
-    staticClass: "form-control",
+    staticClass: "selectpicker form-control",
     attrs: {
       "name": "joinyear",
       "required": "required"
@@ -34299,7 +34302,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.graduationyear),
       expression: "graduationyear"
     }],
-    staticClass: "form-control",
+    staticClass: "selectpicker form-control",
     attrs: {
       "name": "leftyear",
       "disabled": _vm.disable,

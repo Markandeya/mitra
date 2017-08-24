@@ -12,6 +12,19 @@
   border-radius: 3px;
   max-width: 400px;
   padding: 20px;
+  margin: 10px;
+}
+
+.box-shadow-sidebar {
+  font-family: "Source Sans Pro";
+  background: #fff;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.1);
+  border-radius: 3px;
+  max-width: 400px;
+  padding: 10px;
+  margin: 5px;
+  height: 92vh;
+  margin-left: 60px;
 }
 
 .box-textarea {
