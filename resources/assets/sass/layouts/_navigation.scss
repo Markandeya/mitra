@@ -15,10 +15,14 @@ $navbar-default-link-active-bg: #fff !default;
   }
 }
 
-
-.dropdown-nav {
-  min-width: 350px !important;
+@media screen and (min-width: 350px) {
+  .dropdown-nav {
+    min-width: 350px !important;
+  }
 }
+
+
+
 
 .navimg {
   max-width: 200px;

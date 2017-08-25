@@ -15,7 +15,7 @@
                     <option>Friends</option>
                   </select>
               </div>
-              <div class="col-xs-5">
+              <div class="col-xs-6">
                 <button type="button" class="btn btn-primary btn-md" name="button">Post</button>
               </div>
             </div>
