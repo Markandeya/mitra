@@ -171,7 +171,6 @@
     <script type="text/javascript">
       $(window).on('load', function() {
        var a =$('#test').selectpicker();
-       console.log(a);
       });
     </script>
     @yield('scripts')

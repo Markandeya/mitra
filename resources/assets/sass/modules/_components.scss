@@ -5,12 +5,22 @@
   border-bottom:2px dashed #b7b7b7
 }
 
+.box-shadow-content-solid {
+  background: #fff;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.1);
+  opacity: 1;
+  width: 100%;
+  height: 200px;
+  max-height: 200px;
+  padding: 20px;
+}
+
 .box-shadow-content {
   font-family: "Source Sans Pro";
   background: #fff;
   box-shadow: 0 2px 8px 0 rgba(0,0,0,0.1);
   border-radius: 3px;
-  max-width: 400px;
+  max-width: 500px;
   padding: 20px;
   margin: 10px;
 }
@@ -25,6 +35,18 @@
   margin: 0px;
   height: 93vh;
   //margin-left: 60px;
+  overflow: auto;
+  -ms-overflow-style: none;
+
+  scrollbar{
+  -moz-appearance: none !important;
+ }
+}
+.box-shadow-sidebar::-webkit-scrollbar {
+  display: none;
+}
+.box-shadow-sidebar::-moz-scrollbar {
+  display: none;
 }
 
 .box-textarea {

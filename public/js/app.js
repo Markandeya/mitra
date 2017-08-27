@@ -1111,7 +1111,6 @@ module.exports = g;
 
 __webpack_require__(36);
 __webpack_require__(35);
-
 window.Vue = __webpack_require__(54);
 
 /**
@@ -34093,7 +34092,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "selected": ""
     }
-  }, [_vm._v("Public")]), _vm._v(" "), _c('option', [_vm._v("Friends")])])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("Public  "), _c('i', {
+    staticClass: "fa fa-globe"
+  })]), _vm._v(" "), _c('option', [_vm._v("Friends  "), _c('i', {
+    staticClass: "fa fa-users"
+  })])])]), _vm._v(" "), _c('div', {
     staticClass: "col-xs-6"
   }, [_c('button', {
     staticClass: "btn btn-primary btn-md",
