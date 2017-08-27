@@ -34065,9 +34065,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('div', {
     staticClass: "box-shadow-content"
-  }, [_c('h5', [_c('i', {
-    staticClass: "fa fa-camera-retro"
-  }), _vm._v(" Post")]), _vm._v(" "), _c('div', {
+  }, [_c('div', {
     staticClass: "box-input"
   }, [_c('textarea', {
     staticClass: "box-textarea",
@@ -34099,7 +34097,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   })])])]), _vm._v(" "), _c('div', {
     staticClass: "col-xs-6"
   }, [_c('button', {
-    staticClass: "btn btn-primary btn-md",
+    staticClass: "btn btn-info btn-md",
     attrs: {
       "type": "button",
       "name": "button"
