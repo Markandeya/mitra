@@ -1,5 +1,7 @@
 @extends('layouts.loginapp')
 
+@section('title', 'Home')
+
 @section('styles')
   <style media="screen">
     body {
@@ -20,8 +22,8 @@
                 <div class="row" style="margin-top:50px">
                   <div class="col-md-3" style="padding-top:20px;">
                     <ul class="nav nav-tabs nav-justified">
-                      <li class="active"><a style="background-color:#00b1b3;color:white" data-toggle="tab" href="#group">Your Groups</a></li>
-                      <li><a style="background-color:aliceblue" data-toggle="tab" href="#forum">Disqus Forum</a></li>
+                      <li class="active"><a data-toggle="tab" href="#group">Your Groups</a></li>
+                      <li><a style="" data-toggle="tab" href="#forum">Disqus Forum</a></li>
                     </ul>
                     <div class="tab-content">
                      <div id="group" class="tab-pane fade in active box-shadow-content-solid">
@@ -62,7 +64,7 @@
                   <div class="col-md-2">
                     <div class="hidden-xs" data-spy="affix" data-offset-top="2px" style="width:100%">
                       <div class="box-shadow-sidebar">
-                        <h4>Online members</h4>
+                        <h4></h4>
                         <h4 style="color: #e7ecee">Coming Soon!</h4>
 
                       </div>

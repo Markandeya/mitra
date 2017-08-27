@@ -57,3 +57,12 @@
   width: 100%;
   max-width: 100%;
 }
+
+.nav-tabs {
+  .active {
+    a {
+      color: white !important;
+      background-color:#00b1b3 !important;
+    }
+  }
+}
