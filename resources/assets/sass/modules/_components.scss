@@ -22,15 +22,16 @@
   border-radius: 3px;
   max-width: 400px;
   padding: 10px;
-  margin: 5px;
-  height: 92vh;
-  margin-left: 60px;
+  margin: 0px;
+  height: 93vh;
+  //margin-left: 60px;
 }
 
 .box-textarea {
   border: none;
   outline: none;
-  overflow: auto;
+  overflow: hidden;
   resize: none;
+  width: 100%;
   max-width: 100%;
 }
