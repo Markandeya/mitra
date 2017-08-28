@@ -82,7 +82,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="#"><i class="fa fa-navicon"></i></a>
+              <a class="navbar-brand" href="#"><i class="fa fa-maxcdn" style="color:#f4645f"></i><i style="font-weight:700">itra</i></a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav navbar-main">

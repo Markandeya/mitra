@@ -29,9 +29,8 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
+                    <a class="navbar-brand" href="#"><i class="fa fa-maxcdn" style="color:#f4645f"></i><i style="font-weight:700">itra</i></a>
+
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">

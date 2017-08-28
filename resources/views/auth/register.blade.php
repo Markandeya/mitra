@@ -67,6 +67,19 @@
                                 </button>
                             </div>
                         </div>
+                        <hr>
+                        <div class="form-group">
+                          <div class="col-md-6">
+                            <a class="btn btn-social btn-block btn-facebook" href="http://localhost:8000/auth/facebook">
+                              <span class="fa fa-facebook"></span>Sign up with Facebook
+                            </a>
+                          </div>
+                          <div class="col-md-6">
+                            <a class="btn btn-social btn-block btn-google" href="http://localhost:8000/auth/google">
+                              <span class="fa fa-google"></span>Sign up with Google
+                            </a>
+                          </div>
+                        </div>
                     </form>
                 </div>
             </div>
