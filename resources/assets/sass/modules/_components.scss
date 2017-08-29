@@ -66,3 +66,15 @@
     }
   }
 }
+.box-shadow-profile {
+  background: #fff;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.1);
+  opacity: 1;
+  width: 100%;
+  max-height: 600px;
+  padding: 20px;
+}
+
+.img-circle:hover {
+  cursor: pointer;
+}

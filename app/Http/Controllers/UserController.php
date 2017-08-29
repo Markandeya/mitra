@@ -3,6 +3,7 @@
 namespace Mitra\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Mitra\User as User;
 
 class UserController extends Controller
 {
@@ -26,8 +27,10 @@ class UserController extends Controller
         return view('home');
     }
 
-    public function profile()
+    public function profile(Request $request)
     {
-      return view('users.profile');
+      $user = User::where('id', '=', $request->id)->first();
+
+      return view('users.profile')->with('user', $user);
     }
 }

@@ -1112,7 +1112,6 @@ module.exports = g;
 __webpack_require__(36);
 __webpack_require__(35);
 window.Vue = __webpack_require__(55);
-console.log(sr);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

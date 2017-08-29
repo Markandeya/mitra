@@ -18,7 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'UserController@index')->name('home');
-Route::get('/profile', 'UserController@profile')->name('profile');
+Route::get('/profile/{id}', 'UserController@profile')->name('profile');
 
 
 Route::prefix('/admin')->group(function() {

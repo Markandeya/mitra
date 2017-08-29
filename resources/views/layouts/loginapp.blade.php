@@ -15,6 +15,7 @@
     @yield('styles')
 </head>
 <body>
+  @yield('modal')
     <div id="app">
         @if(Auth::user()->activated == 0)
         <nav class="navbar navbar-default navbar-static-top">
@@ -141,7 +142,7 @@
                           </a>
 
                           <ul class="dropdown-menu" role="menu">
-                              <li><a href="{{route('profile')}}">My Profile <i class="fa fa-user"></i></a></li>
+                              <li><a href="{{route('profile', Auth::user()->id)}}">My Profile <i class="fa fa-user"></i></a></li>
                               <li><a href="#">Settings&nbsp;&nbsp;&nbsp; <i class="fa fa-cogs"></i></a></li>
                               <li>
                                   <a href="{{ route('logout') }}"
@@ -172,7 +173,7 @@
             @yield('center')
           </div>
           <div class="col-md-2">
-            @yield('right')
+            @include('partials._sidebar')
           </div>
       </div>
     </div>
