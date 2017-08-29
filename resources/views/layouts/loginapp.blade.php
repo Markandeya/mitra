@@ -141,7 +141,7 @@
                           </a>
 
                           <ul class="dropdown-menu" role="menu">
-                              <li><a href="#">My Profile <i class="fa fa-user"></i></a></li>
+                              <li><a href="{{route('profile')}}">My Profile <i class="fa fa-user"></i></a></li>
                               <li><a href="#">Settings&nbsp;&nbsp;&nbsp; <i class="fa fa-cogs"></i></a></li>
                               <li>
                                   <a href="{{ route('logout') }}"
@@ -163,7 +163,18 @@
         </nav>
       @endif
         @include('partials._messages')
-        @yield('content')
+        <div class="row" style="margin-top:50px">
+          @yield('content')
+          <div class="col-md-3" style="padding-top:20px;">
+            @yield('left')
+          </div>
+          <div class="col-md-7" style="padding-top:10px">
+            @yield('center')
+          </div>
+          <div class="col-md-2">
+            @yield('right')
+          </div>
+      </div>
     </div>
 
     <!-- Scripts -->

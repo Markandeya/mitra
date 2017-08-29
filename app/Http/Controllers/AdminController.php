@@ -33,6 +33,7 @@ class AdminController extends Controller
     {
       $user = User::where('id', '=', $request->id);
 
+
       return 'Code to activate user';
     }
 

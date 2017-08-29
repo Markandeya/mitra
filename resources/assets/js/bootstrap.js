@@ -1,3 +1,4 @@
+window.sr = require('scrollreveal');
 
 window._ = require('lodash');
 

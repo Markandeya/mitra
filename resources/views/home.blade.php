@@ -19,8 +19,7 @@
               @include('partials._joinnetwork')
             @else
               {{-- <div class="container"> --}}
-                <div class="row" style="margin-top:50px">
-                  <div class="col-md-3" style="padding-top:20px;">
+                  @section('left')
                     <ul class="nav nav-tabs nav-justified">
                       <li class="active"><a data-toggle="tab" href="#group">Your Groups</a></li>
                       <li><a style="" data-toggle="tab" href="#forum">Disqus Forum</a></li>
@@ -53,16 +52,15 @@
                    </div>
                     <div class="box-shadow-content-solid" style="margin-top:10px;max-height:120px;display:flex;flex-direction:column;justify-content:center;align-items:center;">
                       <p style="font-size:17px"><b style="font-size:40px">0</b> connections <a href="#" style="font-size:14px">See all</a></p>
-                      <a href="#" class="btn btn-primary">Find Connections</a>
+                      <a href="#" class="btn btn-sm btn-primary">Find Connections</a>
                     </div>
-                  </div>
-                  <div class="col-md-7" style="padding-top:10px">
+                  @endsection
+                  @section('center')
                     <div class="container-fluid">
                       <create-post></create-post>
-
                     </div>
-                  </div>
-                  <div class="col-md-2">
+                  @endsection
+                  @section('right')
                     <div class="hidden-xs" data-spy="affix" data-offset-top="2px" style="width:100%">
                       <div class="box-shadow-sidebar">
                         <h4></h4>
@@ -70,8 +68,7 @@
 
                       </div>
                     </div>
-                  </div>
-                </div>
+                  @endsection
               {{-- </div> --}}
             @endif
 {{-- </div> --}}
