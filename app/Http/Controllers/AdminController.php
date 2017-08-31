@@ -4,6 +4,7 @@ namespace Mitra\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Mitra\User as User;
+use Session;
 
 class AdminController extends Controller
 {
@@ -31,10 +32,10 @@ class AdminController extends Controller
 
     public function activate(Request $request)
     {
-      $user = User::where('id', '=', $request->id);
+      $user = User::where('id', '=', $request->id)->update(['activated' => 1]);
+      Session::flash('success', 'Successfully activated user !');
 
-
-      return 'Code to activate user';
+      return back();
     }
 
     public function reject(Request $request)
