@@ -183,7 +183,8 @@ return [
         /*
          * Custom Service Providers
          */
-         Mitra\Providers\BladeDirectiveProvider::class
+         Mitra\Providers\BladeDirectiveProvider::class,
+         Mitra\Providers\StorageServiceProvider::class,
     ],
 
     /*

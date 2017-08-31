@@ -5,6 +5,7 @@ namespace Mitra\Http\Controllers;
 use Illuminate\Http\Request;
 use Mitra\User as User;
 use Session;
+use File;
 
 class AdminController extends Controller
 {
@@ -32,7 +33,13 @@ class AdminController extends Controller
 
     public function activate(Request $request)
     {
-      $user = User::where('id', '=', $request->id)->update(['activated' => 1]);
+      $user = User::where('id', '=', $request->id);
+      $user->update(['activated' => 1]);
+      $user = $user->first();
+      $path = public_storage_path($user);
+
+      File::makeDirectory($path);
+
       Session::flash('success', 'Successfully activated user !');
 
       return back();
