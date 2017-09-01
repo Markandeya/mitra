@@ -67,6 +67,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'profile_image' => 'default.png'
         ]);
     }
     /**
@@ -105,6 +106,7 @@ class RegisterController extends Controller
           $user = User::firstOrCreate([
                     'name' => $socialUser->getName(),
                     'email' => $socialUser->getEmail(),
+                    'profile_image' => 'default.png'
                   ]);
 
           $user->socialProviders()->create([
@@ -117,7 +119,7 @@ class RegisterController extends Controller
 
         auth()->login($user);
         auth()->user();
-//
+
         return redirect()->to('/home');
     }
 }

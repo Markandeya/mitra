@@ -138,7 +138,7 @@
                       <li class="dropdown">
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                               {{-- {{ Auth::user()->name }} <span class="caret"></span> --}}
-                              <img src=" https://graph.facebook.com/1840513862943806/picture?type=small" alt="" class="img-circle" height="30px"> <span class="caret"></span>
+                              <img src="{{asset('storage/app/public').Auth::user()->profile_image}}" alt="" class="ratio img-responsive img-circle" height="30px"> <span class="caret"></span>
                           </a>
 
                           <ul class="dropdown-menu" role="menu">

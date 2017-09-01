@@ -9,7 +9,7 @@
           <div class="panel-body">
               <div class="panel-box">
                 Campus
-                <select class="selectpicker form-control" name="campus" required="required">
+                <select class="form-control" name="campus" required="required">
                   <option value="1" :selected="campusid==1">Amritapuri</option>
                   <option value="2" :selected="campusid==2">Ettimadai</option>
                   <option value="3" :selected="campusid==3">Banglore</option>
@@ -19,7 +19,7 @@
               </div>
               <div class="panel-box">
                 Course
-                <select class="selectpicker form-control" name="course" required="required">
+                <select class="form-control" name="course" required="required">
                   <option value="1" :selected="courseid==1">BCA</option>
                   <option value="2" :selected="courseid==2">MCA</option>
                   <option value="3" :selected="courseid==3">MECH</option>
@@ -29,7 +29,7 @@
               </div>
               <div class="panel-box">
                 Branch
-                <select class="selectpicker form-control" name="branch" required="required">
+                <select class="form-control" name="branch" required="required">
                   <option value="1" :selected="branchid==1">CSA</option>
                   <option value="2" :selected="branchid==2">Mechanical</option>
                   <option value="3" :selected="branchid==3">EEE</option>
@@ -40,7 +40,8 @@
                 <div class="row">
                   <div class="col-md-6">
                     Joining Year
-                    <select class="selectpicker form-control" name="joinyear" @change="updateLeaving" v-model="join" required="required">
+                    <select class="form-control" name="joinyear" @change="updateLeaving" v-model="join" required="required">
+                      <option value="0" selected>Select Start year</option>
                       <option v-for="year in dates" :value="year">{{ year }}</option>
                     </select>
                     <div class="alert alert-danger alert-dismissible" role="alert" v-if="errorjoin!=''">
@@ -50,7 +51,7 @@
                   </div>
                   <div class="col-md-6">
                     Graduation Year
-                    <select class="selectpicker form-control" name="leftyear" v-model="graduationyear" :disabled="disable" required="required">
+                    <select class="form-control" name="leftyear" v-model="graduationyear" :disabled="disable" required="required">
                       <option v-for="year in ldates" :value="year">{{ year }}</option>
                     </select>
                     <div class="alert alert-danger alert-dismissible" role="alert" v-if="errorleft!=''">
@@ -140,7 +141,7 @@ export default {
     }
 
     console.log('CreatePost loaded');
-    $('.selectpicker').selectpicker();
+  //  $('.selectpicker').selectpicker();
   },
   data() {
     return {
@@ -179,6 +180,7 @@ export default {
         this.ldates = options;
         console.log('array: '+options);
         this.disable = false;
+        console.log(this.disable);
       }
     }
 
