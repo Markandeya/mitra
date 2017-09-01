@@ -19,6 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'UserController@index')->name('home');
 Route::get('/profile/{id}', 'UserController@profile')->name('profile');
+Route::post('/profile', 'UserController@postProfile')->name('profile');
 
 
 Route::prefix('/admin')->group(function() {

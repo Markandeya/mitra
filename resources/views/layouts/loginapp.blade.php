@@ -83,11 +83,11 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="#"><i class="fa fa-maxcdn" style="color:#f4645f"></i><i style="font-weight:700">itra</i></a>
+              <a class="navbar-brand" href="{{route('home')}}"><i class="fa fa-maxcdn" style="color:#f4645f"></i><i style="font-weight:700">itra</i></a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav navbar-main">
-                <li class="active tab"><a href="#">Home</a></li>
+                <li class="active tab"><a href="{{route('home')}}">Home</a></li>
                 <li class="tab"><a href="#amritians">Amritians</a></li>
               </ul>
               <form class="navbar-form navbar-left hidden-xs" action="">
@@ -138,7 +138,7 @@
                       <li class="dropdown">
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                               {{-- {{ Auth::user()->name }} <span class="caret"></span> --}}
-                              <img src="{{asset('storage/app/public').Auth::user()->profile_image}}" alt="" class="ratio img-responsive img-circle" height="30px"> <span class="caret"></span>
+                              <img src="{{asset('storage').'/'.Auth::user()->profile_image}}" alt="" class="ratio img-circle" height="30px" width="30px"> <span class="caret"></span>
                           </a>
 
                           <ul class="dropdown-menu" role="menu">
@@ -163,7 +163,7 @@
           </div>
         </nav>
       @endif
-        @include('partials._messages')
+        {{-- @include('partials._messages') --}}
         <div class="row" style="margin-top:50px">
           @yield('content')
           <div class="col-md-3" style="padding-top:20px;">

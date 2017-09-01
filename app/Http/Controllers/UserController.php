@@ -4,6 +4,7 @@ namespace Mitra\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Mitra\User as User;
+use Auth;
 
 class UserController extends Controller
 {
@@ -32,5 +33,24 @@ class UserController extends Controller
       $user = User::where('id', '=', $request->id)->first();
 
       return view('users.profile')->with('user', $user);
+    }
+
+    public function postProfile(Request $request)
+    {
+      $this->validate($request, [
+       'name' => 'required|max:255',
+       'designation' => 'required|max:255',
+       'organization' => 'required|max:255',
+       'city' => 'required|max:255',
+      ]);
+
+      $user = Auth::user();
+      $user->name = $request->name;
+      $user->designation = $request->designation;
+      $user->organization = $request->organization;
+      $user->city = $request->city;
+      $user->update();
+
+      return back();
     }
 }
