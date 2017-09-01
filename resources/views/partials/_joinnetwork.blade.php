@@ -1,3 +1,4 @@
+@include('partials._messages')
 <div class="row">
     <div class="col-md-6 col-md-offset-3">
     <join-network
@@ -9,7 +10,7 @@
     courseid = "{{ Auth::user()->course_id }}"
     branchid = "{{ Auth::user()->branch_id }}"
     joiningyear ="{{ Auth::user()->joining_year }}"
-    graduationyear ="{{ Auth::user()->graduation_year }}" 
+    graduationyear ="{{ Auth::user()->graduation_year }}"
     ></join-network>
   </div>
 </div>
