@@ -80,6 +80,27 @@
 
   </div>
 </div>
+<!-- Modal -->
+<div id="image" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">{{$user->name}}</h4>
+      </div>
+      <div class="modal-body" style="display:flex;justify-content:center">
+        <img src="{{asset('storage').'/'.Auth::user()->id.'/'.$user->profile_image}}" style="max-width:100%" class="ratio img-responsive img-circle" alt="Profile image">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 @endsection
 @section('left')
 left
@@ -88,7 +109,7 @@ left
 <div class="box-shadow-profile" style="margin-top:10px;max-width:600px;">
   <div class="row">
     <div class="col-md-4">
-        <img src="{{asset('storage').'/'.Auth::user()->id.'/'.$user->profile_image}}" style="max-width:150px" class="ratio img-responsive img-circle" alt="Profile image">
+        <a data-toggle="modal" data-target="#image"><img src="{{asset('storage').'/'.Auth::user()->id.'/'.$user->profile_image}}" style="max-width:150px" class="ratio img-responsive img-circle" alt="Profile image"></a>
     </div>
     <div class="col-md-8">
       <h4 class="title">{{$user->name}} <a href="#" class="pull-right" style="font-size:12px" data-toggle="modal" data-target="#profile"><i class="fa fa-edit"></i>Edit</a></h4>
