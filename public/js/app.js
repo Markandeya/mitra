@@ -2173,7 +2173,7 @@ function dates() {
     }
 
     console.log('CreatePost loaded');
-    $('.selectpicker').selectpicker();
+    //  $('.selectpicker').selectpicker();
   },
   data: function data() {
     return {

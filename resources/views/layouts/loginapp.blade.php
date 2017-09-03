@@ -87,16 +87,16 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav navbar-main">
-                <li class="active tab"><a href="{{route('home')}}">Home</a></li>
-                <li class="tab"><a href="#amritians">Amritians</a></li>
+                <li class="{{ Request::is('home')?'active':'tab' }}"><a href="{{route('home')}}">Home</a></li>
+                <li class="{{ Request::is('amritians')?'active':'tab' }}"><a href="{{route('amritians')}}">Amritians</a></li>
               </ul>
-              <form class="navbar-form navbar-left hidden-xs" action="">
-                      <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search for...">
-                        <span class="input-group-btn search">
-                          <button class="btn btn-default" type="button">Go!</button>
-                        </span>
-                      </div>
+              <form class="navbar-form navbar-left hidden-xs" action="{{ route('amritians') }}" method="get">
+                <div class="form-group">
+                  <input type="text" name="name" class="form-control" placeholder="Search for..." style="max-width:200px">
+                  <span class="input-group-btn search">
+                    <button class="btn btn-default" type="submit">Go!</button>
+                  </span>
+                </div>
               </form>
               <!-- Right Side Of Navbar -->
               <ul class="nav navbar-nav navbar-right navbar-main">

@@ -94,9 +94,6 @@
         <img src="{{asset('storage').'/'.Auth::user()->id.'/'.$user->profile_image}}" style="max-width:100%" class="ratio img-responsive img-circle" alt="Profile image">
 
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
     </div>
 
   </div>
@@ -106,13 +103,19 @@
 left
 @endsection
 @section('center')
-<div class="box-shadow-profile" style="margin-top:10px;max-width:600px;">
+<div class="box-shadow-profile">
   <div class="row">
     <div class="col-md-4">
-        <a data-toggle="modal" data-target="#image"><img src="{{asset('storage').'/'.Auth::user()->id.'/'.$user->profile_image}}" style="max-width:150px" class="ratio img-responsive img-circle" alt="Profile image"></a>
+        <a data-toggle="modal" data-target="#image"><img src="{{asset('storage').'/'.$user->id.'/'.$user->profile_image}}" style="max-width:150px" class="ratio img-responsive img-circle" alt="Profile image"></a>
     </div>
     <div class="col-md-8">
-      <h4 class="title">{{$user->name}} <a href="#" class="pull-right" style="font-size:12px" data-toggle="modal" data-target="#profile"><i class="fa fa-edit"></i>Edit</a></h4>
+      <h4 class="title">{{$user->name}}
+        @if($user->id == Auth::user()->id)
+          <a href="#" class="pull-right" style="font-size:12px" data-toggle="modal" data-target="#profile">
+            <i class="fa fa-edit"></i>Edit
+          </a>
+        @endif
+      </h4>
       <h5 class="title-light">{{$user->designation}} at {{$user->organization}}</h5>
       <h5 class="title-lighter">Lives @ {{$user->city}}</h5>
       <h6>{{$user->email}}</h6>
@@ -138,11 +141,11 @@ left
   function autoPlaces()
   {
     var input = document.getElementById('autocomplete');
+    console.log(input);
     var autocomplete = new google.maps.places.Autocomplete(input);
   }
 
 </script>
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAw2dWoHBzUQRpzzgPDCbb-1l2VM-qxpIs&libraries=places&callback=autoPlaces"></script>
 <script type="text/javascript">
   var app = new Vue({
     el: '#profile',
@@ -162,4 +165,6 @@ left
     }
   });
 </script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAw2dWoHBzUQRpzzgPDCbb-1l2VM-qxpIs&libraries=places&callback=autoPlaces"></script>
+
 @endsection

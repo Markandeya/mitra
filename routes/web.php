@@ -20,6 +20,7 @@ Auth::routes();
 Route::get('/home', 'UserController@index')->name('home');
 Route::get('/profile/{id}', 'UserController@profile')->name('profile');
 Route::post('/update-profile', 'UserController@postProfile')->name('update-profile');
+Route::get('/amritians', 'UserController@amritians')->name('amritians');
 
 
 Route::prefix('/admin')->group(function() {

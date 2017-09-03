@@ -34,12 +34,13 @@ class AdminController extends Controller
     public function activate(Request $request)
     {
       $user = User::where('id', '=', $request->id);
-      $user->update(['activated' => 1]);
+      $user->update(['activated' => 1, 'profile_image' => 'default.png', 'designation' => 'Not Yet Working', 'organization' => 'Student', 'city' => 'Home']);
       $user = $user->first();
       $imagePath = public_storage_path($user);
 
       File::makeDirectory($imagePath);
       $success = File::copy(storage_path('app/public/default.png'),$imagePath.'/default.png');
+
       Session::flash('success', 'Successfully activated user !');
 
       return back();

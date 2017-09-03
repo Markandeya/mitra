@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Mitra\User as User;
 use Auth;
 use Image;
+use File;
 
 
 class UserController extends Controller
@@ -55,15 +56,39 @@ class UserController extends Controller
 
       //check if image was uploaded
       if ($request->hasFile('image')) {
+
+        $oldLocation = public_storage_path($user).'/'.$user->profile_image;
+
         $image = $request->file('image');
         $fileName = time().'.'.$image->getClientOriginalExtension();
         $location = public_storage_path($user).'/'.$fileName;
         Image::make($image)->resize(400, 400)->save($location);
         $user->profile_image = $fileName;
+
+        //delete old profile image
+        File::delete($oldLocation);
       }
 
       $user->update();
 
       return back();
+    }
+
+    public function amritians(Request $request)
+    {
+        $name = $request->input('name');
+
+        $array = explode(" ", $name);
+        $search = '%';
+
+        foreach ($array as $value) {
+          $search = $search.$value.'%';
+        }
+        //dd($search);
+
+        $users = User::where('name', 'LIKE', $search)->get();
+        //dd($users);
+
+        return view('users.amritians')->with('users', $users);
     }
 }
