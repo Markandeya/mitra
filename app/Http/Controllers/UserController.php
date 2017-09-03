@@ -86,7 +86,7 @@ class UserController extends Controller
         }
         //dd($search);
 
-        $users = User::where('name', 'LIKE', $search)->get();
+        $users = User::where('name', 'LIKE', $search)->paginate(20);
         //dd($users);
 
         return view('users.amritians')->with('users', $users);

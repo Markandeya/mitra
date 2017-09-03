@@ -91,7 +91,7 @@
         <h4 class="modal-title">{{$user->name}}</h4>
       </div>
       <div class="modal-body" style="display:flex;justify-content:center">
-        <img src="{{asset('storage').'/'.Auth::user()->id.'/'.$user->profile_image}}" style="max-width:100%" class="ratio img-responsive img-circle" alt="Profile image">
+        <img src="{{asset('storage').'/'.$user->id.'/'.$user->profile_image}}" style="max-width:100%" class="ratio img-responsive img-circle" alt="Profile image">
 
       </div>
     </div>

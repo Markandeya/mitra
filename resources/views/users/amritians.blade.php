@@ -1,7 +1,6 @@
 @extends('layouts.loginapp')
 
 @section('title', 'Amritians')
-
 @section('left')
   Left
 @endsection
@@ -48,8 +47,11 @@
             </div>
 
           </div>
-
       @endforeach
+      <div class="center-div">
+
+        {{ $users->links() }}
+      </div>
     @else
       <i>Your search gave no results</i>
     @endif

@@ -94,7 +94,7 @@
 .black-search {
   border: 1px solid  #e6dee1 ;
   width: 550px;
-  max-width: 100%;
+  max-width: 50%;
 }
 
 .black-search:focus {
@@ -119,4 +119,18 @@
     height: 2px;
     width: 16px;
     margin: 8px 0;
+}
+
+.center-div {
+  display:flex;
+  justify-content:center;
+  align-items:center
+}
+
+.modal-header {
+  background-color: $mitra-lpink
+}
+
+.modal-footer {
+  background-color:  #fbddec 
 }
