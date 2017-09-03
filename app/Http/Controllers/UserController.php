@@ -5,6 +5,8 @@ namespace Mitra\Http\Controllers;
 use Illuminate\Http\Request;
 use Mitra\User as User;
 use Auth;
+use Image;
+
 
 class UserController extends Controller
 {
@@ -42,6 +44,7 @@ class UserController extends Controller
        'designation' => 'required|max:255',
        'organization' => 'required|max:255',
        'city' => 'required|max:255',
+       'image' => 'sometimes|image'
       ]);
 
       $user = Auth::user();
@@ -49,6 +52,16 @@ class UserController extends Controller
       $user->designation = $request->designation;
       $user->organization = $request->organization;
       $user->city = $request->city;
+
+      //check if image was uploaded
+      if ($request->hasFile('image')) {
+        $image = $request->file('image');
+        $fileName = time().'.'.$image->getClientOriginalExtension();
+        $location = public_storage_path($user).'/'.$fileName;
+        Image::make($image)->resize(400, 400)->save($location);
+        $user->profile_image = $fileName;
+      }
+
       $user->update();
 
       return back();

@@ -12,10 +12,21 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Edit Profile</h4>
       </div>
-      <form action="{{route('update-profile')}}" method="post">
+      <form action="{{route('update-profile')}}" enctype="multipart/form-data" method="post">
         {{ csrf_field() }}
           <div class="modal-body">
             <div class="form-group">
+              <label for="imagePath" >Profile image: <span v-text="fileName"></span></label>
+
+                @if($errors->has('image'))
+                   <div class="form-group">
+                     <span style="color:red">{{ $errors->first('image') }}</span class="alert alert-danger">
+                   </div>
+                @endif
+              <div class="form-group">
+                <button type="button" class="btn btn-primary btn-sm" name="button" @click="openFile">Select image</button>
+                <input type="file" name="image" id="fileUpload" accept=".png,.jpg,.jpeg,.gif,.tif" class="hidden" ref="fileInput" @change="upload"/>
+              </div>
               <label for="name">Name:</label>
               <input id="name" type="text" name="name" value="{{$user->name}}" class="form-control">
               @if($errors->has('name'))
@@ -77,8 +88,7 @@ left
 <div class="box-shadow-profile" style="margin-top:10px;max-width:600px;">
   <div class="row">
     <div class="col-md-4">
-        <img src="{{asset('storage').'/'.Auth::user()->id.'/'.$user->profile_image}}" style="max-width:150px" class="ratio img-responsive img-circle" alt="Profile image" onclick='return OpenFileBrowser(event)'>
-        <input type="file" name="imagePath" id="fileUpload" accept=".png,.jpg,.jpeg,.gif,.tif" class="hidden" @change="upload"/>
+        <img src="{{asset('storage').'/'.Auth::user()->id.'/'.$user->profile_image}}" style="max-width:150px" class="ratio img-responsive img-circle" alt="Profile image">
     </div>
     <div class="col-md-8">
       <h4 class="title">{{$user->name}} <a href="#" class="pull-right" style="font-size:12px" data-toggle="modal" data-target="#profile"><i class="fa fa-edit"></i>Edit</a></h4>
@@ -110,19 +120,21 @@ left
     var autocomplete = new google.maps.places.Autocomplete(input);
   }
 
-  function OpenFileBrowser(elem) {
-    $('#fileUpload').click()
-  }
 </script>
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAw2dWoHBzUQRpzzgPDCbb-1l2VM-qxpIs&libraries=places&callback=autoPlaces"></script>
 <script type="text/javascript">
   var app = new Vue({
-    el: '#app',
+    el: '#profile',
     data : {
-      image: ''
+      fileName: ''
     },
     methods: {
-      upload: function (e) {
+      openFile: function(e) {
+        $('#fileUpload').click();
+      },
+      upload: function (event) {
+        const files = event.target.files;
+        this.fileName = files[0].name;
         console.log('Somethings ip');
       }
 
