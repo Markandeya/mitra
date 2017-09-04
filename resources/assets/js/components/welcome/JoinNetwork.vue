@@ -18,21 +18,21 @@
                 <br>
               </div>
               <div class="panel-box">
+                Branch
+                <select class="form-control" name="branch" required="required">
+                  <option value="1" :selected="branchid==1">CSA</option>
+                  <option value="2" :selected="branchid==2">Mechanical</option>
+                  <option value="3" :selected="branchid==3">EEE</option>
+                </select>
+                <br>
+              </div>
+              <div class="panel-box">
                 Course
                 <select class="form-control" name="course" required="required">
                   <option value="1" :selected="courseid==1">BCA</option>
                   <option value="2" :selected="courseid==2">MCA</option>
                   <option value="3" :selected="courseid==3">MECH</option>
                   <option value="4" :selected="courseid==4">EEE</option>
-                </select>
-                <br>
-              </div>
-              <div class="panel-box">
-                Branch
-                <select class="form-control" name="branch" required="required">
-                  <option value="1" :selected="branchid==1">CSA</option>
-                  <option value="2" :selected="branchid==2">Mechanical</option>
-                  <option value="3" :selected="branchid==3">EEE</option>
                 </select>
                 <br>
               </div>

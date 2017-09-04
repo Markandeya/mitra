@@ -1,6 +1,6 @@
 <template>
   <transition
-  enter-active-class="animated zoomIn"
+  enter-active-class="animated fadeIn"
   appear>
     <div class="box-shadow-content">
       <!-- <h5><i class="fa fa-camera-retro"></i>&nbsp;Post</h5> -->

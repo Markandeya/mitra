@@ -18,7 +18,7 @@ class BranchesTableSeeder extends Seeder
         ],
         [
           'id' => 2,
-          'name' => 'Mechanical',
+          'name' => 'MECH',
         ],
         [
           'id' => 3,

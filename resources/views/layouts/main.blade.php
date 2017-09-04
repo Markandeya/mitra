@@ -11,7 +11,7 @@
 
     <link rel="icon" href="../../favicon.ico">
 
-    <title>{{ config('app.name') }}</title>
+    <title>{{ config('app.name') }}@yield('title')</title>
 
     <!-- Mitra Core CSS -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">

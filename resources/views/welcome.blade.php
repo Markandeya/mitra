@@ -1,3 +1,5 @@
+@section('title', '. Family rekindled')
+
 @section('stylesheet')
 <style media="screen">
   .panel-box {

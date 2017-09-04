@@ -33,6 +33,9 @@ class UserController extends Controller
 
     public function profile(Request $request)
     {
+      if(Auth::user()->activated == 0)
+        return view('home');
+
       $user = User::where('id', '=', $request->id)->first();
 
       return view('users.profile')->with('user', $user);
@@ -40,6 +43,9 @@ class UserController extends Controller
 
     public function postProfile(Request $request)
     {
+      if(Auth::user()->activated == 0)
+        return view('home');
+
       $this->validate($request, [
        'name' => 'required|max:255',
        'designation' => 'required|max:255',
@@ -76,6 +82,9 @@ class UserController extends Controller
 
     public function amritians(Request $request)
     {
+        if(Auth::user()->activated == 0)
+        return view('home');
+
         $name = $request->input('name');
 
         $array = explode(" ", $name);
@@ -86,7 +95,10 @@ class UserController extends Controller
         }
         //dd($search);
 
-        $users = User::where('name', 'LIKE', $search)->paginate(20);
+        $users = User::where([
+          ['name', 'LIKE', $search],
+          ['activated', '!=', 0],
+          ])->paginate(20);
         //dd($users);
 
         return view('users.amritians')->with('users', $users);

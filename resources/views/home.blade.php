@@ -20,11 +20,11 @@
             @else
               {{-- <div class="container"> --}}
                   @section('left')
-                    <ul class="nav nav-tabs nav-justified">
+                    <ul class="nav nav-tabs nav-justified animated fadeIn">
                       <li class="active"><a data-toggle="tab" href="#group">Your Groups</a></li>
                       <li><a style="" data-toggle="tab" href="#forum">Disqus Forum</a></li>
                     </ul>
-                    <div class="tab-content">
+                    <div class="tab-content animated flipInX">
                      <div id="group" class="tab-pane fade in active box-shadow-content-solid">
                        <div style="display:flex;justify-content:;max-height:100%;max-width:100%;width:100%;flex-direction: column;align-items: center;">
                          <img src="{{asset('images/group.png')}}" alt="No groups yet" style="max-width:100%;max-height:100%;width:150px;height: 150px;">
@@ -43,14 +43,14 @@
                        <a href="#" class="btn-more">+View More</a>
                      </div>
                    </div>
-                   <div class="box-shadow-content-solid" style="margin-top:10px">
+                   <div class="box-shadow-content-solid animated fadeIn" style="margin-top:10px">
                      <div class="" style="display:flex;justify-content:center">
                        <h4 style="padding-bottom:5px;border-bottom:2px solid #e7eceb">What's trending now &nbsp;</h4>
                        <i class="fa fa-line-chart pull-right" style="font-size:29px;color:#f4645f;padding-top:10px"></i>
                      </div>
                      <h4 style="text-align:center;color: #e7ecee">Coming Soon!</h4>
                    </div>
-                    <div class="box-shadow-content-solid" style="margin-top:10px;max-height:120px;display:flex;flex-direction:column;justify-content:center;align-items:center;">
+                    <div class="box-shadow-content-solid animated fadeIn" style="margin-top:10px;max-height:120px;display:flex;flex-direction:column;justify-content:center;align-items:center;">
                       <p style="font-size:17px"><b style="font-size:40px">0</b> connections <a href="#" style="font-size:14px">See all</a></p>
                       <a href="#" class="btn btn-sm btn-primary">Find Connections</a>
                     </div>

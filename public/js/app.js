@@ -2346,9 +2346,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  mounted: function mounted() {
-    console.log('Component mounted.');
-  },
   data: function data() {
     return {
       msg: 'Hello'
@@ -34929,7 +34926,7 @@ module.exports = Component.exports
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('transition', {
     attrs: {
-      "enter-active-class": "animated zoomIn",
+      "enter-active-class": "animated fadeIn",
       "appear": ""
     }
   }, [_c('div', {
@@ -35049,6 +35046,35 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("Kochi")])]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('div', {
     staticClass: "panel-box"
+  }, [_vm._v("\n              Branch\n              "), _c('select', {
+    staticClass: "form-control",
+    attrs: {
+      "name": "branch",
+      "required": "required"
+    }
+  }, [_c('option', {
+    attrs: {
+      "value": "1"
+    },
+    domProps: {
+      "selected": _vm.branchid == 1
+    }
+  }, [_vm._v("CSA")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "2"
+    },
+    domProps: {
+      "selected": _vm.branchid == 2
+    }
+  }, [_vm._v("Mechanical")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "3"
+    },
+    domProps: {
+      "selected": _vm.branchid == 3
+    }
+  }, [_vm._v("EEE")])]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('div', {
+    staticClass: "panel-box"
   }, [_vm._v("\n              Course\n              "), _c('select', {
     staticClass: "form-control",
     attrs: {
@@ -35082,35 +35108,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     },
     domProps: {
       "selected": _vm.courseid == 4
-    }
-  }, [_vm._v("EEE")])]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('div', {
-    staticClass: "panel-box"
-  }, [_vm._v("\n              Branch\n              "), _c('select', {
-    staticClass: "form-control",
-    attrs: {
-      "name": "branch",
-      "required": "required"
-    }
-  }, [_c('option', {
-    attrs: {
-      "value": "1"
-    },
-    domProps: {
-      "selected": _vm.branchid == 1
-    }
-  }, [_vm._v("CSA")]), _vm._v(" "), _c('option', {
-    attrs: {
-      "value": "2"
-    },
-    domProps: {
-      "selected": _vm.branchid == 2
-    }
-  }, [_vm._v("Mechanical")]), _vm._v(" "), _c('option', {
-    attrs: {
-      "value": "3"
-    },
-    domProps: {
-      "selected": _vm.branchid == 3
     }
   }, [_vm._v("EEE")])]), _vm._v(" "), _c('br')]), _vm._v(" "), _c('div', {
     staticClass: "panel-box"
@@ -35435,14 +35432,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("|")])])]), _vm._v(" "), _c('transition', {
     attrs: {
-      "enter-active-class": "animated slideInLeft",
+      "enter-active-class": "animated fadeIn",
       "appear": ""
     }
   }, [_c('p', {
     staticClass: "pull-left",
     staticStyle: {
-      "font-family": "'Dancing Script', cursive",
-      "font-size": "35px",
+      "font-size": "2em",
       "color": "#00b1b3"
     }
   }, [_c('span', {

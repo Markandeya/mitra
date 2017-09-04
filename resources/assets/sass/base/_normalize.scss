@@ -1,10 +1,18 @@
-.reset-a {
+.reset-a, .reset-a:hover, .reset-a:visited, .reset-a:focus, .reset-a:active {
   text-decoration:none;
   color:inherit;
+  outline: 0;
   --cursor: auto;
 }
-.reset-a:hover {
-  text-decoration:none;
-  color:inherit;
-  --cursor: auto;
+
+.no-margin{
+  margin: 0px !important;
+}
+
+.no-margin-bottom {
+  margin-bottom: 0px !important;
+}
+
+.no-margin-top {
+  margin-top: 0px !important;
 }

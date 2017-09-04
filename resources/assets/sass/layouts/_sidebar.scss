@@ -19,3 +19,18 @@
   top:70px;
   width:228px;
 }
+
+.search-filter {
+    margin-left: 7px !important;
+}
+
+@media only screen and (max-width: 516px) {
+  .search-filter {
+      margin-left: 0px !important;
+
+      .box-shadow-content {
+        margin-left: 0px !important;
+      }
+  }
+
+}
