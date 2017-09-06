@@ -7,6 +7,7 @@ use Mitra\User as User;
 use Auth;
 use Image;
 use File;
+use Illuminate\Support\Collection as Collection;
 
 
 class UserController extends Controller
@@ -102,5 +103,42 @@ class UserController extends Controller
         //dd($users);
 
         return view('users.amritians')->with('users', $users);
+    }
+
+    public function search(Request $request)
+    {
+      $results = new Collection;
+      //return $request->get('memberAll');
+
+    //  if ($request->get('memberAll') == true) {
+        $memberAll = User::where('branch_id','=', 1)->get();
+        $collection = collect($memberAll);
+
+        foreach ($memberAll as $key => $value) {
+          $results->push($value);
+        }
+      //}
+      $camp = User::where('campus_id', '=', 1)->get();
+
+      foreach ($camp as $key => $value) {
+        $results->push($value);
+      }
+      // if ($request->get('memberStudents') == true) {
+      //   $memberStudents = User::where('activated', 'LIKE', '1');
+      //   $results->push($memberStudents);
+      // }
+      //
+      // if ($request->get('memberAlumni') == true) {
+      //   $memberAlumni = User::where('activated', 'LIKE', '2');
+      //   $results->push($memberAlumni);
+      // }
+      //
+      // if ($request->get('memberFaculties') == true) {
+      //   $memberFaculties = User::where('activated', 'LIKE', '3');
+      //   $results->push($memberFaculties);
+      // }
+
+      return $results->unique()->toArray();
+
     }
 }

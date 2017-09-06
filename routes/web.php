@@ -21,6 +21,7 @@ Route::get('/home', 'UserController@index')->name('home');
 Route::get('/profile/{id}', 'UserController@profile')->name('profile');
 Route::post('/update-profile', 'UserController@postProfile')->name('update-profile');
 Route::get('/amritians', 'UserController@amritians')->name('amritians');
+Route::get('/search', 'UserController@search')->name('search');
 
 
 Route::prefix('/admin')->group(function() {
@@ -39,4 +40,6 @@ Route::get('auth/{provider}/callback', 'Auth\RegisterController@handleProviderCa
 //Route for sending join-request to admin
 Route::post('/authrequest', 'AuthenticateController@createRequest')->name('authrequest');
 
-//Route::post('/join-request', '')
+require base_path('routes/ajax.php');
+
+Route::get('test', 'UserController@search');
