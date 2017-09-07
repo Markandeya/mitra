@@ -96,7 +96,7 @@ class UserController extends Controller
         }
         //dd($search);
 
-        $users = User::where([
+        $users = User::with('course')->where([
           ['name', 'LIKE', $search],
           ['activated', '!=', 0],
           ])->paginate(20);
@@ -111,7 +111,7 @@ class UserController extends Controller
       //return $request->get('memberAll');
 
     //  if ($request->get('memberAll') == true) {
-        $memberAll = User::where('branch_id','=', 1)->get();
+        $memberAll = User::with('course')->where('branch_id','=', 1)->get();
         $collection = collect($memberAll);
 
         foreach ($memberAll as $key => $value) {

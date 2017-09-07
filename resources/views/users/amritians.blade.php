@@ -90,54 +90,57 @@
 @section('center')
   <div id="app2">
     <div class="box-shadow-full-height animated fadeInDownBig">
-      <h4 class="title">People</h4>
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="input-group">
-            <input type="text" class="black-search" v-model="search" @keyup.enter="request">
-      </div><!-- /input-group -->
-        </div><!-- /.col-lg-6 -->
-      </div>
-      <h4 class="title">{{ $users->count() }} <small class="title">Amritians</small></h4>
-      <div class="pink_line">
-      </div>
-      {{-- <i class="fa fa-circle-o-notch fa-spin" style="font-size:24px"></i> --}}
-      @if($users->count())
-        @foreach($users as $user)
-            <div class="row profile-search equal">
-
-              <div class="col-md-2">
-                <a href="{{ route('profile', $user->id) }}" class="reset-a">
-                  <img src="{{asset('storage').'/'.$user->id.'/'.$user->profile_image}}" alt="" class="ratio img-circle" width="60px" height="60px">
-                </a>
-              </div>
-
-              <div class="col-md-10">
-                <div class="row equal">
-                  <div class="col-md-12" style="padding-bottom:0px">
-                    <h5 class="title no-margin-bottom">
-                      <a href="{{ route('profile', $user->id) }}" class="reset-a">
-                      {{ $user->name }}
-                    </a>
-                      <small><i>{{ $user->course->name }} - {{ $user->graduation_year}}</i></small></h5>
-                  </div>
-                </div>
-                <div class="row ">
-                  <div class="col-md-12">
-                    <h6 class="no-margin-bottom">{{ $user->designation }} at {{ $user->organization }}, {{ $user->city }}</h6>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-        @endforeach
-        <div class="center-div">
-
-          {{ $users->links() }}
+     <div class="loader" v-if="loader"></div>
+      <div v-else>
+        <h4 class="title">People</h4>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="input-group">
+              <input type="text" class="black-search" v-model="search" placeholder="Search"  @keyup.enter="request">
+        </div><!-- /input-group -->
+          </div><!-- /.col-lg-6 -->
         </div>
-      @else
-        <i>Your search gave no results</i>
-      @endif
+        <h4 class="title">{{ $users->count() }} <small class="title">Amritians</small></h4>
+        <div class="pink_line">
+        </div>
+        {{-- <i class="fa fa-circle-o-notch fa-spin" style="font-size:24px"></i> --}}
+        @if($users->count())
+          {{-- @foreach($users as $user) --}}
+              <div class="row profile-search equal" v-for="user in users" :key="user.id">
+
+                <div class="col-md-2">
+                  <a :href="profileLink+user.id" class="reset-a">
+                    <img :src="imageLink+user.id+'/'+user.profile_image" alt="" class="ratio img-circle" width="60px" height="60px">
+                  </a>
+                </div>
+
+                <div class="col-md-10">
+                  <div class="row equal">
+                    <div class="col-md-12" style="padding-bottom:0px">
+                      <h5 class="title no-margin-bottom">
+                        <a :href="profileLink+user.id" class="reset-a">
+                        @{{ user.name }}
+                      </a>
+                        <small><i>@{{ user.course.name }} - @{{ user.graduation_year}}</i></small></h5>
+                    </div>
+                  </div>
+                  <div class="row ">
+                    <div class="col-md-12">
+                      <h6 class="no-margin-bottom">@{{ user.designation }} at @{{ user.organization }}, @{{ user.city }}</h6>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+          {{-- @endforeach --}}
+          <div class="center-div">
+
+            {{-- {{ $users->links() }} --}}
+          </div>
+        @else
+          <i>Your search gave no results</i>
+        @endif
+      </div>
     </div>
   </div>
 
@@ -164,23 +167,25 @@
         eee: false,
         jyear: null,
         gyear: null,
+        users: {!! collect($users->items())->toJson() !!},
+        imageLink: '{!! asset('storage').'/' !!}',
+        profileLink: '{!! URL::to('/').'/profile/' !!}',
+        loader: false,
       },
       mounted: function() {
-        console.log('mounted');
+        console.log(this.profileLink);
       },
       methods: {
         request: function () {
           console.log('Pressed enter');
           console.log(this.memberAll);
           var ap = this;
-          //var memberType = $('#memberAll').val();
-          //console.log(window.location.origin +'ajax/search-user');
-          //console.log(ap.memberAll);
+          this.loader = true;
+          console.log(this.loader);
           $.ajax({
                     type: 'GET',
                     url: window.location.origin + '/ajax/search-user',
                     data: {
-                      search: 'hello',
                       memberAll: ap.memberAll,
                       memberStudents: ap.memberStudents,
                       memberAlumni: ap.memberAlumni,
@@ -197,13 +202,15 @@
                       eee: ap.eee,
                       jyear: ap.jyear,
                       gyear: ap.gyear,
+                      search: ap.search,
                     },
                     error: function (err) {
                         console.log("AJAX error in request: " + JSON.stringify(err, null, 2));
                     }
                 }).done(function(data) {
-                    console.log(data);
+                    ap.users = data;
           });
+          this.loader = false;
         }
       }
     });
