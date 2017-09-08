@@ -100,7 +100,7 @@
         </div><!-- /input-group -->
           </div><!-- /.col-lg-6 -->
         </div>
-        <h4 class="title">{{ $users->count() }} <small class="title">Amritians</small></h4>
+        <h4 class="title">@{{ users.length }} <small class="title">Amritians</small></h4>
         <div class="pink_line">
         </div>
         {{-- <i class="fa fa-circle-o-notch fa-spin" style="font-size:24px"></i> --}}
@@ -208,7 +208,10 @@
                         console.log("AJAX error in request: " + JSON.stringify(err, null, 2));
                     }
                 }).done(function(data) {
-                    ap.users = data;
+                  var array = $.map(data, function(value, index) {
+                      return [value];
+                    });
+                    ap.users = array;
           });
           this.loader = false;
         }
