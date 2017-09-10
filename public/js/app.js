@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 57);
+/******/ 	return __webpack_require__(__webpack_require__.s = 58);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -528,7 +528,7 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(42)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(43)))
 
 /***/ }),
 /* 3 */
@@ -870,7 +870,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(54)
+var listToStyles = __webpack_require__(55)
 
 /*
 type StyleObject = {
@@ -1111,17 +1111,18 @@ module.exports = g;
 
 __webpack_require__(36);
 __webpack_require__(35);
-window.Vue = __webpack_require__(55);
+window.Vue = __webpack_require__(56);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('signup', __webpack_require__(46));
-Vue.component('welcome-quote', __webpack_require__(47));
-Vue.component('join-network', __webpack_require__(45));
-Vue.component('create-post', __webpack_require__(44));
+Vue.component('signup', __webpack_require__(47));
+Vue.component('welcome-quote', __webpack_require__(48));
+Vue.component('join-network', __webpack_require__(46));
+Vue.component('create-post', __webpack_require__(45));
+Vue.component('pagination', __webpack_require__(41));
 
 window.onload = function () {
   var app = new Vue({
@@ -3914,9 +3915,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 /* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
-window.sr = __webpack_require__(43);
+window.sr = __webpack_require__(44);
 
-window._ = __webpack_require__(41);
+window._ = __webpack_require__(42);
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -16628,6 +16629,77 @@ return jQuery;
 
 /***/ }),
 /* 41 */
+/***/ (function(module, exports) {
+
+module.exports = {
+	props: {
+		data: {
+			type: Object,
+			default: function() {
+				return {
+					current_page: 1,
+					data: [],
+					from: 1,
+					last_page: 1,
+					next_page_url: null,
+					per_page: 10,
+					prev_page_url: null,
+					to: 1,
+					total: 0,
+				}
+			}
+		},
+		limit: {
+			type: Number,
+			default: 0
+		}
+	},
+
+	template: '<ul class="pagination" v-if="data.total > data.per_page">\
+		<li class="page-item" v-if="data.prev_page_url">\
+			<a class="page-link" href="#" aria-label="Previous" @click.prevent="selectPage(--data.current_page)"><span aria-hidden="true">&laquo;</span></a>\
+		</li>\
+		<li class="page-item" v-for="n in getPages()" :class="{ \'active\': n == data.current_page }"><a class="page-link" href="#" @click.prevent="selectPage(n)">{{ n }}</a></li>\
+		<li class="page-item" v-if="data.next_page_url">\
+			<a class="page-link" href="#" aria-label="Next" @click.prevent="selectPage(++data.current_page)"><span aria-hidden="true">&raquo;</span></a>\
+		</li>\
+	</ul>',
+	mounted: function(){
+		console.log('pagination');
+	},
+	methods: {
+		selectPage: function(page) {
+			this.$emit('pagination-change-page', page);
+		},
+		getPages: function() {
+			if (this.limit === -1) {
+				return 0;
+			}
+
+			if (this.limit === 0) {
+				return this.data.last_page;
+			}
+
+        	var start = this.data.current_page - this.limit,
+        	    end   = this.data.current_page + this.limit + 1,
+        	    pages = [],
+        	    index;
+
+        	start = start < 1 ? 1 : start;
+        	end   = end >= this.data.last_page ? this.data.last_page + 1 : end;
+
+        	for (index = start; index < end; index++) {
+        		pages.push(index);
+        	}
+
+        	return pages;
+		}
+	}
+};
+
+
+/***/ }),
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -33716,10 +33788,10 @@ return jQuery;
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10), __webpack_require__(56)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10), __webpack_require__(57)(module)))
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -33909,7 +33981,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_RESULT__;/////    /////    /////    /////
@@ -34776,18 +34848,18 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/////    /////    /////    /////
 
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(52)
+__webpack_require__(53)
 
 var Component = __webpack_require__(1)(
   /* script */
   __webpack_require__(31),
   /* template */
-  __webpack_require__(48),
+  __webpack_require__(49),
   /* scopeId */
   null,
   /* cssModules */
@@ -34814,18 +34886,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(53)
+__webpack_require__(54)
 
 var Component = __webpack_require__(1)(
   /* script */
   __webpack_require__(32),
   /* template */
-  __webpack_require__(49),
+  __webpack_require__(50),
   /* scopeId */
   null,
   /* cssModules */
@@ -34852,14 +34924,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
   __webpack_require__(33),
   /* template */
-  __webpack_require__(50),
+  __webpack_require__(51),
   /* scopeId */
   null,
   /* cssModules */
@@ -34886,14 +34958,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
   __webpack_require__(34),
   /* template */
-  __webpack_require__(51),
+  __webpack_require__(52),
   /* scopeId */
   null,
   /* cssModules */
@@ -34920,7 +34992,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -34979,7 +35051,7 @@ if (false) {
 }
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -35233,7 +35305,7 @@ if (false) {
 }
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -35408,7 +35480,7 @@ if (false) {
 }
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -35463,7 +35535,7 @@ if (false) {
 }
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
@@ -35489,7 +35561,7 @@ if(false) {
 }
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
@@ -35515,7 +35587,7 @@ if(false) {
 }
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports) {
 
 /**
@@ -35548,7 +35620,7 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45247,7 +45319,7 @@ module.exports = Vue$3;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)))
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -45275,7 +45347,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(11);

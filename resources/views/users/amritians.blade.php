@@ -100,13 +100,13 @@
         </div><!-- /input-group -->
           </div><!-- /.col-lg-6 -->
         </div>
-        <h4 class="title">@{{ users.length }} <small class="title">Amritians</small></h4>
+        <h4 class="title">@{{ users.data.length }} <small class="title">Amritians</small></h4>
         <div class="pink_line">
         </div>
         {{-- <i class="fa fa-circle-o-notch fa-spin" style="font-size:24px"></i> --}}
         @if($users->count())
           {{-- @foreach($users as $user) --}}
-              <div class="row profile-search equal" v-for="user in users" :key="user.id">
+              <div class="row profile-search equal" v-for="user in users.data" :key="user.id">
 
                 <div class="col-md-2">
                   <a :href="profileLink+user.id" class="reset-a">
@@ -134,7 +134,7 @@
               </div>
           {{-- @endforeach --}}
           <div class="center-div">
-
+            <pagination :data="users" v-on:pagination-change-page="request"></pagination>
             {{-- {{ $users->links() }} --}}
           </div>
         @else
@@ -172,19 +172,24 @@
         profileLink: '{!! URL::to('/').'/profile/' !!}',
         loader: false,
       },
-      mounted: function() {
-        console.log(this.profileLink);
+      created: function() {
+        var obj = {};
+        var array = this.users;
+           array.forEach(function(data){
+               obj[data[0]] = data[1]
+           });
+        	 this.request();
       },
       methods: {
-        request: function () {
-          console.log('Pressed enter');
-          console.log(this.memberAll);
+        request: function (page) {
+          if (typeof page === 'undefined') {
+    				page = 1;
+    			}
           var ap = this;
           this.loader = true;
-          console.log(this.loader);
           $.ajax({
                     type: 'GET',
-                    url: window.location.origin + '/ajax/search-user',
+                    url: window.location.origin + '/ajax/search-user?page=' + page,
                     data: {
                       memberAll: ap.memberAll,
                       memberStudents: ap.memberStudents,
@@ -208,14 +213,33 @@
                         console.log("AJAX error in request: " + JSON.stringify(err, null, 2));
                     }
                 }).done(function(data) {
-                  var array = $.map(data.data, function(value, index) {
-                      return [value];
-                    });
-                    ap.users = array;
+                  // var array = $.map(data, function(value, index) {
+                  //     return [value];
+                  //   });
+                  //   //ap.users = array;
+                  //   var obj = {};
+                  //   array.forEach(function(data){
+                  //       obj[data[0]] = data[1]
+                  //   });
+                  //   ap.users = obj;
+                  ap.users = data;
                     console.log(data);
           });
           this.loader = false;
-        }
+        },
+        getResults: function (page) {
+    			if (typeof page === 'undefined') {
+    				page = 1;
+    			}
+
+    			// Using vue-resource as an example
+    			this.$http.get(window.location.origin + '/ajax/search-user' + page)
+    				.then(response => {
+    					return response.json();
+    				}).then(data => {
+    					this.laravelData = data;
+    				});
+    		}
       }
     });
 
