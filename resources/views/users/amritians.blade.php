@@ -208,10 +208,11 @@
                         console.log("AJAX error in request: " + JSON.stringify(err, null, 2));
                     }
                 }).done(function(data) {
-                  var array = $.map(data, function(value, index) {
+                  var array = $.map(data.data, function(value, index) {
                       return [value];
                     });
                     ap.users = array;
+                    console.log(data);
           });
           this.loader = false;
         }

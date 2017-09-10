@@ -5,6 +5,7 @@ namespace Mitra\Http\Controllers;
 use Illuminate\Http\Request;
 use Mitra\User as User;
 use Illuminate\Support\Collection as Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 class SearchController extends Controller
 {
   /**
@@ -15,6 +16,14 @@ class SearchController extends Controller
   public function __construct()
   {
       $this->middleware('auth:web');
+  }
+
+//Paginate collection function
+  public function paginate($items, $perPage = 15, $page = null, $options = [])
+  {
+  	$page = $page ?: (LengthAwarePaginator::resolveCurrentPage() ?: 1);
+  	$items = $items instanceof Collection ? $items : Collection::make($items);
+  	return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
   }
 
   public function search(Request $request)
@@ -191,8 +200,10 @@ class SearchController extends Controller
     }
 
     $results = $results->where('activated', '!=', 0);
+    $results = $results->unique();
+    $results = $this->paginate($results, 3);
 
-    return array_filter($results->unique()->toArray());
+    return array_filter($results->toArray());
 
   }
 }
