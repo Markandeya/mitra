@@ -183,7 +183,22 @@
     <script type="text/javascript">
       $(window).on('load', function() {
        var a =$('#test').selectpicker();
+
+       @if (Session::has('success'))
+         new noty({
+           type: 'success',
+           layout: 'bottom',
+           text: '<p class="text-center">{{ Session::get('success') }}</p>',
+           animation: {
+                open: 'animated fadeInUp', // Animate.css class names
+                close: 'animated bounceOutLeft' // Animate.css class names
+            }
+         }).show();
+       @endif
+
       });
+
+
     </script>
     @yield('scripts')
 </body>

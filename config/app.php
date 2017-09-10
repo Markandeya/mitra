@@ -173,7 +173,7 @@ return [
          */
         Mitra\Providers\AppServiceProvider::class,
         Mitra\Providers\AuthServiceProvider::class,
-        // Mitra\Providers\BroadcastServiceProvider::class,
+        Mitra\Providers\BroadcastServiceProvider::class,
         Mitra\Providers\EventServiceProvider::class,
         Mitra\Providers\RouteServiceProvider::class,
         /*

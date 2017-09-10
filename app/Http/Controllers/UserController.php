@@ -8,7 +8,7 @@ use Auth;
 use Image;
 use File;
 use Illuminate\Support\Collection as Collection;
-
+use Session;
 
 class UserController extends Controller
 {
@@ -78,6 +78,8 @@ class UserController extends Controller
 
       $user->update();
 
+      Session::flash('success', 'Profile updated.');
+
       return back();
     }
 
@@ -88,59 +90,6 @@ class UserController extends Controller
 
         $name = $request->input('name');
 
-        // $array = explode(" ", $name);
-        // $search = '%';
-        //
-        // foreach ($array as $value) {
-        //   $search = $search.$value.'%';
-        // }
-        // //dd($search);
-        //
-        // $users = User::with('course')->where([
-        //   ['name', 'LIKE', $search],
-        //   ['activated', '!=', 0],
-        //   ])->paginate(20);
-        // //dd($users);
-
         return view('users.amritians')->with('name', $name);
-    }
-
-    public function search(Request $request)
-    {
-      $results = new Collection;
-      //return $request->get('memberAll');
-
-    //  if ($request->get('memberAll') == true) {
-        $memberAll = User::with('course')->where('branch_id','=', 1)->get();
-        $collection = collect($memberAll);
-
-        foreach ($memberAll as $key => $value) {
-          $results->push($value);
-        }
-      //}
-      $camp = User::where('campus_id', '=', 1)->get();
-
-      foreach ($camp as $key => $value) {
-        $results->push($value);
-      }
-      // if ($request->get('memberStudents') == true) {
-      //   $memberStudents = User::where('activated', 'LIKE', '1');
-      //   $results->push($memberStudents);
-      // }
-      //
-      // if ($request->get('memberAlumni') == true) {
-      //   $memberAlumni = User::where('activated', 'LIKE', '2');
-      //   $results->push($memberAlumni);
-      // }
-      //
-      // if ($request->get('memberFaculties') == true) {
-      //   $memberFaculties = User::where('activated', 'LIKE', '3');
-      //   $results->push($memberFaculties);
-      // }
-      $results = $results->unique();
-      $results = $this->paginate($results, 3);
-
-      return $results;
-
     }
 }

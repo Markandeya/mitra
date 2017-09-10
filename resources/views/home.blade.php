@@ -9,6 +9,14 @@
       --background-attachment: fixed;
       height:100%;
     }
+    #panel {
+      -moz-animation-duration: 1s;
+      -moz-animation-delay: 0.5s;
+      -moz-animation-iteration-count: 1;
+      -webkit-animation-duration: 1s;
+      -webkit-animation-delay: 0.5s;
+      -webkit-animation-iteration-count: 1;
+    }
   </style>
 @endsection
 
@@ -24,7 +32,7 @@
                       <li class="active"><a data-toggle="tab" href="#group">Your Groups</a></li>
                       <li><a style="" data-toggle="tab" href="#forum">Disqus Forum</a></li>
                     </ul>
-                    <div class="tab-content animated flipInX">
+                    <div class="tab-content animated flipInX" id="panel">
                      <div id="group" class="tab-pane fade in active box-shadow-content-solid">
                        <div style="display:flex;justify-content:;max-height:100%;max-width:100%;width:100%;flex-direction: column;align-items: center;">
                          <img src="{{asset('images/group.png')}}" alt="No groups yet" style="max-width:100%;max-height:100%;width:150px;height: 150px;">
