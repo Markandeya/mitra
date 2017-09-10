@@ -104,42 +104,45 @@
         <div class="pink_line">
         </div>
         {{-- <i class="fa fa-circle-o-notch fa-spin" style="font-size:24px"></i> --}}
-        @if($users->count())
+        {{-- @if($users->count()) --}}
           {{-- @foreach($users as $user) --}}
-              <div class="row profile-search equal" v-for="user in users.data" :key="user.id">
+          <div class="wrapper" v-if="users.data.length!=0">
+            <div class="row profile-search equal" v-for="user in users.data" :key="user.id">
 
-                <div class="col-md-2">
-                  <a :href="profileLink+user.id" class="reset-a">
-                    <img :src="imageLink+user.id+'/'+user.profile_image" alt="" class="ratio img-circle" width="60px" height="60px">
-                  </a>
-                </div>
-
-                <div class="col-md-10">
-                  <div class="row equal">
-                    <div class="col-md-12" style="padding-bottom:0px">
-                      <h5 class="title no-margin-bottom">
-                        <a :href="profileLink+user.id" class="reset-a">
-                        @{{ user.name }}
-                      </a>
-                        <small><i>@{{ user.course.name }} - @{{ user.graduation_year}}</i></small></h5>
-                    </div>
-                  </div>
-                  <div class="row ">
-                    <div class="col-md-12">
-                      <h6 class="no-margin-bottom">@{{ user.designation }} at @{{ user.organization }}, @{{ user.city }}</h6>
-                    </div>
-                  </div>
-                </div>
-
+              <div class="col-md-2">
+                <a :href="profileLink+user.id" class="reset-a">
+                  <img :src="imageLink+user.id+'/'+user.profile_image" alt="" class="ratio img-circle" width="60px" height="60px">
+                </a>
               </div>
-          {{-- @endforeach --}}
-          <div class="center-div">
-            <pagination :data="users" v-on:pagination-change-page="request"></pagination>
-            {{-- {{ $users->links() }} --}}
+
+              <div class="col-md-10">
+                <div class="row equal">
+                  <div class="col-md-12" style="padding-bottom:0px">
+                    <h5 class="title no-margin-bottom">
+                      <a :href="profileLink+user.id" class="reset-a">
+                      @{{ user.name }}
+                    </a>
+                      <small><i>@{{ user.course.name }} - @{{ user.graduation_year}}</i></small></h5>
+                  </div>
+                </div>
+                <div class="row ">
+                  <div class="col-md-12">
+                    <h6 class="no-margin-bottom">@{{ user.designation }} at @{{ user.organization }}, @{{ user.city }}</h6>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+        {{-- @endforeach --}}
+            <div class="center-div">
+              <pagination :data="users" v-on:pagination-change-page="request"></pagination>
+              {{-- {{ $users->links() }} --}}
+            </div>
           </div>
-        @else
-          <i>Your search gave no results</i>
-        @endif
+
+        {{-- @else --}}
+          <i v-else>Your search gave no results</i>
+        {{-- @endif --}}
       </div>
     </div>
   </div>
@@ -150,7 +153,7 @@
   window.onload = new Vue({
       el: '#app',
       data: {
-        search: '',
+        search: '{!! $name !!}',
         memberAll: true,
         memberStudents: false,
         memberAlumni: false,
@@ -167,18 +170,16 @@
         eee: false,
         jyear: null,
         gyear: null,
-        users: {!! collect($users->items())->toJson() !!},
+        users: {},
         imageLink: '{!! asset('storage').'/' !!}',
         profileLink: '{!! URL::to('/').'/profile/' !!}',
         loader: false,
       },
       created: function() {
-        var obj = {};
-        var array = this.users;
-           array.forEach(function(data){
-               obj[data[0]] = data[1]
-           });
-        	 this.request();
+        this.request();
+      },
+      mounted: function() {
+        console.log(this.users.data);
       },
       methods: {
         request: function (page) {
@@ -213,17 +214,13 @@
                         console.log("AJAX error in request: " + JSON.stringify(err, null, 2));
                     }
                 }).done(function(data) {
-                  // var array = $.map(data, function(value, index) {
-                  //     return [value];
-                  //   });
-                  //   //ap.users = array;
-                  //   var obj = {};
-                  //   array.forEach(function(data){
-                  //       obj[data[0]] = data[1]
-                  //   });
-                  //   ap.users = obj;
+                  //convert data in the response to array of objects
+                  var array = $.map(data.data, function(value, index) {
+                      return [value];
+                  });
+                  data.data = array;
                   ap.users = data;
-                    console.log(data);
+                  console.log(ap.users.data);
           });
           this.loader = false;
         },

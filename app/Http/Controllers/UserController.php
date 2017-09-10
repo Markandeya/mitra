@@ -88,21 +88,21 @@ class UserController extends Controller
 
         $name = $request->input('name');
 
-        $array = explode(" ", $name);
-        $search = '%';
+        // $array = explode(" ", $name);
+        // $search = '%';
+        //
+        // foreach ($array as $value) {
+        //   $search = $search.$value.'%';
+        // }
+        // //dd($search);
+        //
+        // $users = User::with('course')->where([
+        //   ['name', 'LIKE', $search],
+        //   ['activated', '!=', 0],
+        //   ])->paginate(20);
+        // //dd($users);
 
-        foreach ($array as $value) {
-          $search = $search.$value.'%';
-        }
-        //dd($search);
-
-        $users = User::with('course')->where([
-          ['name', 'LIKE', $search],
-          ['activated', '!=', 0],
-          ])->paginate(20);
-        //dd($users);
-
-        return view('users.amritians')->with('users', $users);
+        return view('users.amritians')->with('name', $name);
     }
 
     public function search(Request $request)
@@ -137,8 +137,10 @@ class UserController extends Controller
       //   $memberFaculties = User::where('activated', 'LIKE', '3');
       //   $results->push($memberFaculties);
       // }
+      $results = $results->unique();
+      $results = $this->paginate($results, 3);
 
-      return $results->unique()->toArray();
+      return $results;
 
     }
 }
