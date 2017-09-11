@@ -124,6 +124,9 @@
         <span class="label label-info">{{$user->course->name}} {{$user->graduation_year}}</span>
         <span class="label label-default">{{$user->campus->name}}</span>
       </div>
+        @if($user->id != Auth::user()->id)
+          <friend :profile_user_id="{{ $user->id }}"></friend>
+        @endif
     </div>
   </div>
 </div>
@@ -141,7 +144,6 @@
   function autoPlaces()
   {
     var input = document.getElementById('autocomplete');
-    console.log(input);
     var autocomplete = new google.maps.places.Autocomplete(input);
   }
 

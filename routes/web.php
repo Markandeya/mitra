@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/check-relationship-status/{id}','FriendController@check')->name('check');
+
 Auth::routes();
 
 Route::get('/home', 'UserController@index')->name('home');

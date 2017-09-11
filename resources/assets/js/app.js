@@ -8,6 +8,7 @@
 require('./bootstrap');
 require('./bootstrap-select');
 window.Vue = require('vue');
+Vue.use(require('vue-resource'));
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -19,6 +20,9 @@ Vue.component('welcome-quote', require('./components/welcome/WelcomeQuote.vue'))
 Vue.component('join-network', require('./components/welcome/JoinNetwork.vue'));
 Vue.component('create-post', require('./components/core/CreatePost.vue'));
 Vue.component('pagination', require('laravel-vue-pagination'));
+Vue.component('friend', require('./components/core/Friend.vue'));
+Vue.component('friend-sm', require('./components/core/FriendSmall.vue'));
+
 
 window.onload = function () {
   const app = new Vue({

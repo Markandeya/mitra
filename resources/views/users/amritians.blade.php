@@ -117,12 +117,15 @@
 
               <div class="col-md-10">
                 <div class="row equal">
-                  <div class="col-md-12" style="padding-bottom:0px">
+                  <div class="col-md-11" style="padding-bottom:0px">
                     <h5 class="title no-margin-bottom">
                       <a :href="profileLink+user.id" class="reset-a">
                       @{{ user.name }}
                     </a>
                       <small><i>@{{ user.course.name }} - @{{ user.graduation_year}}</i></small></h5>
+                  </div>
+                  <div class="col-md-1">
+                    <friend-sm></friend-sm>
                   </div>
                 </div>
                 <div class="row ">
