@@ -201,7 +201,7 @@ class SearchController extends Controller
 
     $results = $results->where('activated', '!=', 0);
     $results = $results->unique();
-    $results = $this->paginate($results, 3);
+    $results = $this->paginate($results, 20);
 
     return $results;
 

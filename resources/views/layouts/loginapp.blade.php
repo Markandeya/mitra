@@ -187,15 +187,38 @@
        @if (Session::has('success'))
          new noty({
            type: 'success',
-           layout: 'bottom',
+           layout: 'bottomCenter',
            text: '<p class="text-center">{{ Session::get('success') }}</p>',
            animation: {
                 open: 'animated fadeInUp', // Animate.css class names
+                close: 'animated fadeOut' // Animate.css class names
+            }
+         }).show();
+       @endif
+
+       @if (Session::has('warning'))
+         new noty({
+           type: 'warning',
+           layout: 'bottomCenter',
+           text: '<p class="text-center">{{ Session::get('warning') }}</p>',
+           animation: {
+                open: 'animated shake', // Animate.css class names
                 close: 'animated bounceOutLeft' // Animate.css class names
             }
          }).show();
        @endif
 
+       @if (Session::has('info'))
+         new noty({
+           type: 'info',
+           layout: 'bottomCenter',
+           text: '<p class="text-center">{{ Session::get('info') }}</p>',
+           animation: {
+                open: 'animated flash', // Animate.css class names
+                close: 'animated bounceOutLeft' // Animate.css class names
+            }
+         }).show();
+       @endif
       });
 
 

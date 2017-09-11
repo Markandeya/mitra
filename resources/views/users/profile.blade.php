@@ -100,7 +100,7 @@
 </div>
 @endsection
 @section('left')
-left
+
 @endsection
 @section('center')
 <div class="box-shadow-profile">

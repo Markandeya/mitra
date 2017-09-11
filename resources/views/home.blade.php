@@ -9,7 +9,7 @@
       --background-attachment: fixed;
       height:100%;
     }
-    #panel {
+    .animated {
       -moz-animation-duration: 1s;
       -moz-animation-delay: 0.5s;
       -moz-animation-iteration-count: 1;
