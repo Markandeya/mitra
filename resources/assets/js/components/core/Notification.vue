@@ -12,12 +12,8 @@ export default {
   props: ['id'],
   methods: {
     listen() {
-      console.log('noti');
 
-      Echo.private('App.User.' + this.id).notification( (notification) => {
-        if(status == 408 || status == 503){
-          console.log('wtf');
-        }
+      Echo.private('Mitra.User.' + this.id).notification( (notification) => {
         alert('New notification!');
         console.log(notification);
       });

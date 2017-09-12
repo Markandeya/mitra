@@ -32,7 +32,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                      <a class="navbar-brand" href="{{route('home')}}"><img src="{{asset('images/navbar/m.png')}}" style="height:24px;display:inline" alt="M"><b>itra</b></a>
+                      <a class="navbar-brand" href="{{route('home')}}"><img src="{{asset('images/navbar/m.png')}}" style="height:24px;display:inline" alt="M"><b class="logo">itra</b></a>
                     </a>
                 </div>
 

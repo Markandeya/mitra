@@ -31,7 +31,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{route('home')}}"><img src="{{asset('images/navbar/m.png')}}" style="height:24px;display:inline" alt="M"><b>itra</b></a>
+                    <a class="navbar-brand" href="{{route('home')}}"><img src="{{asset('images/navbar/m.png')}}" style="height:24px;display:inline" alt="M"><b style="padding:1px">itra</b></a>
 
                 </div>
 

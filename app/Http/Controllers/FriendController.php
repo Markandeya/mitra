@@ -4,8 +4,9 @@ namespace Mitra\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
-use \Mitra\Friendship;
-use \Mitra\Notifications\NewFriendRequest;
+use Mitra\User;
+use Mitra\Friendship;
+use Mitra\Notifications\NewFriendRequest;
 
 class FriendController extends Controller
 {

@@ -2159,12 +2159,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   props: ['id'],
   methods: {
     listen: function listen() {
-      console.log('noti');
 
-      Echo.private('App.User.' + this.id).notification(function (notification) {
-        if (status == 408 || status == 503) {
-          console.log('wtf');
-        }
+      Echo.private('Mitra.User.' + this.id).notification(function (notification) {
         alert('New notification!');
         console.log(notification);
       });
@@ -6535,7 +6531,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)();
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 /***/ }),
 /* 45 */
