@@ -4,7 +4,7 @@ namespace Mitra\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
-
+use \Mitra\Friendship;
 class FriendController extends Controller
 {
     public function check($id)
@@ -25,5 +25,15 @@ class FriendController extends Controller
       }
 
       return ["status" => 0];
+    }
+
+    public function addFriend($id)
+    {
+      return Auth::user()->addFriend($id);
+    }
+
+    public function acceptFriend($id)
+    {
+      return Auth::user()->acceptFriend($id);
     }
 }

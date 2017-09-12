@@ -12,6 +12,26 @@ trait Friendable
 {
   public function addFriend($user_requested_id)
   {
+    if($this->id === $user_requested_id)
+    {
+      return 0;
+    }
+
+    if($this->is_friends_with($user_requested_id) === 1)
+    {
+      return 'friends';
+    }
+
+    if($this->has_pending_friend_request_sent_to($user_requested_id))
+    {
+      return 'waiting';
+    }
+
+    if ($this->has_pending_friend_request_from($user_requested_id))
+    {
+      return 'pending';
+    }
+
     $friendship = Friendship::create([
       'requester' => $this->id,
       'user_requested' => $user_requested_id
@@ -19,15 +39,15 @@ trait Friendable
 
     if($friendship)
     {
-      return response()->json('ok', 200);
+      return 1;
     }
     else
     {
-      return response()->json('fail', 501);
+      return 0;
     }
   }
 
-  public function accept_friend($requester)
+  public function acceptFriend($requester)
   {
     $friendship = Friendship::where('requester', $requester)->where('user_requested', $this->id)->first();
 
@@ -35,10 +55,10 @@ trait Friendable
     {
       $friendship->update([ 'status' => 1]);
 
-      return response()->json('ok', 200);
+      return 1;
     }
 
-    return response()->json('fail', 501);
+    return 0;
   }
 
   public function friends()
@@ -72,7 +92,7 @@ trait Friendable
 
     foreach ($f as $value)
     {
-      array_push($friends, User::find($f->requester));
+      array_push($friends, User::find($value->requester));
     }
 
     return $friends;
@@ -86,7 +106,7 @@ trait Friendable
 
     foreach ($f as $value)
     {
-      array_push($friends, User::find($f->user_requested));
+      array_push($friends, User::find($value->user_requested));
     }
 
     return $friends;

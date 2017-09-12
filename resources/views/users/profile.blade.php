@@ -111,7 +111,7 @@
     <div class="col-md-8">
       <h4 class="title">{{$user->name}}
         @if($user->id == Auth::user()->id)
-          <a href="#" class="pull-right" style="font-size:12px" data-toggle="modal" data-target="#profile">
+          <a href="#" class="reset-a pull-right" style="font-size:12px;color:#21c8e2" data-toggle="modal" data-target="#profile">
             <i class="fa fa-edit"></i>Edit
           </a>
         @endif

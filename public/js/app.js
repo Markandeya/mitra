@@ -2064,7 +2064,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   mounted: function mounted() {
     var _this = this;
 
-    this.$http.get('/check-relationship-status/' + this.profile_user_id).then(function (response) {
+    this.$http.get('/ajax/check-relationship-status/' + this.profile_user_id).then(function (response) {
       console.log(response);
       _this.status = response.body.status;
       _this.loading = false;
@@ -2074,6 +2074,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   methods: {
     sendRequest: function sendRequest() {
       console.log("send friend request");
+    },
+    addFriend: function addFriend() {
+      var _this2 = this;
+
+      this.loading = true;
+      this.$http.get('/ajax/add-friend/' + this.profile_user_id).then(function (response) {
+        if (response.body == "1") _this2.status = 'waiting';
+      });
+      this.loading = false;
+    },
+    acceptFriend: function acceptFriend() {
+      var _this3 = this;
+
+      this.loading = true;
+      this.$http.get('/ajax/accept-friend/' + this.profile_user_id).then(function (response) {
+        console.log(response);
+        if (response.body == "1") _this3.status = 'friends';
+      });
+      this.loading = false;
     }
   }
 });
@@ -6458,7 +6477,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)();
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 /***/ }),
 /* 44 */
@@ -43761,8 +43780,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     },
     attrs: {
       "href": "#"
+    },
+    on: {
+      "click": _vm.addFriend
     }
-  }, [_vm._v("Add friend "), _c('i', {
+  }, [_vm._v("Add friend  "), _c('i', {
     staticClass: "fa fa-user-plus"
   })]) : _vm._e(), _vm._v(" "), (_vm.status == 'friends') ? _c('span', {
     staticClass: "label label-info pull-right",
@@ -43783,6 +43805,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     },
     attrs: {
       "href": "#"
+    },
+    on: {
+      "click": _vm.acceptFriend
     }
   }, [_vm._v("Accept friend  "), _c('i', {
     staticClass: "fa fa-check"
