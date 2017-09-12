@@ -14,8 +14,17 @@ export default {
     listen() {
 
       Echo.private('Mitra.User.' + this.id).notification( (notification) => {
-        alert('New notification!');
-        console.log(notification);
+        new noty({
+          type: 'success',
+          layout: 'bottomCenter',
+          text: '<p class="text-center">'+ notification.message +'</p>',
+          animation: {
+               open: 'animated fadeInUp',
+               close: 'animated fadeOut',
+           }
+        }).show();
+        console.log(document.getElementById('noty_audio'));
+        $("#noty_audio")[0].play();
       });
     }
   }

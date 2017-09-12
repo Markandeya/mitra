@@ -168,6 +168,8 @@
         <div class="row" style="margin-top:50px">
           @yield('content')
           <notification :id="{{Auth::id()}}"></notification>
+          <audio id="noty_audio" src="{{ asset('audio/tone.mp3') }}" type="audio/mp3">
+          </audio>
           <div class="col-md-3" style="padding-top:20px;">
             @yield('left')
           </div>

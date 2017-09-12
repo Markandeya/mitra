@@ -7,6 +7,8 @@ use Auth;
 use Mitra\User;
 use Mitra\Friendship;
 use Mitra\Notifications\NewFriendRequest;
+use Mitra\Notifications\FriendRequestAccepted;
+
 
 class FriendController extends Controller
 {
@@ -41,6 +43,10 @@ class FriendController extends Controller
 
     public function acceptFriend($id)
     {
-      return Auth::user()->acceptFriend($id);
+      $resp = Auth::user()->acceptFriend($id);
+
+      User::find($id)->notify( new FriendRequestAccepted(Auth::user()) );
+
+      return $resp;
     }
 }

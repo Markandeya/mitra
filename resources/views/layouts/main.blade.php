@@ -54,6 +54,11 @@
             <button type="submit" class="btn btn-success">Sign in</button>
           </form>
         </div><!--/.navbar-collapse -->
+        @if ($errors->has('email') && $errors->first('email')=='These credentials do not match our records.')
+          <span class="text-danger pull-right">
+              <strong>{{ $errors->first('email') }}</strong>
+          </span>
+        @endif
       </div>
     </nav>
     @yield('content')

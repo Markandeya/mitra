@@ -8,10 +8,9 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Support\Facades\URL;
 
-class NewFriendRequest extends Notification implements ShouldQueue
+class FriendRequestAccepted extends Notification implements ShouldQueue
 {
     use Queueable;
-
     public $user;
 
     /**
@@ -44,7 +43,8 @@ class NewFriendRequest extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('You recieved a friend request from '.$this->user->name)
+                    ->success()
+                    ->line($this->user->name.' accepted your friend request.')
                     ->action('View profile', URL::to('/').'/profile/'.$this->user->id)
                     ->line('Thank you for using Mitra social app!');
     }
@@ -59,7 +59,7 @@ class NewFriendRequest extends Notification implements ShouldQueue
     {
         return [
             'name' => $this->user->name,
-            'message' => $this->user->name.' sent you a friend request.'
+            'message' => $this->user->name.' accepted your friend request'
         ];
     }
 }

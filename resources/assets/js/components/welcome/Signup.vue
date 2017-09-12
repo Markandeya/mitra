@@ -18,7 +18,7 @@
           <div class="panel-box">
             Email
             <input id="email" type="email" name="email" value="" class="form-control" placeholder="example@example.com" required>
-            <div class="alert alert-danger alert-dismissible" role="alert" v-if="erroremail!=''">
+            <div class="alert alert-danger alert-dismissible" role="alert" v-if="erroremail!=''&&erroremail!='These credentials do not match our records.'">
               <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               <strong>{{ erroremail }}</strong>
             </div>

@@ -2161,8 +2161,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     listen: function listen() {
 
       Echo.private('Mitra.User.' + this.id).notification(function (notification) {
-        alert('New notification!');
-        console.log(notification);
+        new noty({
+          type: 'success',
+          layout: 'bottomCenter',
+          text: '<p class="text-center">' + notification.message + '</p>',
+          animation: {
+            open: 'animated fadeInUp',
+            close: 'animated fadeOut'
+          }
+        }).show();
+        console.log(document.getElementById('noty_audio'));
+        $("#noty_audio")[0].play();
       });
     }
   }
@@ -6531,7 +6540,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)();
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 /***/ }),
 /* 45 */
@@ -43714,7 +43723,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "placeholder": "example@example.com",
       "required": ""
     }
-  }), _vm._v(" "), (_vm.erroremail != '') ? _c('div', {
+  }), _vm._v(" "), (_vm.erroremail != '' && _vm.erroremail != 'These credentials do not match our records.') ? _c('div', {
     staticClass: "alert alert-danger alert-dismissible",
     attrs: {
       "role": "alert"
