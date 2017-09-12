@@ -12,6 +12,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="shortcut icon" href="{{{ asset('images/favicon.png') }}}">
+
     @yield('styles')
 </head>
 <body>
@@ -30,7 +32,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                      <a class="navbar-brand" href="/"><i class="fa fa-maxcdn" style="color:#f4645f"></i><i style="font-weight:700">itra</i></a>
+                      <a class="navbar-brand" href="{{route('home')}}"><img src="{{asset('images/navbar/m.png')}}" style="height:24px;display:inline" alt="M"><b>itra</b></a>
                     </a>
                 </div>
 

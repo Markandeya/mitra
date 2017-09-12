@@ -8,10 +8,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name') }} | @yield('title')</title>
+    <title>@yield('title')</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="shortcut icon" href="{{{ asset('images/favicon.png') }}}">
     @yield('styles')
 </head>
 <body>
@@ -83,7 +84,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="{{route('home')}}"><i class="fa fa-maxcdn" style="color:#f4645f"></i><i style="font-weight:700">itra</i></a>
+              <a class="navbar-brand" href="{{route('home')}}"><img src="{{asset('images/navbar/m.png')}}" style="height:24px;display:inline" alt="M"><b>itra</b></a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav navbar-main">
@@ -166,6 +167,7 @@
         {{-- @include('partials._messages') --}}
         <div class="row" style="margin-top:50px">
           @yield('content')
+          <notification :id="{{Auth::id()}}"></notification>
           <div class="col-md-3" style="padding-top:20px;">
             @yield('left')
           </div>

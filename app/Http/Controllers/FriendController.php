@@ -5,6 +5,8 @@ namespace Mitra\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use \Mitra\Friendship;
+use \Mitra\Notifications\NewFriendRequest;
+
 class FriendController extends Controller
 {
     public function check($id)
@@ -29,7 +31,11 @@ class FriendController extends Controller
 
     public function addFriend($id)
     {
-      return Auth::user()->addFriend($id);
+      $resp =  Auth::user()->addFriend($id);
+
+      User::find($id)->notify( new NewFriendRequest(Auth::user()) );
+
+      return $resp;
     }
 
     public function acceptFriend($id)

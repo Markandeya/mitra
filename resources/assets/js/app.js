@@ -22,6 +22,7 @@ Vue.component('create-post', require('./components/core/CreatePost.vue'));
 Vue.component('pagination', require('laravel-vue-pagination'));
 Vue.component('friend', require('./components/core/Friend.vue'));
 Vue.component('friend-sm', require('./components/core/FriendSmall.vue'));
+Vue.component('notification', require('./components/core/Notification.vue'));
 
 
 window.onload = function () {
