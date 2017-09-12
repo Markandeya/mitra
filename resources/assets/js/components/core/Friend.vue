@@ -25,29 +25,46 @@ export default {
   },
   mounted() {
     this.$http.get('/ajax/check-relationship-status/' + this.profile_user_id).then( (response) => {
-      console.log(response);
       this.status = response.body.status;
       this.loading = false;
     });
   },
   methods: {
-    sendRequest() {
-      console.log("send friend request");
-    },
     addFriend() {
       this.loading = true;
       this.$http.get('/ajax/add-friend/' + this.profile_user_id).then( (response) => {
         if(response.body == "1")
           this.status = 'waiting';
+          new noty({
+            type: 'success',
+            layout: 'bottomCenter',
+            timeout: 2000,
+            theme: 'metroui',
+            text: '<p class="text-center">Friend request sent.</p>',
+            animation: {
+                 open: 'animated fadeInUp',
+                 close: 'animated fadeOut',
+             }
+          }).show();
       });
       this.loading = false;
     },
     acceptFriend() {
       this.loading = true;
       this.$http.get('/ajax/accept-friend/' + this.profile_user_id).then( (response) => {
-        console.log(response);
         if(response.body == "1")
           this.status = 'friends';
+          new noty({
+            type: 'success',
+            layout: 'bottomCenter',
+            timeout: 2000,
+            theme: 'metroui',
+            text: '<p class="text-center">You are now friends!</p>',
+            animation: {
+                 open: 'animated fadeInUp',
+                 close: 'animated fadeOut',
+             }
+          }).show();
       });
       this.loading = false;
     }

@@ -2065,22 +2065,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     var _this = this;
 
     this.$http.get('/ajax/check-relationship-status/' + this.profile_user_id).then(function (response) {
-      console.log(response);
       _this.status = response.body.status;
       _this.loading = false;
     });
   },
 
   methods: {
-    sendRequest: function sendRequest() {
-      console.log("send friend request");
-    },
     addFriend: function addFriend() {
       var _this2 = this;
 
       this.loading = true;
       this.$http.get('/ajax/add-friend/' + this.profile_user_id).then(function (response) {
         if (response.body == "1") _this2.status = 'waiting';
+        new noty({
+          type: 'success',
+          layout: 'bottomCenter',
+          timeout: 2000,
+          theme: 'metroui',
+          text: '<p class="text-center">Friend request sent.</p>',
+          animation: {
+            open: 'animated fadeInUp',
+            close: 'animated fadeOut'
+          }
+        }).show();
       });
       this.loading = false;
     },
@@ -2089,8 +2096,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
       this.loading = true;
       this.$http.get('/ajax/accept-friend/' + this.profile_user_id).then(function (response) {
-        console.log(response);
         if (response.body == "1") _this3.status = 'friends';
+        new noty({
+          type: 'success',
+          layout: 'bottomCenter',
+          timeout: 2000,
+          theme: 'metroui',
+          text: '<p class="text-center">You are now friends!</p>',
+          animation: {
+            open: 'animated fadeInUp',
+            close: 'animated fadeOut'
+          }
+        }).show();
       });
       this.loading = false;
     }
@@ -6477,7 +6494,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)();
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 /***/ }),
 /* 44 */
