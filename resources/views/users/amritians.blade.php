@@ -153,95 +153,101 @@
 @endsection
 @section('scripts')
 <script type="text/javascript">
-  window.onload = new Vue({
-      el: '#app',
-      data: {
-        search: '{!! $name !!}',
-        memberAll: true,
-        memberStudents: false,
-        memberAlumni: false,
-        memberFaculties: false,
-        campusAll: true,
-        campusAmritapuri: false,
-        campusEttimadai: false,
-        campusBangalore: false,
-        campusKochi: false,
-        courseAll: true,
-        bca: false,
-        mca: false,
-        mech: false,
-        eee: false,
-        jyear: null,
-        gyear: null,
-        users: {},
-        imageLink: '{!! asset('storage').'/' !!}',
-        profileLink: '{!! URL::to('/').'/profile/' !!}',
-        loader: false,
-      },
-      created: function() {
-        this.request();
-      },
-      mounted: function() {
-        console.log(this.users.data);
-      },
-      methods: {
-        request: function (page) {
-          if (typeof page === 'undefined') {
-    				page = 1;
-    			}
-          var ap = this;
-          this.loader = true;
-          $.ajax({
-                    type: 'GET',
-                    url: window.location.origin + '/ajax/search-user?page=' + page,
-                    data: {
-                      memberAll: ap.memberAll,
-                      memberStudents: ap.memberStudents,
-                      memberAlumni: ap.memberAlumni,
-                      memberFaculties: ap.memberFaculties,
-                      campusAll: ap.campusAll,
-                      campusAmritapuri: ap.campusAmritapuri,
-                      campusEttimadai: ap.campusEttimadai,
-                      campusBangalore: ap.campusBangalore,
-                      campusKochi: ap.campusKochi,
-                      courseAll: ap.courseAll,
-                      bca: ap.bca,
-                      mca: ap.mca,
-                      mech: ap.mech,
-                      eee: ap.eee,
-                      jyear: ap.jyear,
-                      gyear: ap.gyear,
-                      search: ap.search,
-                    },
-                    error: function (err) {
-                        console.log("AJAX error in request: " + JSON.stringify(err, null, 2));
-                    }
-                }).done(function(data) {
-                  //convert data in the response to array of objects
-                  var array = $.map(data.data, function(value, index) {
-                      return [value];
-                  });
-                  data.data = array;
-                  ap.users = data;
-                  console.log(ap.users.data);
-          });
-          this.loader = false;
-        },
-        getResults: function (page) {
-    			if (typeof page === 'undefined') {
-    				page = 1;
-    			}
+  window.onload = function() {
+       new Vue({
+          el: '#app',
+          data: {
+            search: '{!! $name !!}',
+            memberAll: true,
+            memberStudents: false,
+            memberAlumni: false,
+            memberFaculties: false,
+            campusAll: true,
+            campusAmritapuri: false,
+            campusEttimadai: false,
+            campusBangalore: false,
+            campusKochi: false,
+            courseAll: true,
+            bca: false,
+            mca: false,
+            mech: false,
+            eee: false,
+            jyear: null,
+            gyear: null,
+            users: {},
+            imageLink: '{!! asset('storage').'/' !!}',
+            profileLink: '{!! URL::to('/').'/profile/' !!}',
+            loader: false,
+          },
+          created: function() {
+            this.request();
+          },
+          mounted: function() {
+            //console.log(this.users.data);
+          },
+          components: {
+            unread: 'unread'
+          },
+          methods: {
+            request: function (page) {
+              if (typeof page === 'undefined') {
+        				page = 1;
+        			}
+              var ap = this;
+              this.loader = true;
+              $.ajax({
+                        type: 'GET',
+                        url: window.location.origin + '/ajax/search-user?page=' + page,
+                        data: {
+                          memberAll: ap.memberAll,
+                          memberStudents: ap.memberStudents,
+                          memberAlumni: ap.memberAlumni,
+                          memberFaculties: ap.memberFaculties,
+                          campusAll: ap.campusAll,
+                          campusAmritapuri: ap.campusAmritapuri,
+                          campusEttimadai: ap.campusEttimadai,
+                          campusBangalore: ap.campusBangalore,
+                          campusKochi: ap.campusKochi,
+                          courseAll: ap.courseAll,
+                          bca: ap.bca,
+                          mca: ap.mca,
+                          mech: ap.mech,
+                          eee: ap.eee,
+                          jyear: ap.jyear,
+                          gyear: ap.gyear,
+                          search: ap.search,
+                        },
+                        error: function (err) {
+                            //console.log("AJAX error in request: " + JSON.stringify(err, null, 2));
+                        }
+                    }).done(function(data) {
+                      //convert data in the response to array of objects
+                      var array = $.map(data.data, function(value, index) {
+                          return [value];
+                      });
+                      data.data = array;
+                      ap.users = data;
+                      //console.log(ap.users.data);
+              });
+              this.loader = false;
+            },
+            getResults: function (page) {
+        			if (typeof page === 'undefined') {
+        				page = 1;
+        			}
 
-    			// Using vue-resource as an example
-    			this.$http.get(window.location.origin + '/ajax/search-user' + page)
-    				.then(response => {
-    					return response.json();
-    				}).then(data => {
-    					this.laravelData = data;
-    				});
-    		}
-      }
-    });
+        			// Using vue-resource as an example
+        			this.$http.get(window.location.origin + '/ajax/search-user' + page)
+        				.then(response => {
+        					return response.json();
+        				}).then(data => {
+        					this.laravelData = data;
+        				});
+        		}
+          }
+        });
+
+  }
 
 </script>
 @endsection

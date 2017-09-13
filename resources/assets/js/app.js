@@ -23,10 +23,13 @@ Vue.component('pagination', require('laravel-vue-pagination'));
 Vue.component('friend', require('./components/core/Friend.vue'));
 Vue.component('friend-sm', require('./components/core/FriendSmall.vue'));
 Vue.component('notification', require('./components/core/Notification.vue'));
+Vue.component('unread', require('./components/core/Unread.vue'));
 
+import { store } from './store'
 
 window.onload = function () {
   const app = new Vue({
-      el: '#app'
+      el: '#app',
+      store
   });
 }

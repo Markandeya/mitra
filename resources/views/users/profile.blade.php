@@ -167,6 +167,6 @@
     }
   });
 </script>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAw2dWoHBzUQRpzzgPDCbb-1l2VM-qxpIs&libraries=places&callback=autoPlaces"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTlZNQmVhgnm1Ci0p063TZj2x_nmsugvo&libraries=places&callback=autoPlaces"></script>
 
 @endsection

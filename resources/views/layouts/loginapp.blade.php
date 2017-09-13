@@ -13,6 +13,11 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="shortcut icon" href="{{{ asset('images/favicon.png') }}}">
+    <style media="screen">
+    [v-cloak] {
+      display: none;
+    }
+    </style>
     @yield('styles')
 </head>
 <body>
@@ -109,6 +114,7 @@
                     <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                         <span class="fa fa-user-plus"></span>
+                        <unread></unread>
                       </a>
                       <ul class="dropdown-menu dropdown-nav" role="menu">
                         <li class="navhdrop">Follow requests</li>
@@ -224,7 +230,10 @@
          }).show();
        @endif
       });
-
+      console.log('test1');
+    if (window.location.hash && window.location.hash == '#_=_') {
+        window.location.hash = '';
+    }
 
     </script>
     @yield('scripts')
