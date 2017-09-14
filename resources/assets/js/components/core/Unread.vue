@@ -1,6 +1,6 @@
 <template lang="html">
   <a href="#">
-    <span class="badge" style="background-color:red">4</span>
+    <span class="badge" style="background-color:red" v-if="all_nots_count!=0">{{ all_nots_count }}</span>
   </a>
 </template>
 
@@ -17,6 +17,11 @@ export default {
           this.$store.commit('add_not', not)
         })
       })
+    }
+  },
+  computed: {
+    all_nots_count() {
+      return this.$store.getters.all_nots_count
     }
   }
 }

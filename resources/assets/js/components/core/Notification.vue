@@ -22,9 +22,10 @@ export default {
                open: 'animated fadeInUp',
                close: 'animated fadeOut',
            }
-        }).show();
-        console.log(document.getElementById('noty_audio'));
-        $("#noty_audio")[0].play();
+        }).show()
+        this.$store.commit('add_not', notification)
+        console.log(document.getElementById('noty_audio'))
+        $("#noty_audio")[0].play()
       });
     }
   }

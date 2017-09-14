@@ -21,6 +21,7 @@ Route::get('/home', 'UserController@index')->name('home');
 Route::get('/profile/{id}', 'UserController@profile')->name('profile');
 Route::post('/update-profile', 'UserController@postProfile')->name('update-profile');
 Route::get('/amritians', 'UserController@amritians')->name('amritians');
+Route::get('/notifications', 'UserController@notifications')->name('notifications');
 
 Route::prefix('/admin')->group(function() {
   Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');

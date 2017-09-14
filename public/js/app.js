@@ -11873,7 +11873,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     this.request();
   },
   mounted: function mounted() {
-    console.log(this.search);
+    console.log(this.imageLink);
   },
 
   methods: {
@@ -12114,6 +12114,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   props: ['id'],
   methods: {
     listen: function listen() {
+      var _this = this;
 
       Echo.private('Mitra.User.' + this.id).notification(function (notification) {
         new noty({
@@ -12125,6 +12126,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             close: 'animated fadeOut'
           }
         }).show();
+        _this.$store.commit('add_not', notification);
         console.log(document.getElementById('noty_audio'));
         $("#noty_audio")[0].play();
       });
@@ -12160,6 +12162,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           _this.$store.commit('add_not', not);
         });
       });
+    }
+  },
+  computed: {
+    all_nots_count: function all_nots_count() {
+      return this.$store.getters.all_nots_count;
     }
   }
 });
@@ -14137,7 +14144,14 @@ var store = new __WEBPACK_IMPORTED_MODULE_0_vuex__["a" /* default */].Store({
   state: {
     nots: []
   },
-  getters: {},
+  getters: {
+    all_nots: function all_nots(state) {
+      return state.nots;
+    },
+    all_nots_count: function all_nots_count(state) {
+      return state.nots.length;
+    }
+  },
   mutations: {
     add_not: function add_not(state, not) {
       state.nots.push(not);
@@ -16534,7 +16548,7 @@ if (typeof jQuery === 'undefined') {
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)();
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 /***/ }),
 /* 46 */
@@ -16569,7 +16583,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)();
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 /***/ }),
 /* 51 */
@@ -53399,19 +53413,17 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('a', {
     attrs: {
       "href": "#"
     }
-  }, [_c('span', {
+  }, [(_vm.all_nots_count != 0) ? _c('span', {
     staticClass: "badge",
     staticStyle: {
       "background-color": "red"
     }
-  }, [_vm._v("4")])])
-}]}
+  }, [_vm._v(_vm._s(_vm.all_nots_count))]) : _vm._e()])
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()

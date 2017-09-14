@@ -114,7 +114,6 @@
                     <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                         <span class="fa fa-user-plus"></span>
-                        <unread></unread>
                       </a>
                       <ul class="dropdown-menu dropdown-nav" role="menu">
                         <li class="navhdrop">Follow requests</li>
@@ -135,11 +134,12 @@
                       <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                           <span class="fa fa-bell-o"></span>
+                            <unread></unread>
                         </a>
                         <ul class="dropdown-menu dropdown-nav" role="menu">
                           <li class="navhdrop">Notifications</li>
                           <li class="navbdrop"><img src="{{ asset('images/navbar/clock.png')}}" class="navimg">&nbsp;&nbsp;All caught up with latest updates!</li>
-                          <li class="navfdrop"><a href="#">See all</a></li>
+                          <li class="navfdrop"><a href="{{ route('notifications') }}">See all</a></li>
                         </ul>
                       </li>
                       <li class="dropdown">

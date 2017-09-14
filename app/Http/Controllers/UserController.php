@@ -92,4 +92,14 @@ class UserController extends Controller
 
         return view('users.amritians')->with('name', $name);
     }
+
+    public function notifications()
+    {
+      if(Auth::user()->activated == 0)
+        return view('home');
+
+      Auth::user()->unreadNotifications->markAsRead();
+
+      return view('users.notifications')->with('nots', Auth::user()->notifications);
+    }
 }
