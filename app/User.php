@@ -48,4 +48,9 @@ class User extends Authenticatable
     {
       return $this->belongsTo('Mitra\Course');
     }
+
+    public function posts()
+    {
+      return $this->hasMany('Mitra\Post');
+    }
 }

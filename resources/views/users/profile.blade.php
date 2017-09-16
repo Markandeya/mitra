@@ -100,36 +100,46 @@
 </div>
 @endsection
 @section('left')
+  <div class="box-shadow-profile">
+    <h4 class="title text-center">{{$user->name}}</h4>
+    <div style="display:flex;justify-content:center">
+      <div>
+          <a data-toggle="modal" data-target="#image"><img src="{{asset('storage').'/'.$user->id.'/'.$user->profile_image}}" style="max-width:150px" class="ratio img-responsive img-circle" alt="Profile image"></a>
+      </div>
+      <div>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-11 col-md-offset-1">
 
+        <h5 class="title-light">{{$user->designation}} at {{$user->organization}}</h5>
+        <h5 class="title-lighter">Lives @ {{$user->city}}</h5>
+        <h6>{{$user->email}}</h6>
+        <div class="">
+          <span class="label label-success">Student</span>
+          <span class="label label-info">{{$user->course->name}} {{$user->graduation_year}}</span>
+          <span class="label label-default">{{$user->campus->name}}</span>
+        </div>
+          @if($user->id != Auth::user()->id)
+            <friend :profile_user_id="{{ $user->id }}"></friend>
+          @else
+            <a href="#" class="reset-a pull-right" style="font-size:12px;color:#21c8e2" data-toggle="modal" data-target="#profile">
+              <i class="fa fa-edit"></i>Edit
+            </a>
+          @endif
+      </div>
+    </div>
+
+  </div>
 @endsection
 @section('center')
-<div class="box-shadow-profile">
-  <div class="row">
-    <div class="col-md-4">
-        <a data-toggle="modal" data-target="#image"><img src="{{asset('storage').'/'.$user->id.'/'.$user->profile_image}}" style="max-width:150px" class="ratio img-responsive img-circle" alt="Profile image"></a>
-    </div>
-    <div class="col-md-8">
-      <h4 class="title">{{$user->name}}
-        @if($user->id == Auth::user()->id)
-          <a href="#" class="reset-a pull-right" style="font-size:12px;color:#21c8e2" data-toggle="modal" data-target="#profile">
-            <i class="fa fa-edit"></i>Edit
-          </a>
-        @endif
-      </h4>
-      <h5 class="title-light">{{$user->designation}} at {{$user->organization}}</h5>
-      <h5 class="title-lighter">Lives @ {{$user->city}}</h5>
-      <h6>{{$user->email}}</h6>
-      <div class="">
-        <span class="label label-success">Student</span>
-        <span class="label label-info">{{$user->course->name}} {{$user->graduation_year}}</span>
-        <span class="label label-default">{{$user->campus->name}}</span>
-      </div>
-        @if($user->id != Auth::user()->id)
-          <friend :profile_user_id="{{ $user->id }}"></friend>
-        @endif
-    </div>
-  </div>
-</div>
+
+  @if($user->id == Auth::user()->id)
+    <create-post></create-post>
+  @endif
+
+  <timeline :user_id="{{ $user->id }}"></timeline>
 @endsection
 @section('scripts')
 <style>

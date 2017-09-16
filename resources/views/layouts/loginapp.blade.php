@@ -131,17 +131,9 @@
                         <li class="navfdrop"><a href="#">Inbox</a><a href="#">+New</a></li>
                       </ul>
                     </li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                          <span class="fa fa-bell-o"></span>
-                          <unread></unread>
-                        </a>
-                        <ul class="dropdown-menu dropdown-nav" role="menu">
-                          <li class="navhdrop">Notifications</li>
-                          <li class="navbdrop"><img src="{{ asset('images/navbar/clock.png')}}" class="navimg">&nbsp;&nbsp;All caught up with latest updates!</li>
-                          <li class="navfdrop"><a href="{{ route('notifications') }}">See all</a></li>
-                        </ul>
-                      </li>
+                    <unread :image-url="'{{ asset('images/navbar/clock.png')}}'"
+                            :route="'{{ asset('notifications') }}'">
+                    </unread>
                       <li class="dropdown">
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                               {{-- {{ Auth::user()->name }} <span class="caret"></span> --}}

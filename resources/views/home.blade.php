@@ -65,7 +65,8 @@
                   @endsection
                   @section('center')
                     <div class="container-fluid">
-                      <create-post></create-post>
+                      <create-post :route="'{{ route('create-post') }}'"></create-post>
+                      <feed></feed>
                     </div>
                   @endsection
               {{-- </div> --}}

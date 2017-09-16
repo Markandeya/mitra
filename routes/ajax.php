@@ -12,6 +12,10 @@ Route::group(['prefix' => 'ajax',], function () {
   Route::get('/check-relationship-status/{id}','FriendController@check')->name('check');
   Route::get('/add-friend/{id}','FriendController@addFriend')->name('add-friend');
   Route::get('/accept-friend/{id}','FriendController@acceptFriend')->name('accept-friend');
+  Route::get('/create-post','PostController@store')->name('create-post');
+  Route::get('/get-posts/{id}','PostController@getPosts')->name('user-posts');
+  Route::get('/feed','FeedController@feed')->name('feed');
+
   Route::get('/get-unread', function() {
     return Auth::user()->unreadNotifications;
   });

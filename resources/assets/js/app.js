@@ -25,6 +25,9 @@ Vue.component('friend-sm', require('./components/core/FriendSmall.vue'));
 Vue.component('notification', require('./components/core/Notification.vue'));
 Vue.component('adv-search', require('./components/core/AdvSearch.vue'));
 Vue.component('unread', require('./components/core/Unread.vue'));
+Vue.component('timeline', require('./components/core/Timeline.vue'));
+Vue.component('feed', require('./components/core/Feed.vue'));
+
 
 import { store } from './store'
 
