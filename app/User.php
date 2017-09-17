@@ -5,6 +5,7 @@ namespace Mitra;
 use Mitra\Traits\Friendable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Storage;
 
 class User extends Authenticatable
 {
@@ -19,6 +20,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name', 'email', 'password', 'activated', 'profile_image', 'designation', 'city', 'organization'
     ];
+
 
     /**
      * The attributes that should be hidden for arrays.
@@ -52,5 +54,14 @@ class User extends Authenticatable
     public function posts()
     {
       return $this->hasMany('Mitra\Post');
+    }
+
+    public function getProfileImageAttribute($profileImage)
+    {
+      $id = $this->attributes['id'];
+
+      //$link = url(asset('storage').'/'.$id.'/'.$profileImage);
+
+      return asset(Storage::url('/'.$id.'/'.$profileImage));
     }
 }

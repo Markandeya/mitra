@@ -3,17 +3,32 @@
       <div class="loader" v-if="loading">
       </div>
       <div class="box-shadow-feed" v-for="post in posts" v-else>
-        {{ post.content }}
+        <div class="row row-eq-height">
+          <div class="col-sm-1">
+            <a :href="baseLink+'/profile/'+post.user.id" class="reset-a">
+              <img :src="post.user.profile_image" alt="" class="ratio img-circle" width="30px" height="30px">
+            </a>
+          </div>
+          <div class="col-sm-11">
+            <a :href="baseLink+'/profile/'+post.user.id"><h5 class="title">{{ post.user.name }} <small class="pull-right">{{ post.created_at }}</small></h5></a>
+          </div>
+        </div>
+        <div class="container">
+          {{ post.content }}
+        </div>
       </div>
   </div>
 </template>
 
 <script>
 export default {
+  props: {
+    baseLink: String
+  },
   data () {
     return {
         posts: {},
-        loading: true
+        loading: true,
     }
 
   },

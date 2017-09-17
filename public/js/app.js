@@ -11846,7 +11846,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     search: String,
-    imageLink: String,
     profileLink: String
   },
   data: function data() {
@@ -12041,8 +12040,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    baseLink: String
+  },
   data: function data() {
     return {
       posts: {},
@@ -16726,7 +16740,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)();
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 /***/ }),
 /* 51 */
@@ -16740,7 +16754,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)();
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 /***/ }),
 /* 53 */
@@ -53843,7 +53857,36 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }) : _vm._l((_vm.posts), function(post) {
     return _c('div', {
       staticClass: "box-shadow-feed"
-    }, [_vm._v("\n      " + _vm._s(post.content) + "\n    ")])
+    }, [_c('div', {
+      staticClass: "row row-eq-height"
+    }, [_c('div', {
+      staticClass: "col-sm-1"
+    }, [_c('a', {
+      staticClass: "reset-a",
+      attrs: {
+        "href": _vm.baseLink + '/profile/' + post.user.id
+      }
+    }, [_c('img', {
+      staticClass: "ratio img-circle",
+      attrs: {
+        "src": post.user.profile_image,
+        "alt": "",
+        "width": "30px",
+        "height": "30px"
+      }
+    })])]), _vm._v(" "), _c('div', {
+      staticClass: "col-sm-11"
+    }, [_c('a', {
+      attrs: {
+        "href": _vm.baseLink + '/profile/' + post.user.id
+      }
+    }, [_c('h5', {
+      staticClass: "title"
+    }, [_vm._v(_vm._s(post.user.name) + " "), _c('small', {
+      staticClass: "pull-right"
+    }, [_vm._v(_vm._s(post.created_at))])])])])]), _vm._v(" "), _c('div', {
+      staticClass: "container"
+    }, [_vm._v("\n        " + _vm._s(post.content) + "\n      ")])])
   })], 2)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
@@ -54549,7 +54592,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_c('img', {
       staticClass: "ratio img-circle",
       attrs: {
-        "src": _vm.imageLink + user.id + '/' + user.profile_image,
+        "src": user.profile_image,
         "alt": "",
         "width": "60px",
         "height": "60px"

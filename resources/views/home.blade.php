@@ -66,7 +66,8 @@
                   @section('center')
                     <div class="container-fluid">
                       <create-post :route="'{{ route('create-post') }}'"></create-post>
-                      <feed></feed>
+                      <feed
+                      :base-link="'{{ url('/') }}'"></feed>
                     </div>
                   @endsection
               {{-- </div> --}}

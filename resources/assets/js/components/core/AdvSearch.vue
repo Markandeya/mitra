@@ -106,7 +106,7 @@
 
                   <div class="col-md-2">
                     <a :href="profileLink+user.id" class="reset-a">
-                      <img :src="imageLink+user.id+'/'+user.profile_image" alt="" class="ratio img-circle" width="60px" height="60px">
+                      <img :src="user.profile_image" alt="" class="ratio img-circle" width="60px" height="60px">
                     </a>
                   </div>
 
@@ -148,7 +148,6 @@
 export default {
   props: {
     search: String,
-    imageLink: String,
     profileLink: String,
   },
   data() {

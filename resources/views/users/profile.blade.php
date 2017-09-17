@@ -91,7 +91,7 @@
         <h4 class="modal-title">{{$user->name}}</h4>
       </div>
       <div class="modal-body" style="display:flex;justify-content:center">
-        <img src="{{asset('storage').'/'.$user->id.'/'.$user->profile_image}}" style="max-width:100%" class="ratio img-responsive img-circle" alt="Profile image">
+        <img src="{{ Auth::user()->profile_image}}" style="max-width:100%" class="ratio img-responsive img-circle" alt="Profile image">
 
       </div>
     </div>
@@ -104,7 +104,7 @@
     <h4 class="title text-center">{{$user->name}}</h4>
     <div style="display:flex;justify-content:center">
       <div>
-          <a data-toggle="modal" data-target="#image"><img src="{{asset('storage').'/'.$user->id.'/'.$user->profile_image}}" style="max-width:150px" class="ratio img-responsive img-circle" alt="Profile image"></a>
+          <a data-toggle="modal" data-target="#image"><img src="{{ Auth::user()->profile_image}}" style="max-width:150px" class="ratio img-responsive img-circle" alt="Profile image"></a>
       </div>
       <div>
       </div>
