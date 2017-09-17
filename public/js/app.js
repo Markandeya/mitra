@@ -12052,6 +12052,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -12060,7 +12080,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   data: function data() {
     return {
       posts: {},
-      loading: true
+      loading: true,
+      comment: false
     };
   },
   created: function created() {
@@ -12068,6 +12089,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
 
   methods: {
+    showComment: function showComment(i) {
+      console.log(i);
+      $('#c' + i).addClass('animated flipInX').css('display', 'block');
+      $('.feed').removeClass('animated fadeIn');
+      $('#c' + i).removeClass('fadeIn');
+    },
     request: function request() {
 
       var ap = this;
@@ -16740,7 +16767,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)();
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 /***/ }),
 /* 51 */
@@ -53854,8 +53881,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "feed animated fadeIn"
   }, [(_vm.loading) ? _c('div', {
     staticClass: "loader"
-  }) : _vm._l((_vm.posts), function(post) {
+  }) : _vm._l((_vm.posts), function(post, i) {
     return _c('div', {
+      staticClass: "wrap"
+    }, [_c('div', {
       staticClass: "box-shadow-feed"
     }, [_c('div', {
       staticClass: "row row-eq-height"
@@ -53886,7 +53915,49 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "pull-right"
     }, [_vm._v(_vm._s(post.created_at))])])])])]), _vm._v(" "), _c('div', {
       staticClass: "container"
-    }, [_vm._v("\n        " + _vm._s(post.content) + "\n      ")])])
+    }, [_vm._v("\n          " + _vm._s(post.content) + "\n        ")]), _vm._v(" "), _c('div', {
+      staticClass: "row"
+    }, [_c('div', {
+      staticClass: "feed-control"
+    }, [_c('i', {
+      staticClass: "fa fa-thumbs-o-up"
+    }), _vm._v(" "), _c('a', {
+      attrs: {
+        "href": "#"
+      }
+    }, [_vm._v("Like")])]), _vm._v(" "), _c('div', {
+      staticClass: "feed-control"
+    }, [_c('i', {
+      staticClass: "fa fa-comment-o"
+    }), _vm._v(" "), _c('a', {
+      attrs: {
+        "href": '#c' + i
+      },
+      on: {
+        "click": function($event) {
+          _vm.showComment(i)
+        }
+      }
+    }, [_vm._v("Comment")])]), _vm._v(" "), _c('div', {
+      staticClass: "feed-control"
+    }, [_c('i', {
+      staticClass: "fa fa-share"
+    }), _vm._v(" "), _c('a', {
+      attrs: {
+        "href": "#"
+      }
+    }, [_vm._v("Share")])])])]), _vm._v(" "), _c('div', {
+      directives: [{
+        name: "show",
+        rawName: "v-show",
+        value: (_vm.comment),
+        expression: "comment"
+      }],
+      staticClass: "comment-show",
+      attrs: {
+        "id": 'c' + i
+      }
+    }, [_c('p', [_vm._v("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")])])])
   })], 2)
 },staticRenderFns: []}
 module.exports.render._withStripped = true

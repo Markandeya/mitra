@@ -56,6 +56,11 @@ class User extends Authenticatable
       return $this->hasMany('Mitra\Post');
     }
 
+    public function like()
+    {
+      return $this->hasMany('Mitra\Like');
+    }
+
     public function getProfileImageAttribute($profileImage)
     {
       $id = $this->attributes['id'];

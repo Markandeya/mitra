@@ -22,7 +22,7 @@ class FeedController extends Controller
         }
       }
 
-      $feed = collect($feed)->sortBy('created_at')->values()->all();
+      $feed = collect($feed)->sortByDesc('created_at')->values()->all();
 
       return $feed;
     }

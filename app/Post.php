@@ -16,6 +16,11 @@ class Post extends Model
       return $this->belongsTo('Mitra\User');
     }
 
+    public function like()
+    {
+      return $this->hasMany('Mitra\Like');
+    }
+
     public function getCreatedAtAttribute($value)
     {
       $dt = new Carbon($value);
