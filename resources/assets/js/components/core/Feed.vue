@@ -19,8 +19,8 @@
           </div>
           <div class="row">
             <div class="feed-control">
-              <i class="fa fa-thumbs-o-up"></i>
-              <a href="#">Like</a>
+              <i class="fa fa-thumbs-o-up" :id="'l'+i" ></i>
+              <a :href="'#l'+i" @click="like(i)">Like</a>
             </div>
             <div class="feed-control">
               <i class="fa fa-comment-o"></i>
@@ -33,7 +33,16 @@
           </div>
         </div>
         <div class="comment-show" v-show="comment" :id="'c'+i">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <div class="comment-box">
+            <div class="row">
+              <div class="col-md-1">
+                <img :src="profileImage" alt="" class="ratio img-circle" width="30px" height="30px">
+              </div>
+              <div class="col-md-11">
+                <textarea class="comment-textarea" name="name"  placeholder="Write a comment" ></textarea>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -43,7 +52,9 @@
 <script>
 export default {
   props: {
-    baseLink: String
+    baseLink: String,
+    profileImage: String,
+    userId: [String, Number],
   },
   data () {
     return {
@@ -55,6 +66,7 @@ export default {
   },
   created () {
     this.request()
+    console.log(this.profileImage)
   },
   methods: {
     showComment(i) {
@@ -63,23 +75,43 @@ export default {
       $('.feed').removeClass('animated fadeIn')
       $('#c'+i).removeClass('fadeIn')
     },
+    like(i) {
+        $('#l'+i).toggleClass('animated tada').toggleClass('liked')
+    },
     request() {
 
       var ap = this
       this.loading = true
-      $.ajax({
-                type: 'GET',
-                url: window.location.origin + '/ajax/feed',
-                error: function (err) {
-                    console.log("AJAX error in request: " + JSON.stringify(err, null, 2))
-                    ap.posts = "Whoops! Couldn't get data for u."
-                    ap.loading = false
-                }
-            }).done(function(data) {
-              //convert data in the response to array of objects
-              ap.posts = data
-              console.log(data)
-      })
+      if (this.userId == 'none') {
+        $.ajax({
+                  type: 'GET',
+                  url: window.location.origin + '/ajax/feed',
+                  error: function (err) {
+                      console.log("AJAX error in request: " + JSON.stringify(err, null, 2))
+                      ap.posts = "Whoops! Couldn't get data for u."
+                      ap.loading = false
+                  }
+              }).done(function(data) {
+                //convert data in the response to array of objects
+                ap.posts = data
+                console.log(data)
+        })
+      } else {
+        $.ajax({
+                  type: 'GET',
+                  url: window.location.origin + '/ajax/get-posts/' + ap.userId,
+                  error: function (err) {
+                      console.log("AJAX error in request: " + JSON.stringify(err, null, 2))
+                      ap.posts = "Whoops! Couldn't get data for u."
+                      ap.loading = false
+                  }
+              }).done(function(data) {
+                //convert data in the response to array of objects
+                ap.posts = data
+                console.log(data)
+        })
+      }
+
       this.loading = false
     },
   }

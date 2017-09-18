@@ -138,8 +138,11 @@
   @if($user->id == Auth::user()->id)
     <create-post></create-post>
   @endif
-
-  <timeline :user_id="{{ $user->id }}"></timeline>
+  <feed
+  :user-id="{{ $user->id or '' }}"
+  :base-link="'{{ url('/') }}'"
+  :profile-image="'{{ Auth::user()->profile_image }}'"
+  ></feed>
 @endsection
 @section('scripts')
 <style>

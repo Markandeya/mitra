@@ -12072,10 +12072,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    baseLink: String
+    baseLink: String,
+    profileImage: String,
+    userId: [String, Number]
   },
   data: function data() {
     return {
@@ -12086,6 +12097,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   created: function created() {
     this.request();
+    console.log(this.profileImage);
   },
 
   methods: {
@@ -12095,23 +12107,43 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       $('.feed').removeClass('animated fadeIn');
       $('#c' + i).removeClass('fadeIn');
     },
+    like: function like(i) {
+      $('#l' + i).toggleClass('animated tada').toggleClass('liked');
+    },
     request: function request() {
 
       var ap = this;
       this.loading = true;
-      $.ajax({
-        type: 'GET',
-        url: window.location.origin + '/ajax/feed',
-        error: function error(err) {
-          console.log("AJAX error in request: " + JSON.stringify(err, null, 2));
-          ap.posts = "Whoops! Couldn't get data for u.";
-          ap.loading = false;
-        }
-      }).done(function (data) {
-        //convert data in the response to array of objects
-        ap.posts = data;
-        console.log(data);
-      });
+      if (this.userId == 'none') {
+        $.ajax({
+          type: 'GET',
+          url: window.location.origin + '/ajax/feed',
+          error: function error(err) {
+            console.log("AJAX error in request: " + JSON.stringify(err, null, 2));
+            ap.posts = "Whoops! Couldn't get data for u.";
+            ap.loading = false;
+          }
+        }).done(function (data) {
+          //convert data in the response to array of objects
+          ap.posts = data;
+          console.log(data);
+        });
+      } else {
+        $.ajax({
+          type: 'GET',
+          url: window.location.origin + '/ajax/get-posts/' + ap.userId,
+          error: function error(err) {
+            console.log("AJAX error in request: " + JSON.stringify(err, null, 2));
+            ap.posts = "Whoops! Couldn't get data for u.";
+            ap.loading = false;
+          }
+        }).done(function (data) {
+          //convert data in the response to array of objects
+          ap.posts = data;
+          console.log(data);
+        });
+      }
+
       this.loading = false;
     }
   }
@@ -16767,7 +16799,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)();
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 /***/ }),
 /* 51 */
@@ -53920,10 +53952,18 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_c('div', {
       staticClass: "feed-control"
     }, [_c('i', {
-      staticClass: "fa fa-thumbs-o-up"
+      staticClass: "fa fa-thumbs-o-up",
+      attrs: {
+        "id": 'l' + i
+      }
     }), _vm._v(" "), _c('a', {
       attrs: {
-        "href": "#"
+        "href": '#l' + i
+      },
+      on: {
+        "click": function($event) {
+          _vm.like(i)
+        }
       }
     }, [_vm._v("Like")])]), _vm._v(" "), _c('div', {
       staticClass: "feed-control"
@@ -53957,7 +53997,29 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "id": 'c' + i
       }
-    }, [_c('p', [_vm._v("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")])])])
+    }, [_c('div', {
+      staticClass: "comment-box"
+    }, [_c('div', {
+      staticClass: "row"
+    }, [_c('div', {
+      staticClass: "col-md-1"
+    }, [_c('img', {
+      staticClass: "ratio img-circle",
+      attrs: {
+        "src": _vm.profileImage,
+        "alt": "",
+        "width": "30px",
+        "height": "30px"
+      }
+    })]), _vm._v(" "), _c('div', {
+      staticClass: "col-md-11"
+    }, [_c('textarea', {
+      staticClass: "comment-textarea",
+      attrs: {
+        "name": "name",
+        "placeholder": "Write a comment"
+      }
+    })])])])])])
   })], 2)
 },staticRenderFns: []}
 module.exports.render._withStripped = true

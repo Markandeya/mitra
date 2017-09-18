@@ -20,10 +20,10 @@ class Post extends Model
     {
       return $this->hasMany('Mitra\Like');
     }
-
-    public function getCreatedAtAttribute($value)
-    {
-      $dt = new Carbon($value);
-      return $dt->diffForHumans();
-    }
+    // 
+    // public function getCreatedAtAttribute($value)
+    // {
+    //   $dt = new Carbon($value);
+    //   return $dt->diffForHumans();
+    // }
 }

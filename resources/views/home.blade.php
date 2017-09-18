@@ -67,7 +67,10 @@
                     <div class="container-fluid">
                       <create-post :route="'{{ route('create-post') }}'"></create-post>
                       <feed
-                      :base-link="'{{ url('/') }}'"></feed>
+                      :user-id="'{{ $user->id or 'none' }}'"
+                      :base-link="'{{ url('/') }}'"
+                      :profile-image="'{{ Auth::user()->profile_image }}'"
+                      ></feed>
                     </div>
                   @endsection
               {{-- </div> --}}

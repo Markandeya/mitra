@@ -196,3 +196,29 @@
   -moz-border-radius: 0px 0px 5px 5px;
   -webkit-border-radius: 0px 0px 5px 5px;
 }
+
+.liked {
+  color: $mitra-pink
+}
+
+.comment-box {
+  --border-radius: 53px 53px 53px 53px;
+  --moz-border-radius: 53px 53px 53px 53px;
+  --webkit-border-radius: 53px 53px 53px 53px;
+  border: 0px solid #000000;
+
+  background: #fff;
+  height: 40px;
+}
+
+.comment-textarea {
+  border: none;
+  outline: none;
+  overflow: hidden;
+  resize: none;
+  width: 100%;
+  max-width: 100%;
+  border-radius: 20px;
+  height: 40px;
+  padding: 9px;
+}
