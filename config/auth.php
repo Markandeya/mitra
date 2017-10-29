@@ -70,7 +70,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => Mitra\User::class,
+            'model' => App\User::class,
         ],
         'admins' => [
             'driver' => 'eloquent',

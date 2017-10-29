@@ -1,6 +1,6 @@
 <?php
 
-namespace Mitra;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,6 +10,6 @@ class Campus extends Model
 
   public function users()
   {
-    return $this->hasMany('Mitra\User');
+    return $this->hasMany('App\User');
   }
 }

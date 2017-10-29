@@ -1,10 +1,10 @@
 <?php
 
-namespace Mitra\Http\Controllers;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Mitra\Post;
-use Mitra\User;
+use App\Post;
+use App\User;
 use Auth;
 
 class PostController extends Controller

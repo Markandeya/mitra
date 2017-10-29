@@ -1,8 +1,8 @@
 <?php
 
-namespace Mitra;
+namespace App;
 
-use Mitra\Traits\Friendable;
+use App\Traits\Friendable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Storage;
@@ -33,32 +33,32 @@ class User extends Authenticatable
 
     public function socialProviders()
     {
-        return $this->hasMany('Mitra\SocialProvider');
+        return $this->hasMany('App\SocialProvider');
     }
 
     public function branch()
     {
-      return $this->belongsTo('Mitra\Branch');
+      return $this->belongsTo('App\Branch');
     }
 
     public function campus()
     {
-      return $this->belongsTo('Mitra\Campus');
+      return $this->belongsTo('App\Campus');
     }
 
     public function course()
     {
-      return $this->belongsTo('Mitra\Course');
+      return $this->belongsTo('App\Course');
     }
 
     public function posts()
     {
-      return $this->hasMany('Mitra\Post');
+      return $this->hasMany('App\Post');
     }
 
     public function like()
     {
-      return $this->hasMany('Mitra\Like');
+      return $this->hasMany('App\Like');
     }
 
     public function getProfileImageAttribute($profileImage)

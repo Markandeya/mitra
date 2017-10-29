@@ -1,7 +1,7 @@
 <?php
-namespace Mitra\Http\Controllers;
+namespace App\Http\Controllers;
 
-use Mitra\User as User;
+use App\User as User;
 
 function public_storage_path(User $user)
 {

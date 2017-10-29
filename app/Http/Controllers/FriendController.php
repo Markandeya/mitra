@@ -1,13 +1,13 @@
 <?php
 
-namespace Mitra\Http\Controllers;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
-use Mitra\User;
-use Mitra\Friendship;
-use Mitra\Notifications\NewFriendRequest;
-use Mitra\Notifications\FriendRequestAccepted;
+use App\User;
+use App\Friendship;
+use App\Notifications\NewFriendRequest;
+use App\Notifications\FriendRequestAccepted;
 
 
 class FriendController extends Controller

@@ -1,8 +1,8 @@
 <?php
-namespace Mitra\Http\Controllers\Auth;
+namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
-use Mitra\Http\Controllers\Controller;
+use App\Http\Controllers\Controller;
 use Auth;
 
 class AdminLoginController extends Controller

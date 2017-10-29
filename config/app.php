@@ -171,21 +171,22 @@ return [
         /*
          * Application Service Providers...
          */
-        Mitra\Providers\AppServiceProvider::class,
-        Mitra\Providers\AuthServiceProvider::class,
-        Mitra\Providers\BroadcastServiceProvider::class,
-        Mitra\Providers\EventServiceProvider::class,
-        Mitra\Providers\RouteServiceProvider::class,
+        App\Providers\AppServiceProvider::class,
+        App\Providers\AuthServiceProvider::class,
+        App\Providers\BroadcastServiceProvider::class,
+        App\Providers\EventServiceProvider::class,
+        App\Providers\RouteServiceProvider::class,
         /*
          * Installed Service Providers ...
          */
         Laravel\Socialite\SocialiteServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        DevDojo\Chatter\ChatterServiceProvider::class,
         /*
          * Custom Service Providers
          */
-         Mitra\Providers\BladeDirectiveProvider::class,
-         Mitra\Providers\StorageServiceProvider::class,
+         App\Providers\BladeDirectiveProvider::class,
+         App\Providers\StorageServiceProvider::class,
     ],
 
     /*

@@ -1,9 +1,9 @@
 <?php
 
-namespace Mitra\Http\Controllers;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Mitra\User;
+use App\User;
 use Session;
 use Auth;
 

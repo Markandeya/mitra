@@ -18,6 +18,7 @@
       display: none;
     }
     </style>
+    @yield('css')
     @yield('styles')
 </head>
 <body>
@@ -229,5 +230,6 @@
 
     </script>
     @yield('scripts')
+    @yield('js')
 </body>
 </html>

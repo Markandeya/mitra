@@ -1,9 +1,9 @@
 <?php
 
-namespace Mitra\Traits;
+namespace App\Traits;
 
-use Mitra\Friendship;
-use Mitra\User;
+use App\Friendship;
+use App\User;
 
 /**
  * friendships

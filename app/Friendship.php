@@ -1,6 +1,6 @@
 <?php
 
-namespace Mitra;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 

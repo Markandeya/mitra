@@ -1,9 +1,9 @@
 <?php
 
-namespace Mitra\Http\Controllers;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Mitra\User as User;
+use App\User as User;
 use Illuminate\Support\Collection as Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 class SearchController extends Controller
