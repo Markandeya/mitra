@@ -9,7 +9,7 @@ class Post extends Model
 {
     protected $fillable = ['user_id','content'];
 
-    public $with = ['user'];
+    public $with = ['user', 'comments'];
 
     public function user()
     {
@@ -20,7 +20,12 @@ class Post extends Model
     {
       return $this->hasMany('App\Like');
     }
-    // 
+
+    public function comments()
+    {
+      return $this->hasMany('App\Comment');
+    }
+    //
     // public function getCreatedAtAttribute($value)
     // {
     //   $dt = new Carbon($value);

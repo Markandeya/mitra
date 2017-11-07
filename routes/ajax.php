@@ -15,6 +15,7 @@ Route::group(['prefix' => 'ajax',], function () {
   Route::get('/create-post','PostController@store')->name('create-post');
   Route::get('/get-posts/{id}','PostController@getPosts')->name('user-posts');
   Route::get('/feed','FeedController@feed')->name('feed');
+  Route::get('/create-comment','CommentController@create')->name('create-comment');
 
   Route::get('/get-unread', function() {
     return Auth::user()->unreadNotifications;

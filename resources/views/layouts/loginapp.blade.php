@@ -96,6 +96,7 @@
               <ul class="nav navbar-nav navbar-main">
                 <li class="{{ Request::is('home')?'active':'tab' }}"><a href="{{route('home')}}">Home</a></li>
                 <li class="{{ Request::is('amritians')?'active':'tab' }}"><a href="{{route('amritians')}}">Amritians</a></li>
+                <li class="{{ Request::is('forums')?'active':'tab' }}"><a href="{{url('forums')}}">Forums</a></li>
               </ul>
               <form class="navbar-form navbar-left hidden-xs" action="{{ route('amritians') }}" method="get">
                 <div class="form-group">

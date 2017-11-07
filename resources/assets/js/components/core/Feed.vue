@@ -32,15 +32,24 @@
             </div>
           </div>
         </div>
-        <div class="comment-show" v-show="comment" :id="'c'+i">
-          <div class="comment-box">
+        <div class="comment-show" v-show="boolComment" :id="'c'+i">
+          <div class="loader" v-if="commentLoader"></div>
+          <div class="comment-box" v-else>
             <div class="row">
               <div class="col-md-1">
                 <img :src="profileImage" alt="" class="ratio img-circle" width="30px" height="30px">
               </div>
               <div class="col-md-11">
-                <textarea class="comment-textarea" name="name"  placeholder="Write a comment" ></textarea>
+                <textarea class="comment-textarea" :id="post.id" v-model="comment"  placeholder="Write a comment" @keyup.enter="writeComment"></textarea>
               </div>
+            </div>
+          </div>
+          <div class="row" v-for="comment in post.comments">
+            <div class="col-md-1">
+              <img :src="comment.user.profile_image" alt="" class="ratio img-circle" width="30px" height="30px">
+            </div>
+            <div class="col-md-11">
+              <h5>{{comment.comment}} <small> <span class="pull-right"> {{comment.created_at}} </span></small></h5>
             </div>
           </div>
         </div>
@@ -60,7 +69,9 @@ export default {
     return {
         posts: {},
         loading: true,
-        comment: false,
+        boolComment: false,
+        commentLoader: false,
+        comment: '',
     }
 
   },
@@ -114,6 +125,27 @@ export default {
 
       this.loading = false
     },
+    writeComment(event) {
+      console.log('works');
+      var ap = this;
+      this.commentLoader = true;
+      var postId = event.target.id;
+      $.ajax({
+                type: 'GET',
+                url: window.location.origin + '/ajax/create-comment',
+                data: {
+                  postId: postId,
+                  comment: ap.comment,
+                },
+                error: function (err) {
+                    console.log("AJAX error in request: " + JSON.stringify(err, null, 2));
+                }
+            }).done(function(data) {
+
+              console.log(data);
+      });
+      this.commentLoader = false;
+    }
   }
 }
 </script>

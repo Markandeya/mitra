@@ -12081,6 +12081,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -12092,7 +12101,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     return {
       posts: {},
       loading: true,
-      comment: false
+      boolComment: false,
+      commentLoader: false,
+      comment: ''
     };
   },
   created: function created() {
@@ -12145,6 +12156,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       }
 
       this.loading = false;
+    },
+    writeComment: function writeComment(event) {
+      console.log('works');
+      var ap = this;
+      this.commentLoader = true;
+      var postId = event.target.id;
+      $.ajax({
+        type: 'GET',
+        url: window.location.origin + '/ajax/create-comment',
+        data: {
+          postId: postId,
+          comment: ap.comment
+        },
+        error: function error(err) {
+          console.log("AJAX error in request: " + JSON.stringify(err, null, 2));
+        }
+      }).done(function (data) {
+
+        console.log(data);
+      });
+      this.commentLoader = false;
     }
   }
 });
@@ -16768,7 +16800,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)();
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 /***/ }),
 /* 53 */
@@ -54966,14 +54998,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       directives: [{
         name: "show",
         rawName: "v-show",
-        value: (_vm.comment),
-        expression: "comment"
+        value: (_vm.boolComment),
+        expression: "boolComment"
       }],
       staticClass: "comment-show",
       attrs: {
         "id": 'c' + i
       }
-    }, [_c('div', {
+    }, [(_vm.commentLoader) ? _c('div', {
+      staticClass: "loader"
+    }) : _c('div', {
       staticClass: "comment-box"
     }, [_c('div', {
       staticClass: "row"
@@ -54990,12 +55024,49 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     })]), _vm._v(" "), _c('div', {
       staticClass: "col-md-11"
     }, [_c('textarea', {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: (_vm.comment),
+        expression: "comment"
+      }],
       staticClass: "comment-textarea",
       attrs: {
-        "name": "name",
+        "id": post.id,
         "placeholder": "Write a comment"
+      },
+      domProps: {
+        "value": (_vm.comment)
+      },
+      on: {
+        "keyup": function($event) {
+          if (!('button' in $event) && _vm._k($event.keyCode, "enter", 13)) { return null; }
+          _vm.writeComment($event)
+        },
+        "input": function($event) {
+          if ($event.target.composing) { return; }
+          _vm.comment = $event.target.value
+        }
       }
-    })])])])])])
+    })])])]), _vm._v(" "), _vm._l((post.comments), function(comment) {
+      return _c('div', {
+        staticClass: "row"
+      }, [_c('div', {
+        staticClass: "col-md-1"
+      }, [_c('img', {
+        staticClass: "ratio img-circle",
+        attrs: {
+          "src": comment.user.profile_image,
+          "alt": "",
+          "width": "30px",
+          "height": "30px"
+        }
+      })]), _vm._v(" "), _c('div', {
+        staticClass: "col-md-11"
+      }, [_c('h5', [_vm._v(_vm._s(comment.comment) + " "), _c('small', [_c('span', {
+        staticClass: "pull-right"
+      }, [_vm._v(" " + _vm._s(comment.created_at) + " ")])])])])])
+    })], 2)])
   })], 2)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
