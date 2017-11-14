@@ -9,14 +9,14 @@ class Post extends Model
 {
     protected $fillable = ['user_id','content'];
 
-    public $with = ['user', 'comments'];
+    public $with = ['user', 'comments', 'likes'];
 
     public function user()
     {
       return $this->belongsTo('App\User');
     }
 
-    public function like()
+    public function likes()
     {
       return $this->hasMany('App\Like');
     }

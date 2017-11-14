@@ -27,7 +27,7 @@
               @include('partials._joinnetwork')
             @else
               {{-- <div class="container"> --}}
-                  @section('left')
+                  {{-- @section('left')
                     <ul class="nav nav-tabs nav-justified animated fadeIn">
                       <li class="active"><a data-toggle="tab" href="#group">Your Groups</a></li>
                       <li><a style="" data-toggle="tab" href="#forum">Disqus Forum</a></li>
@@ -38,9 +38,9 @@
                          <img src="{{asset('images/group.png')}}" alt="No groups yet" style="max-width:100%;max-height:100%;width:150px;height: 150px;">
                          <a href="#" class="btn-more">+Join a Group</a>
                        </div>
-                       {{-- <h3>Latest Activities</h3>
+                       <h3>Latest Activities</h3>
                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed labore et dolore magna aliqua.</p>
-                       <a href="#" class="btn-more">+View More</a> --}}
+                       <a href="#" class="btn-more">+View More</a>
                      </div>
                      <div id="forum" class="tab-pane fade box-shadow-content-solid">
 
@@ -62,7 +62,7 @@
                       <p style="font-size:17px"><b style="font-size:40px">0</b> connections <a href="#" style="font-size:14px">See all</a></p>
                       <a href="#" class="btn btn-sm btn-primary">Find Connections</a>
                     </div>
-                  @endsection
+                  @endsection --}}
                   @section('center')
                     <div class="container-fluid">
                       <create-post :route="'{{ route('create-post') }}'"></create-post>

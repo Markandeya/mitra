@@ -11,12 +11,12 @@
           <div class="row">
             <div class="pull-right">
               <div class="row">
-                <div class="col-xs-6">
+                <!-- <div class="col-xs-6">
                     <select class="selectpicker form-control" id="test">
                       <option selected>Public   <i class="fa fa-globe"></i></option>
                       <option>Friends   <i class="fa fa-users"></i></option>
                     </select>
-                </div>
+                </div> -->
                 <div class="col-xs-6">
                   <button type="button" class="btn btn-info btn-md" name="button" @click="createPost">Post</button>
                 </div>

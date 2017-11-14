@@ -12090,6 +12090,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -12118,8 +12119,49 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       $('.feed').removeClass('animated fadeIn');
       $('#c' + i).removeClass('fadeIn');
     },
-    like: function like(i) {
-      $('#l' + i).toggleClass('animated tada').toggleClass('liked');
+    like: function like(event) {
+      var postId = event.target.id;
+      console.log(postId);
+      //$('#l'+i).toggleClass('animated tada').toggleClass('liked')
+      var ap = this;
+
+      $.ajax({
+        type: 'GET',
+        url: window.location.origin + '/ajax/like',
+        data: {
+          postId: postId
+        },
+        error: function error(err) {
+          console.log("AJAX error in request: " + JSON.stringify(err, null, 2));
+        }
+      }).done(function (data) {
+        console.log(data);
+        if (data == 0) {
+          new noty({
+            type: 'success',
+            layout: 'bottomCenter',
+            timeout: 2000,
+            text: '<p class="text-center">Unliked.</p>',
+            animation: {
+              open: 'animated fadeInUp',
+              close: 'animated fadeOut'
+            }
+          }).show();
+        } else {
+          new noty({
+            type: 'success',
+            layout: 'bottomCenter',
+            timeout: 2000,
+            theme: 'metroui',
+            text: '<p class="text-center">Liked.</p>',
+            animation: {
+              open: 'animated fadeInUp',
+              close: 'animated fadeOut'
+            }
+          }).show();
+        }
+      });
+      this.request();
     },
     request: function request() {
 
@@ -12158,7 +12200,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.loading = false;
     },
     writeComment: function writeComment(event) {
-      console.log('works');
+      //console.log('works');
       var ap = this;
       this.commentLoader = true;
       var postId = event.target.id;
@@ -12177,6 +12219,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         console.log(data);
       });
       this.commentLoader = false;
+      this.request();
     }
   }
 });
@@ -16800,7 +16843,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)();
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 /***/ }),
 /* 53 */
@@ -54959,19 +55002,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "row"
     }, [_c('div', {
       staticClass: "feed-control"
+    }, [_c('span', {
+      staticClass: "mitra-pink"
     }, [_c('i', {
+      staticClass: "fa fa-plus"
+    }), _vm._v(_vm._s(post.likes.length))]), _vm._v(" "), _c('i', {
       staticClass: "fa fa-thumbs-o-up",
       attrs: {
         "id": 'l' + i
       }
     }), _vm._v(" "), _c('a', {
       attrs: {
-        "href": '#l' + i
+        "href": '#l' + i,
+        "id": post.id
       },
       on: {
-        "click": function($event) {
-          _vm.like(i)
-        }
+        "click": _vm.like
       }
     }, [_vm._v("Like")])]), _vm._v(" "), _c('div', {
       staticClass: "feed-control"
@@ -54986,15 +55032,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           _vm.showComment(i)
         }
       }
-    }, [_vm._v("Comment")])]), _vm._v(" "), _c('div', {
-      staticClass: "feed-control"
-    }, [_c('i', {
-      staticClass: "fa fa-share"
-    }), _vm._v(" "), _c('a', {
-      attrs: {
-        "href": "#"
-      }
-    }, [_vm._v("Share")])])])]), _vm._v(" "), _c('div', {
+    }, [_vm._v("Comment")])])])]), _vm._v(" "), _c('div', {
       directives: [{
         name: "show",
         rawName: "v-show",
@@ -55126,21 +55164,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "row"
   }, [_c('div', {
-    staticClass: "col-xs-6"
-  }, [_c('select', {
-    staticClass: "selectpicker form-control",
-    attrs: {
-      "id": "test"
-    }
-  }, [_c('option', {
-    attrs: {
-      "selected": ""
-    }
-  }, [_vm._v("Public   "), _c('i', {
-    staticClass: "fa fa-globe"
-  })]), _vm._v(" "), _c('option', [_vm._v("Friends   "), _c('i', {
-    staticClass: "fa fa-users"
-  })])])]), _vm._v(" "), _c('div', {
     staticClass: "col-xs-6"
   }, [_c('button', {
     staticClass: "btn btn-info btn-md",

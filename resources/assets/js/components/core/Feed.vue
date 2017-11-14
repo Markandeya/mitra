@@ -19,17 +19,18 @@
           </div>
           <div class="row">
             <div class="feed-control">
+              <span class="mitra-pink"><i class="fa fa-plus"></i>{{ post.likes.length }}</span>
               <i class="fa fa-thumbs-o-up" :id="'l'+i" ></i>
-              <a :href="'#l'+i" @click="like(i)">Like</a>
+              <a :href="'#l'+i" :id="post.id" @click="like">Like</a>
             </div>
             <div class="feed-control">
               <i class="fa fa-comment-o"></i>
               <a :href="'#c'+i" @click="showComment(i)">Comment</a>
             </div>
-            <div class="feed-control">
+            <!-- <div class="feed-control">
               <i class="fa fa-share"></i>
               <a href="#">Share</a>
-            </div>
+            </div> -->
           </div>
         </div>
         <div class="comment-show" v-show="boolComment" :id="'c'+i">
@@ -86,8 +87,50 @@ export default {
       $('.feed').removeClass('animated fadeIn')
       $('#c'+i).removeClass('fadeIn')
     },
-    like(i) {
-        $('#l'+i).toggleClass('animated tada').toggleClass('liked')
+    like(event) {
+        var postId = event.target.id;
+        console.log(postId)
+        //$('#l'+i).toggleClass('animated tada').toggleClass('liked')
+        var ap = this;
+
+        $.ajax({
+                  type: 'GET',
+                  url: window.location.origin + '/ajax/like',
+                  data: {
+                    postId: postId,
+                  },
+                  error: function (err) {
+                      console.log("AJAX error in request: " + JSON.stringify(err, null, 2));
+                  }
+              }).done(function(data) {
+                console.log(data)
+                if(data == 0)
+                {
+                  new noty({
+                    type: 'success',
+                    layout: 'bottomCenter',
+                    timeout: 2000,
+                    text: '<p class="text-center">Unliked.</p>',
+                    animation: {
+                         open: 'animated fadeInUp',
+                         close: 'animated fadeOut',
+                     }
+                  }).show()
+                } else {
+                  new noty({
+                    type: 'success',
+                    layout: 'bottomCenter',
+                    timeout: 2000,
+                    theme: 'metroui',
+                    text: '<p class="text-center">Liked.</p>',
+                    animation: {
+                         open: 'animated fadeInUp',
+                         close: 'animated fadeOut',
+                     }
+                  }).show()
+                }
+        });
+        this.request()
     },
     request() {
 
@@ -126,7 +169,7 @@ export default {
       this.loading = false
     },
     writeComment(event) {
-      console.log('works');
+      //console.log('works');
       var ap = this;
       this.commentLoader = true;
       var postId = event.target.id;
@@ -145,6 +188,7 @@ export default {
               console.log(data);
       });
       this.commentLoader = false;
+      this.request();
     }
   }
 }
